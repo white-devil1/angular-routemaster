@@ -7,14 +7,40 @@
 [![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
 
 <br>
 
-**Router Outlet Playground** is a visually interactive educational application designed to demystify the Angular Router. Unlike static tutorials, this project provides a live "Playground" where users can see exactly how URLs, Router Outlets (Primary & Named), and Component lifecycles interact in real-time.
+**Router Outlet Playground** is a visually interactive educational application designed to demystify the Angular Router.
 
 [**View Live Demo**](https://your-project.web.app)
 
 </div>
+
+---
+
+## ☁️ How to Publish (Auto-Deploy)
+
+This project uses **GitHub Actions** to build and deploy itself. You do not need to run build commands locally.
+
+### 1. Push your code
+Simply commit your changes and push to the `main` branch.
+```bash
+git add .
+git commit -m "Update application"
+git push origin main
+```
+
+### 2. Watch the Pipeline
+Go to the **Actions** tab in your GitHub repository. You will see a workflow running. Once it finishes (green checkmark), your site is live!
+
+### ⚠️ Important Configuration
+If the deployment fails with a "Permission denied" error:
+1.  Go to your Repository **Settings**.
+2.  Click **Actions** > **General**.
+3.  Scroll to **Workflow permissions**.
+4.  Select **Read and write permissions**.
+5.  Click **Save**.
 
 ---
 
@@ -23,89 +49,33 @@
 ### 1. 🎓 Gamified Learning System
 The application is structured into four distinct levels of difficulty. The content, code snippets, and quizzes adapt dynamically based on the selected level:
 *   **🎒 Student (Beginner)**: Focuses on `<router-outlet>`, `routerLink`, and basic navigation.
-*   **💻 Intern (Intermediate)**: Covers Route Parameters (`:id`), 404 Error handling, and Active styling.
-*   **🛠️ Developer (Advanced)**: Dives into Guards, Lazy Loading concepts, and Relative navigation.
+*   **💻 Intern (Intermediate)**: Covers Route Parameters (`:id`), 404 Error handling, and active styling.
+*   **🛠️ Developer (Advanced)**: Dives into Guards, Lazy Loading concepts, and relative navigation.
 *   **🏛️ Architect (Professional)**: Explores `UrlTree`, `RouteReuseStrategy`, internal mechanics, and performance.
 
 ### 2. 👁️ Visual Routing Visualization
-*   **Live Address Bar**: A simulated browser URL bar that breaks down the URL into segments (Primary, ID, Auxiliary Left, Auxiliary Right).
-*   **Multiple Named Outlets**: Visually demonstrates how `primary`, `left`, and `right` outlets work simultaneously (e.g., `/home(left:menu//right:notes)`).
-*   **Focus Highlighting**: As you learn a concept, the UI dims irrelevant sections and spotlights the specific component or URL segment being discussed.
+*   **Live Address Bar**: A simulated browser URL bar that breaks down the URL into segments.
+*   **Multiple Named Outlets**: Visually demonstrates how `primary`, `left`, and `right` outlets work simultaneously.
 
-### 3. 🗣️ Accessibility & Localization
-*   **Multi-Language Support**: Complete curriculum available in **English**, **Hindi**, and **Malayalam**.
-*   **Text-to-Speech (TTS)**: Built-in "Teacher" mode that reads lessons aloud using the browser's native synthesis API, respecting the selected language accent.
-
-### 4. 🧪 Interactive Simulator
+### 3. 🧪 Interactive Simulator
 *   **Parameter Manipulation**: Click buttons to simulate changing user IDs (`/user/1` vs `/user/99`).
-*   **Wildcard Testing**: Intentionally trigger broken links to observe 404 behavior.
-*   **Auxiliary Route Control**: Open and close side panels (Menu, Ads, Help, Notes) independently of the main content.
-
-### 5. 📝 Assessment Engine
-*   **Dynamic Quiz**: Level-specific quizzes with multiple types of questions (MCQ, Fill-in-the-blank, Code Snippet analysis). Includes score tracking and confetti celebrations.
-*   **Interview Preparation**: A curated list of real-world Angular Interview questions and answers, categorized by difficulty level.
+*   **Auxiliary Route Control**: Open and close side panels (Menu, Ads, Help, Notes).
 
 ---
 
-## 🏗️ Technical Architecture
+## 🚀 Local Development (Optional)
 
-This project is built using modern **Angular (v18+)** standards:
+If you have the environment set up, you can run:
 
-*   **Standalone Components**: No `NgModule` boilerplate.
-*   **Zoneless Ready**: Prepared for the future of Angular change detection.
-*   **Signals**: State management relies entirely on Angular Signals for reactivity (no complex RxJS Subject patterns for local state).
-*   **Tailwind CSS**: Utility-first styling with Glassmorphism effects and responsive design.
-
-### Project Structure
-```bash
-src/
-├── components/
-│   ├── landing.component.ts    # Entry point & Level selection
-│   ├── pages.component.ts      # Dummy pages (Home, Dashboard, User)
-│   ├── side-components.ts      # Aux pages (Menu, Help, Notes)
-│   ├── quiz.component.ts       # Gamified assessment logic
-│   └── interview.component.ts  # Q&A repository
-├── services/
-│   ├── tutorial.service.ts     # Content engine & step logic
-│   ├── quiz.service.ts         # Quiz state management
-│   ├── speech.service.ts       # Text-to-Speech integration
-│   └── language.service.ts     # i18n logic
-└── app.component.ts            # Main layout & Orchestration
-```
-
----
-
-## 🚀 How to Run Locally
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/your-username/router-outlet-playground.git
-    cd router-outlet-playground
-    ```
-
-2.  **Install Dependencies**
+1.  **Install Dependencies**
     ```bash
     npm install
     ```
 
-3.  **Start the Server**
+2.  **Start the Server**
     ```bash
     ng serve
     ```
-
-4.  **Open Browser**
-    Navigate to `http://localhost:4200`
-
----
-
-## 📚 Curriculum Overview
-
-| Level | Concepts Covered |
-| :--- | :--- |
-| **Beginner** | SPA Basics, RouterOutlet, RouterLink, avoiding `href`. |
-| **Intermediate** | Route Params (`:id`), Wildcards (`**`), Active Routing classes, Auxiliary Routes setup. |
-| **Advanced** | Route Guards (`CanActivate`), Resolvers, Lazy Loading syntax, Relative navigation. |
-| **Professional** | `UrlTree` serialization, `RouteReuseStrategy`, `PreloadingStrategy`, `ViewContainerRef` internals. |
 
 ---
 
