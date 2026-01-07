@@ -1,12 +1,21 @@
-![Angular Routing Master](screenshot.png)
+<div align="center">
 
 # 🧭 Angular Router Playground
 
-> **The Interactive Classroom for Mastering Angular Navigation**
+### The Interactive Classroom for Mastering Angular Navigation
+
+[![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+
+<br>
 
 **Router Outlet Playground** is a visually interactive educational application designed to demystify the Angular Router. Unlike static tutorials, this project provides a live "Playground" where users can see exactly how URLs, Router Outlets (Primary & Named), and Component lifecycles interact in real-time.
 
-Whether you are a complete beginner ("Student") or an expert ("Architect"), this application adapts its curriculum to teach you the specific mechanics of Single Page Application (SPA) routing.
+[**View Live Demo**](https://your-project.web.app) · [**Report Bug**](https://github.com/your-username/router-outlet-playground/issues) · [**Request Feature**](https://github.com/your-username/router-outlet-playground/issues)
+
+</div>
 
 ---
 
@@ -50,7 +59,7 @@ This project is built using modern **Angular (v18+)** standards:
 *   **Firebase Hosting**: configured for SPA routing (rewrites to `index.html`).
 
 ### Project Structure
-```
+```bash
 src/
 ├── components/
 │   ├── landing.component.ts    # Entry point & Level selection
@@ -138,4 +147,6 @@ Contributions are welcome! If you have a new lesson idea, a better explanation, 
 
 ---
 
-**Built with ❤️ using Angular & Tailwind**
+<div align="center">
+  <sub>Built with ❤️ using Angular & Tailwind CSS</sub>
+</div>
