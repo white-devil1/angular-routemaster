@@ -1,3 +1,5 @@
+![Angular Routing Master](screenshot.png)
+
 # 🧭 Angular Router Playground
 
 > **The Interactive Classroom for Mastering Angular Navigation**
