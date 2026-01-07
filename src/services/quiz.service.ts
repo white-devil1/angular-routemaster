@@ -33,43 +33,132 @@ export class QuizService {
 
   constructor() {
     this.initializeQuestions();
-    this.generateDrillQuestions(); 
   }
 
-  // Base Set of Hand-Crafted Questions (High Quality)
+  // Base Set of Hand-Crafted Questions (High Quality & Unique)
   private initializeQuestions() {
     this.allQuestions = [
-      // === BEGINNER (Basic Tags & Concepts) ===
+      // ===========================
+      // 1. BEGINNER QUESTIONS
+      // ===========================
       {
         id: 1, level: 'beginner', type: 'mcq',
-        question: 'Which HTML tag acts as the placeholder for the active page?',
+        question: 'Which HTML tag acts as the placeholder for the active page content?',
         options: ['<app-root>', '<router-outlet>', '<ng-content>', '<div id="main">'],
         correctAnswer: '<router-outlet>',
         explanation: 'The <router-outlet> is the dynamic container where Angular inserts the component for the current URL.'
       },
       {
         id: 2, level: 'beginner', type: 'fill-blank',
-        question: 'To link to the "/home" page without reloading, use the [?] directive.',
+        question: 'To link to the "/home" page without reloading, use the [?] directive instead of href.',
         correctAnswer: 'routerLink',
-        explanation: 'Use routerLink="/path" instead of href to perform single-page navigation.'
+        explanation: 'Use routerLink="/path" to perform single-page navigation without a full browser refresh.'
       },
-      
-      // === INTERMEDIATE (Params & 404) ===
+      {
+        id: 3, level: 'beginner', type: 'code',
+        question: 'Write the code to create a link to the "about" page.',
+        codeContext: '<!-- template -->',
+        correctAnswer: ['routerLink', '"/about"'],
+        explanation: '<a routerLink="/about">About</a>'
+      },
+      {
+        id: 4, level: 'beginner', type: 'mcq',
+        question: 'Which directive allows you to style a link when its route is active?',
+        options: ['ngClass', 'routerLinkActive', 'ngStyle', 'class.active'],
+        correctAnswer: 'routerLinkActive',
+        explanation: 'routerLinkActive adds a CSS class to the element when the linked route is currently active.'
+      },
+      {
+        id: 5, level: 'beginner', type: 'mcq',
+        question: 'What is a "Single Page Application"?',
+        options: ['An app with only one component', 'An app that never reloads the browser', 'An app with no CSS', 'A mobile-only app'],
+        correctAnswer: 'An app that never reloads the browser',
+        explanation: 'SPAs rewrite the current page dynamically with new data from the web server, instead of the default method of the browser loading entire new pages.'
+      },
+      {
+        id: 6, level: 'beginner', type: 'fill-blank',
+        question: 'To redirect the empty path "" to "/home", we use the property pathMatch: "[?]".',
+        correctAnswer: 'full',
+        explanation: 'pathMatch: "full" ensures the redirect only happens when the entire URL is empty, not just matching the prefix.'
+      },
+      {
+        id: 7, level: 'beginner', type: 'code',
+        question: 'Navigate to the dashboard programmatically using the Router service.',
+        codeContext: 'constructor(private router: Router) {} \n go() { ... }',
+        correctAnswer: ['this.router.navigate', "['/dashboard']"],
+        explanation: "this.router.navigate(['/dashboard']);"
+      },
+      {
+        id: 8, level: 'beginner', type: 'mcq',
+        question: 'Where do you typically define your application routes?',
+        options: ['In the HTML', 'In the CSS', 'In a routes array (app.routes.ts)', 'In the index.html'],
+        correctAnswer: 'In a routes array (app.routes.ts)',
+        explanation: 'Routes are defined as an array of objects mapping paths to components.'
+      },
+
+
+      // ===========================
+      // 2. INTERMEDIATE QUESTIONS
+      // ===========================
       {
         id: 101, level: 'intermediate', type: 'mcq',
-        question: 'How do you define a route parameter for a user ID?',
+        question: 'How do you define a dynamic route parameter for a user ID?',
         options: ['path: "user/id"', 'path: "user/:id"', 'path: "user/{id}"', 'path: "user?id"'],
         correctAnswer: 'path: "user/:id"',
         explanation: 'The colon (:) denotes a dynamic parameter in the route definition.'
       },
       {
         id: 102, level: 'intermediate', type: 'fill-blank',
-        question: 'To define a route that catches invalid URLs (404), we use the path: "[?]"',
+        question: 'To catch 404 errors (invalid URLs), define a route with path: "[?]".',
         correctAnswer: '**',
         explanation: 'The double asterisk (**) is the wildcard path that matches any URL.'
       },
+      {
+        id: 103, level: 'intermediate', type: 'code',
+        question: 'Read the "id" parameter from the current route snapshot.',
+        codeContext: 'constructor(private route: ActivatedRoute) {}',
+        correctAnswer: ['this.route.snapshot.paramMap.get', "'id'"],
+        explanation: "const id = this.route.snapshot.paramMap.get('id');"
+      },
+      {
+        id: 104, level: 'intermediate', type: 'mcq',
+        question: 'Which service gives you access to the *currently* loaded route details?',
+        options: ['Router', 'ActivatedRoute', 'Location', 'PlatformRef'],
+        correctAnswer: 'ActivatedRoute',
+        explanation: 'ActivatedRoute contains the information about the route associated with the component loaded in an outlet.'
+      },
+      {
+        id: 105, level: 'intermediate', type: 'mcq',
+        question: 'What happens if you place the wildcard route (**) at the TOP of your routes array?',
+        options: ['Nothing special', 'It matches every URL immediately', 'It is ignored', 'It causes a build error'],
+        correctAnswer: 'It matches every URL immediately',
+        explanation: 'The router matches routes in order. The wildcard matches everything, so it must be last.'
+      },
+      {
+        id: 106, level: 'intermediate', type: 'fill-blank',
+        question: 'To pass optional parameters like "?page=2", use the [?] property in navigation.',
+        correctAnswer: 'queryParams',
+        explanation: 'queryParams are used for optional key-value pairs at the end of the URL.'
+      },
+      {
+        id: 107, level: 'intermediate', type: 'code',
+        question: 'Create a link that opens a "chat" outlet in the sidebar.',
+        codeContext: '<!-- HTML -->',
+        correctAnswer: ['outlets', 'chat'],
+        explanation: '<a [routerLink]="[{ outlets: { sidebar: "chat" } }]">Chat</a>'
+      },
+      {
+        id: 108, level: 'intermediate', type: 'mcq',
+        question: 'Which property in the Route object allows you to attach static read-only information?',
+        options: ['data', 'params', 'static', 'info'],
+        correctAnswer: 'data',
+        explanation: 'The `data` property is used to store arbitrary read-only data (like page titles) for a route.'
+      },
 
-      // === ADVANCED (Guards & Lazy Loading) ===
+
+      // ===========================
+      // 3. ADVANCED QUESTIONS
+      // ===========================
       {
         id: 201, level: 'advanced', type: 'mcq',
         question: 'Why might ngOnInit NOT run when navigating from /user/1 to /user/2?',
@@ -84,97 +173,106 @@ export class QuizService {
         correctAnswer: ['path', "'admin'", 'loadChildren', 'import', "'./admin.routes'"],
         explanation: '{ path: "admin", loadChildren: () => import("./admin.routes") }'
       },
-      
-      // === PROFESSIONAL (Architecture & Strategy) ===
+      {
+        id: 203, level: 'advanced', type: 'mcq',
+        question: 'Which guard checks if a user is allowed to leave the current page?',
+        options: ['CanActivate', 'CanDeactivate', 'CanMatch', 'CanLoad'],
+        correctAnswer: 'CanDeactivate',
+        explanation: 'CanDeactivate is used to prevent navigation away from the current route (e.g., unsaved changes).'
+      },
+      {
+        id: 204, level: 'advanced', type: 'fill-blank',
+        question: 'To pre-fetch data before a route is activated, use a [?].',
+        correctAnswer: 'Resolver',
+        explanation: 'Resolvers allow you to fetch data before the router renders the component.'
+      },
+      {
+        id: 205, level: 'advanced', type: 'code',
+        question: 'Implement a CanActivateFn that checks if user is logged in.',
+        codeContext: 'const authGuard: CanActivateFn = () => ...',
+        correctAnswer: ['inject', 'AuthService', 'return', 'true'],
+        explanation: 'return inject(AuthService).isLoggedIn() ? true : false;'
+      },
+      {
+        id: 206, level: 'advanced', type: 'mcq',
+        question: 'How do you navigate relative to the current route?',
+        options: ['router.navigate(..., { relativeTo: this.route })', 'router.navigateRelative(...)', 'router.goBack()', 'Impossible'],
+        correctAnswer: 'router.navigate(..., { relativeTo: this.route })',
+        explanation: 'You must pass the current ActivatedRoute to the relativeTo property in NavigationExtras.'
+      },
+      {
+        id: 207, level: 'advanced', type: 'mcq',
+        question: 'What is the purpose of the "skipLocationChange" option?',
+        options: ['It speeds up navigation', 'It navigates without updating the browser URL', 'It skips guards', 'It ignores 404s'],
+        correctAnswer: 'It navigates without updating the browser URL',
+        explanation: 'This is useful for intermediate states or flows where you do not want the user to bookmark the URL.'
+      },
+      {
+        id: 208, level: 'advanced', type: 'fill-blank',
+        question: 'The Router emits a stream of events accessible via Router.[?].',
+        correctAnswer: 'events',
+        explanation: 'You can subscribe to this.router.events to see NavigationStart, NavigationEnd, etc.'
+      },
+
+
+      // ===========================
+      // 4. PROFESSIONAL QUESTIONS
+      // ===========================
       {
         id: 301, level: 'professional', type: 'mcq',
         question: 'Which strategy allows you to detach a view and store it in memory instead of destroying it?',
         options: ['RouteReuseStrategy', 'ViewEncapsulation', 'ChangeDetectionStrategy', 'PreloadAllModules'],
         correctAnswer: 'RouteReuseStrategy',
-        explanation: 'RouteReuseStrategy allows customization of when to detach/store and reattach route snapshots.'
+        explanation: 'RouteReuseStrategy allows customization of when to detach/store and reattach route snapshots (e.g., for tabs).'
       },
       {
         id: 302, level: 'professional', type: 'code',
-        question: 'Write a functional guard that redirects to "/login" if not logged in.',
-        codeContext: 'const guard: CanActivateFn = (route, state) => ...',
-        correctAnswer: ['inject', 'AuthService', 'createUrlTree', "'/login'"],
-        explanation: 'return isLoggedIn ? true : createUrlTree(["/login"]);'
+        question: 'Configure the router to scroll to the top on every navigation.',
+        codeContext: 'provideRouter(routes, ...)',
+        correctAnswer: ['withInMemoryScrolling', 'scrollPositionRestoration', "'top'"],
+        explanation: "withInMemoryScrolling({ scrollPositionRestoration: 'top' })"
+      },
+      {
+        id: 303, level: 'professional', type: 'mcq',
+        question: 'What is a UrlTree?',
+        options: ['A string of the URL', 'A parsed object representing the URL structure', 'A history of URLs', 'A map of all routes'],
+        correctAnswer: 'A parsed object representing the URL structure',
+        explanation: 'UrlTree handles the hierarchical structure of the URL, including secondary outlets and params, safer than strings.'
+      },
+      {
+        id: 304, level: 'professional', type: 'fill-blank',
+        question: 'To handle loading errors for lazy modules (e.g. network fail), subscribe to Router events and check for [?].',
+        correctAnswer: 'RouteConfigLoadError',
+        explanation: 'RouteConfigLoadError is emitted when a lazy loading module fails to download.'
+      },
+      {
+        id: 305, level: 'professional', type: 'mcq',
+        question: 'Difference between CanMatch and CanLoad?',
+        options: ['No difference', 'CanMatch can run for eager routes and allows splitting path matches', 'CanLoad is newer', 'CanMatch is deprecated'],
+        correctAnswer: 'CanMatch can run for eager routes and allows splitting path matches',
+        explanation: 'CanMatch replaces CanLoad. It allows multiple routes with the same path, picking the first one where the guard returns true.'
+      },
+      {
+        id: 306, level: 'professional', type: 'code',
+        question: 'Manually create a UrlTree with query params.',
+        codeContext: 'router.createUrlTree(...)',
+        correctAnswer: ["['/path']", 'queryParams', "{ search: 'term' }"],
+        explanation: "this.router.createUrlTree(['/path'], { queryParams: { search: 'term' } });"
+      },
+      {
+        id: 307, level: 'professional', type: 'mcq',
+        question: 'What is the TitleStrategy service used for?',
+        options: ['Styling the title bar', 'Setting the document <title> based on route config', 'Managing h1 tags', 'Nothing'],
+        correctAnswer: 'Setting the document <title> based on route config',
+        explanation: 'Introduced in Angular 14, it automates setting the browser title from the route "title" property.'
+      },
+      {
+        id: 308, level: 'professional', type: 'fill-blank',
+        question: 'When using named outlets, the URL segment for the outlet is enclosed in [?].',
+        correctAnswer: 'parentheses',
+        explanation: 'e.g., /home(sidebar:chat) - The parentheses denote the secondary route branch.'
       }
     ];
-  }
-
-  // --- SMART GENERATOR ---
-  private generateDrillQuestions() {
-    
-    // 1. BEGINNER GENERATOR (Simple Path Logic)
-    const beginnerTopics = ['home', 'about', 'contact', 'login', 'signup'];
-    beginnerTopics.forEach((topic, i) => {
-      this.allQuestions.push({
-        id: 1000 + i, level: 'beginner', type: 'code',
-        question: `Write the HTML code to create a navigation link to the '${topic}' page.`,
-        codeContext: '<!-- Template -->',
-        correctAnswer: ['<a', `routerLink="/${topic}"`, '>'],
-        explanation: `We use routerLink="/${topic}" to navigate without reloading.`
-      });
-      
-      this.allQuestions.push({
-        id: 1100 + i, level: 'beginner', type: 'mcq',
-        question: `What happens if you use href="/${topic}" instead of routerLink?`,
-        options: ['The page reloads (bad)', 'It works perfectly (good)', 'Angular throws an error', 'Nothing happens'],
-        correctAnswer: 'The page reloads (bad)',
-        explanation: 'href causes a full browser refresh, losing application state.'
-      });
-    });
-
-    // 2. INTERMEDIATE GENERATOR (Params & Redirects)
-    const paramEntities = ['product', 'order', 'ticket', 'invoice', 'lesson'];
-    paramEntities.forEach((ent, i) => {
-       this.allQuestions.push({
-        id: 2000 + i, level: 'intermediate', type: 'fill-blank',
-        question: `To capture the ID of a ${ent}, the route path should be defined as: '${ent}/[?]'`,
-        correctAnswer: ':id',
-        explanation: 'Route parameters always start with a colon (:).'
-       });
-       
-       this.allQuestions.push({
-        id: 2100 + i, level: 'intermediate', type: 'mcq',
-        question: `In the component, how do you read the 'id' for the ${ent}?`,
-        options: ['ActivatedRoute.snapshot.paramMap', 'Router.url', 'Location.path', 'Window.location'],
-        correctAnswer: 'ActivatedRoute.snapshot.paramMap',
-        explanation: 'ActivatedRoute provides access to the parameters of the currently active route.'
-       });
-    });
-
-    // 3. ADVANCED GENERATOR (Guards & Resolvers)
-    const roles = ['admin', 'manager', 'editor', 'subscriber'];
-    roles.forEach((role, i) => {
-      this.allQuestions.push({
-        id: 3000 + i, level: 'advanced', type: 'code',
-        question: `Write a guard check to see if the user has the '${role}' role.`,
-        codeContext: 'canActivate: () => ...',
-        correctAnswer: ['user.hasRole', `'${role}'`, 'true', 'false'],
-        explanation: `You typically check user.role === '${role}' inside the guard function.`
-      });
-    });
-
-    // 4. PROFESSIONAL GENERATOR (Complex Scenarios)
-    for(let i=0; i<10; i++) {
-       this.allQuestions.push({
-         id: 4000 + i, level: 'professional', type: 'mcq',
-         question: `Scenario ${i+1}: A user navigates to a lazy-loaded module but the network fails. Which event fires?`,
-         options: ['RouteConfigLoadError', 'NavigationError', 'NavigationCancel', 'GuardsCheckEnd'],
-         correctAnswer: 'RouteConfigLoadError',
-         explanation: 'RouteConfigLoadError is triggered when a lazy loaded module fails to download.'
-       });
-       
-       this.allQuestions.push({
-         id: 4100 + i, level: 'professional', type: 'fill-blank',
-         question: `To optimize change detection in the router outlet for Scenario ${i+1}, we can detach the view using [?].`,
-         correctAnswer: 'ViewContainerRef',
-         explanation: 'ViewContainerRef.detach() removes the view from the DOM but keeps it in memory.'
-       });
-    }
-
   }
 
   // --- COMPUTED ---
