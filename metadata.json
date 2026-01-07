@@ -1,0 +1,5 @@
+{
+  "name": "Router Outlet Playground",
+  "description": "A visual playground to understand Angular Router Outlets, named views, and view lifecycle events (activate, deactivate, attach, detach).",
+  "requestFramePermissions": []
+}
