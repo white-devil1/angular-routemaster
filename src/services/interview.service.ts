@@ -20,6 +20,11 @@ export class InterviewService {
     this.generateQuestions();
   }
 
+  // Resets the state of all questions (collapses them)
+  reset() {
+    this.questions.update(qs => qs.map(q => ({ ...q, isOpen: false })));
+  }
+
   private generateQuestions() {
     const allQs: InterviewQA[] = [];
     let idCounter = 1;

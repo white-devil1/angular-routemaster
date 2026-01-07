@@ -393,7 +393,7 @@ export class TutorialService {
         title: this.t({
           beginner: { en: 'Loading Levels', hi: 'लेवल लोडिंग', ml: 'ലെവൽ ലോഡിംഗ്' },
           intermediate: { en: 'Lazy Loading', hi: 'लेज़ी लोडिंग', ml: 'ലേസി ലോഡിംഗ്' },
-          advanced: { en: 'Code Splitting', hi: 'कोड स्प्लिटिंग', ml: 'കോഡ് സ്പ്ലിറ്റിംഗ്' },
+          advanced: { en: 'Code Splitting', hi: 'कोड स्प्लिटिंग', ml: 'കോഡ് स्प्लिटिंग' },
           professional: { en: 'Bundle Optimization', hi: 'बंडल अनुकूलन', ml: 'ബണ്ടിൽ ഒപ്റ്റിമൈസേഷൻ' }
         }),
         focusArea: 'intro',
@@ -488,7 +488,9 @@ export class TutorialService {
   });
 
   setLevel(level: Level) {
+    // Always reset to step 0 when setting level explicitly from landing page
     this.currentLevel.set(level);
+    this._currentStepIndex.set(0);
   }
 
   next() { if (!this.isLast()) this._currentStepIndex.update(i => i + 1); }

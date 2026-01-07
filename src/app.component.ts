@@ -4,6 +4,8 @@ import { TitleCasePipe } from '@angular/common';
 import { TutorialService } from './services/tutorial.service';
 import { SpeechService } from './services/speech.service';
 import { LanguageService } from './services/language.service';
+import { QuizService } from './services/quiz.service';
+import { InterviewService } from './services/interview.service';
 import { LandingPageComponent } from './components/landing.component';
 import { filter } from 'rxjs/operators';
 
@@ -26,6 +28,8 @@ export class AppComponent {
   tutorial = inject(TutorialService);
   speech = inject(SpeechService);
   langService = inject(LanguageService);
+  quiz = inject(QuizService);
+  interview = inject(InterviewService);
   router = inject(Router);
 
   // App State
@@ -42,6 +46,7 @@ export class AppComponent {
     ).subscribe((e: any) => {
       this.currentUrlStr.set(e.urlAfterRedirects);
       // Close sidebar on mobile navigation
+      // Note: We also close it in selectStep, but this catches routerLink clicks
       this.isSidebarOpen.set(false);
     });
     
@@ -55,7 +60,15 @@ export class AppComponent {
   // --- Actions ---
 
   startTutorial() {
+    // RESET ALL STATE FOR A FRESH SESSION
+    // Even if the user selected the same level, we want to clear previous progress
+    this.quiz.reset();
+    this.interview.reset();
+    
+    // Tutorial Service resets its index in setLevel(), called by LandingComponent
+    // But we ensure clean navigation state here
     this.showLandingPage.set(false);
+    this.router.navigate(['/home']);
   }
 
   goBack() {
@@ -79,6 +92,26 @@ export class AppComponent {
       // Use current language code
       this.speech.speak(text, this.langService.currentLang());
     }
+  }
+
+  /**
+   * Main navigation handler for Tutorial Steps.
+   * Ensures user is brought back to the playground view if they are in Quiz/Interview.
+   */
+  selectStep(index: number) {
+    // 1. Update Tutorial State
+    this.tutorial.goTo(index);
+
+    // 2. Ensure we are in "Playground Mode"
+    // If the user is currently taking a quiz or interview, force them back to home
+    // so they can see the tutorial content ("Teacher's Desk").
+    const url = this.router.url;
+    if (url.includes('quiz') || url.includes('interview')) {
+      this.router.navigate(['/home']);
+    }
+
+    // 3. Mobile UX: Close the drawer after selection
+    this.isSidebarOpen.set(false);
   }
 
   // --- Visualization Helpers ---

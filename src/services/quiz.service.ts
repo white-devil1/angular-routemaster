@@ -35,6 +35,15 @@ export class QuizService {
     this.initializeQuestions();
   }
 
+  // --- RESET FOR NEW SESSION ---
+  reset() {
+    this.quizState.set('intro');
+    this.currentQuestionIndex.set(0);
+    this.score.set(0);
+    this.userAnswers.update(m => { m.clear(); return new Map(m); });
+    this.showExplanation.set(false);
+  }
+
   // Base Set of Hand-Crafted Questions (High Quality & Unique)
   private initializeQuestions() {
     this.allQuestions = [
