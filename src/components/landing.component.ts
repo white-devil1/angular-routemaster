@@ -17,8 +17,8 @@ import { TutorialService, Level } from '../services/tutorial.service';
           <span class="text-6xl relative z-10 block transform group-hover:scale-110 transition-transform">🧭</span>
         </div>
 
-        <!-- FIXED: Added pb-3 and leading-normal to prevent 'g' descender clipping -->
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight pb-3 mb-2 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-purple-400 shrink-0 leading-normal">
+        <!-- FIXED: Significantly increased padding (pb-6) and loose leading to ensure full visibility of descenders -->
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight pb-6 pt-2 mb-2 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-purple-400 shrink-0 leading-relaxed drop-shadow-sm">
           Angular Routing Master
         </h1>
         <p class="text-lg md:text-xl text-slate-300 mb-10 text-center max-w-2xl leading-relaxed shrink-0">

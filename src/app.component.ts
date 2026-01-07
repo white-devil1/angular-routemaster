@@ -61,14 +61,17 @@ export class AppComponent {
 
   startTutorial() {
     // RESET ALL STATE FOR A FRESH SESSION
-    // Even if the user selected the same level, we want to clear previous progress
+    // 1. Reset Internal Services
     this.quiz.reset();
     this.interview.reset();
     
-    // Tutorial Service resets its index in setLevel(), called by LandingComponent
-    // But we ensure clean navigation state here
+    // 2. Hide Landing Page
     this.showLandingPage.set(false);
-    this.router.navigate(['/home']);
+
+    // 3. Force clean navigation
+    // We navigate to /home AND explicitly nullify secondary outlets 
+    // to ensure no left/right panels persist from previous sessions.
+    this.router.navigate(['/home', { outlets: { left: null, right: null } }]);
   }
 
   goBack() {
