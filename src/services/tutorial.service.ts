@@ -61,24 +61,63 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `👋 <strong>Welcome, Student!</strong><br><br>Imagine your computer screen is a wall. On this wall, we hang a <strong>Magic Picture Frame</strong>. Unlike normal frames where you have to take the photo out to change it, this frame changes the photo automatically when you press a button on a remote control.<br><br>In our app, this frame is called the <code>&lt;router-outlet&gt;</code>. It is the designated spot where all the action happens.`,
-            hi: `👋 <strong>स्वागत है!</strong><br><br>कल्पना कीजिए कि आपकी स्क्रीन एक दीवार है। इस दीवार पर हम एक <strong>जादुई फ्रेम</strong> लटकाते हैं। सामान्य फ्रेम के विपरीत, यह रिमोट का बटन दबाते ही तस्वीर बदल देता है।<br><br>हमारे ऐप में, इस फ्रेम को <code>&lt;router-outlet&gt;</code> कहा जाता है।`,
-            ml: `👋 <strong>സ്വാഗതം!</strong><br><br>നിങ്ങളുടെ സ്ക്രീൻ ഒരു ചുവരാണെന്ന് കരുതുക. അതിൽ നമ്മൾ ഒരു <strong>മാജിക്കൽ ഫ്രെയിം</strong> തൂക്കുന്നു. റിമോട്ട് ഞെക്കിയാൽ ഇതിനുള്ളിലെ ചിത്രം തനിയെ മാറും. ആംഗുലറിൽ ഇതിനെ <code>&lt;router-outlet&gt;</code> എന്ന് വിളിക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Imagine a Magic Frame</h3>
+              <p class="mb-3">Think of your house. You have a wall. On that wall, you hang a <strong>Magic Picture Frame</strong>.</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4">
+                <li>Normally, if you want to see a new photo, you have to take the frame down, open the back, swap the photo, and hang it up again. That takes a long time! (This is how old websites worked).</li>
+                <li>With the <strong>Magic Frame</strong>, you just press a button on a remote, and the photo changes <em>instantly</em>. The wall doesn't move. The frame doesn't move. Only the picture inside changes.</li>
+              </ul>
+              <p>In Angular, this frame is called <code>&lt;router-outlet&gt;</code>. It creates a space on the screen where different pages can appear without reloading the whole computer.</p>
+            `,
+            hi: `एक जादुई फ्रेम की कल्पना करें। एंगुलर में, इसे <code>&lt;router-outlet&gt;</code> कहा जाता है।`,
+            ml: `ഒരു മാജിക്കൽ ഫ്രെയിം സങ്കൽപ്പിക്കുക. ആംഗുലറിൽ ഇതിനെ <code>&lt;router-outlet&gt;</code> എന്ന് വിളിക്കുന്നു.`
           },
           intermediate: {
-            en: `In a traditional website (like Wikipedia), clicking a link downloads a completely new HTML file from the server. This makes the screen flash white. <br><br>In an <strong>Angular SPA (Single Page Application)</strong>, we never leave the first page. We just erase the middle section and draw new content there. The <code>&lt;router-outlet&gt;</code> acts as the placeholder that tells Angular: <em>"Please render the active page right here."</em>`,
-            hi: `एक पारंपरिक वेबसाइट में, लिंक पर क्लिक करने से एक नया HTML पेज डाउनलोड होता है। <strong>Angular SPA</strong> में, हम कभी भी पहला पेज नहीं छोड़ते। हम बस बीच का हिस्सा मिटाते हैं और वहां नई सामग्री बनाते हैं।`,
-            ml: `സാധാരണ വെബ്സൈറ്റുകളിൽ ഓരോ ക്ലിക്കിലും പുതിയ പേജ് ലോഡ് ആകും. എന്നാൽ <strong>Angular SPA</strong> യിൽ, മാറേണ്ട ഭാഗം മാത്രമേ അപ്ഡേറ്റ് ആകൂ. ഇതിനായി <code>&lt;router-outlet&gt;</code> ഉപയോഗിക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">What is it really?</h3>
+              <p class="mb-3">The <code>&lt;router-outlet&gt;</code> is a placeholder directive. It tells Angular: <em>"Dynamically render the active component right here."</em></p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100">
+                  <strong class="text-indigo-800">✅ Pros (Why use it?)</strong>
+                  <ul class="list-disc ml-4 text-sm mt-1">
+                    <li><strong>No White Flash:</strong> The page doesn't blink or go white when navigating.</li>
+                    <li><strong>Speed:</strong> We only fetch data, not the entire HTML page structure.</li>
+                    <li><strong>State:</strong> Variables in your header/sidebar stay alive.</li>
+                  </ul>
+                </div>
+                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                   <strong class="text-red-800">❌ Cons</strong>
+                   <ul class="list-disc ml-4 text-sm mt-1">
+                     <li><strong>Complexity:</strong> Harder to setup than basic HTML files.</li>
+                     <li><strong>SEO:</strong> Search engines need help to read these dynamic pages (SSR).</li>
+                   </ul>
+                </div>
+              </div>
+              <p><strong>Where to use:</strong> In your <code>app.component.html</code> to act as the main stage for your application.</p>
+            `,
+            hi: `<code>&lt;router-outlet&gt;</code> एक प्लेसहोल्डर डायरेक्टिव है। यह एंगुलर को सक्रिय घटक को यहाँ रेंडर करने के लिए कहता है।`,
+            ml: `<code>&lt;router-outlet&gt;</code> ഒരു പ്ലേസ്‌ഹോൾഡർ ഡയറക്‌ടീവ് ആണ്. ആക്റ്റീവ് കംപോണന്റിനെ ഇവിടെ റെൻഡർ ചെയ്യാൻ ഇത് ആംഗുലറിനോട് പറയുന്നു.`
           },
           advanced: {
-            en: `The <code>RouterOutlet</code> is a structural directive exported by <code>RouterModule</code>. It behaves similarly to an <code>*ngIf</code>, but instead of a boolean condition, it listens to the <strong>Router Service</strong>.<br><br>When the browser URL changes, the Router performs a tree-matching algorithm to find the correct component class. The Outlet then dynamically instantiates that component and inserts its Host View into the DOM immediately after the outlet tag.`,
-            hi: `<code>RouterOutlet</code> एक स्ट्रक्चरल डायरेक्टिव है। यह एक बूलियन स्थिति के बजाय <strong>Router Service</strong> को सुनता है। जब URL बदलता है, तो यह सही कंपोनेंट को ढूँढता है और उसे DOM में डालता है।`,
-            ml: `<code>RouterOutlet</code> എന്നത് ഒരു ഡയറക്റ്റീവ് ആണ്. URL മാറുമ്പോൾ അതിനനുസരിച്ചുള്ള കംപോണന്റിനെ റൗട്ടർ കണ്ടെത്തുകയും, ഔട്ട്ലെറ്റ് അതിനെ DOM-ലേക്ക് ഇൻസേർട്ട് ചെയ്യുകയും ചെയ്യുന്നു.`
+            en: `
+              <p class="mb-3">The <code>RouterOutlet</code> is a structural directive that acts as a sink for the instantiated component. When a route is matched, the Router looks for the nearest outlet in the component tree.</p>
+              <p class="mb-3">Technically, it creates a <strong>Sibling</strong> of the outlet tag in the DOM, not a child. This is a common misconception.</p>
+              <div class="p-3 bg-slate-100 rounded border border-slate-200 text-sm">
+                <strong>Key Concept:</strong> Outlets can be nested. A parent component can have an outlet, and the child component loaded into that outlet can have <em>another</em> outlet. This creates a hierarchy of views.
+              </div>
+            `,
+            hi: `<code>RouterOutlet</code> एक स्ट्रक्चरल डायरेक्टिव है। जब कोई रूट मेल खाता है, तो राउटर घटक ट्री में निकटतम आउटलेट की तलाश करता है।`,
+            ml: `<code>RouterOutlet</code> ഒരു സ്ട്രക്ച്ചറൽ ഡയറക്റ്റീവ് ആണ്. റൂട്ട് മാച്ച് ആകുമ്പോൾ, റൗട്ടർ ഏറ്റവും അടുത്തുള്ള ഔട്ട്ലെറ്റ് കണ്ടെത്തുന്നു.`
           },
           professional: {
-            en: `Under the hood, <code>RouterOutlet</code> injects <code>ViewContainerRef</code> and <code>ComponentFactoryResolver</code>. It subscribes to the <code>activateEvents</code> of the <code>ChildrenOutletContexts</code>.<br><br>When a route is activated, the outlet clears its current view container and creates a new component instance from the resolved factory. It also hooks into the <code>ChangeDetectorRef</code> to mark the view for check. This architecture allows for advanced features like <strong>Route Reuse Strategies</strong>, where views are detached (stored in memory) rather than destroyed.`,
-            hi: `आंतरिक रूप से, <code>RouterOutlet</code> <code>ViewContainerRef</code> का उपयोग करता है। जब कोई रूट सक्रिय होता है, तो यह वर्तमान दृश्य को साफ़ करता है और एक नया घटक बनाता है।`,
-            ml: `<code>RouterOutlet</code> ഇന്റേണലായി <code>ViewContainerRef</code> ഉപയോഗിക്കുന്നു. റൂട്ട് മാറുമ്പോൾ നിലവിലെ വ്യൂ ക്ലിയർ ചെയ്ത് പുതിയത് റെൻഡർ ചെയ്യുന്നു. Route Reuse Strategy പോലുള്ള അഡ്വാൻസ്ഡ് ഫീച്ചറുകൾ ഇത് സാധ്യമാക്കുന്നു.`
+            en: `
+              <p>Under the hood, <code>RouterOutlet</code> interacts with <code>ChildrenOutletContexts</code> to store the state of the component. It uses <code>ViewContainerRef.createComponent</code> to instantiate the routed component.</p>
+              <p>When you navigate away, the default behavior is to <strong>destroy</strong> the component. However, if a custom <code>RouteReuseStrategy</code> is implemented, the outlet will <strong>detach</strong> the view (keeping it in memory) instead of destroying it. This allows for instant restoration of state when navigating back.</p>
+            `,
+            hi: `आंतरिक रूप से, <code>RouterOutlet</code> घटक की स्थिति को संग्रहीत करने के लिए <code>ChildrenOutletContexts</code> के साथ इंटरैक्ट करता है।`,
+            ml: `<code>RouterOutlet</code> കംപോണന്റ് സ്റ്റേറ്റ് സൂക്ഷിക്കാൻ <code>ChildrenOutletContexts</code> ഉപയോഗിക്കുന്നു. <code>ViewContainerRef</code> വഴിയാണ് കംപോണന്റ് ഉണ്ടാക്കുന്നത്.`
           }
         })
       },
@@ -90,10 +129,10 @@ export class TutorialService {
         id: 2,
         module: 'Foundations',
         title: this.t({
-          beginner: { en: 'The Map', hi: 'नक्शा', ml: 'ഭൂപടം' },
-          intermediate: { en: 'Route Array', hi: 'रूट सूची', ml: 'റൂട്ട് അറേ' },
+          beginner: { en: 'The Treasure Map', hi: 'खजाने का नक्शा', ml: 'നിധി ഭൂപടം' },
+          intermediate: { en: 'Routes Configuration', hi: 'रूट विन्यास', ml: 'റൂട്ട് കോൺഫിഗറേഷൻ' },
           advanced: { en: 'Route Definitions', hi: 'रूट परिभाषाएँ', ml: 'റൂട്ട് ഡെഫിനിഷൻസ്' },
-          professional: { en: 'Tree Configuration', hi: 'ट्री विन्यास', ml: 'ട്രീ കോൺഫിഗറേഷൻ' }
+          professional: { en: 'Tree Matching Algorithm', hi: 'ट्री मिलान एल्गोरिदम', ml: 'ട്രീ മാച്ചിംഗ് അൽഗോരിതം' }
         }),
         focusArea: 'url',
         codeSnippet: this.c({
@@ -104,24 +143,51 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `A frame needs to know which photo to show. We give the computer a <strong>Map</strong>.<br><br>The Map says: "If the user goes to the <strong>/home</strong> address, show them the <strong>House Photo</strong>. If they go to <strong>/dashboard</strong>, show the <strong>Chart Photo</strong>."<br><br>👉 <strong>Look at the URL bar above.</strong> As you click buttons, watch the address change!`,
-            hi: `कंप्यूटर को एक <strong>नक्शा</strong> चाहिए। नक्शा कहता है: "यदि उपयोगकर्ता <strong>/home</strong> पर जाता है, तो उसे घर की फोटो दिखाएं।"<br><br>👉 <strong>ऊपर URL बार देखें।</strong> बटन क्लिक करते ही पता बदलता है!`,
-            ml: `ഏത് ചിത്രമാണ് കാണിക്കേണ്ടതെന്ന് കമ്പ്യൂട്ടറിന് മനസിലാകാൻ നമ്മൾ ഒരു <strong>മാപ്പ്</strong> നൽകുന്നു. URL <strong>/home</strong> ആണെങ്കിൽ വീടിന്റെ ചിത്രം കാണിക്കുക എന്ന് ഇതിൽ പറയുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Giving Directions</h3>
+              <p class="mb-3">Imagine you invite a robot to your house. The robot doesn't know where the kitchen is. You have to give it a <strong>Map</strong>.</p>
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4">
+                 <p class="font-mono text-sm text-slate-600">
+                   • If I say "Kitchen" -> Go to Room A.<br>
+                   • If I say "Bedroom" -> Go to Room B.<br>
+                   • If I say nothing -> Go to the Living Room (Default).
+                 </p>
+              </div>
+              <p>In Angular, this map is a list called <code>routes</code>. It connects a <strong>word</strong> in the address bar (like '/home') to a <strong>picture</strong> (Component) to show in the frame.</p>
+            `,
+            hi: `कल्पना कीजिए कि आप एक रोबोट को अपने घर आमंत्रित करते हैं। आपको उसे एक <strong>नक्शा</strong> देना होगा।`,
+            ml: `നിങ്ങൾ ഒരു റോബോട്ടിനെ വീട്ടിലേക്ക് ക്ഷണിക്കുന്നു. അതിന് അടുക്കള എവിടെയാണെന്ന് അറിയില്ല. നിങ്ങൾ അതിനൊരു <strong>മാപ്പ്</strong> നൽകണം.`
           },
           intermediate: {
-            en: `In Angular, this map is a JavaScript array called <code>Routes</code>. Each object in the array has a <code>path</code> (the URL part) and a <code>component</code> (the TypeScript class to load).<br><br>We pass this array to <code>provideRouter(routes)</code> in our main configuration file. Angular reads this list from top to bottom to find a match.`,
-            hi: `एंगुलर में, यह नक्शा <code>Routes</code> नामक एक JavaScript एरे है। प्रत्येक ऑब्जेक्ट में एक <code>path</code> और एक <code>component</code> होता है।`,
-            ml: `ആംഗുലറിൽ <code>Routes</code> അറേ ഉപയോഗിച്ചാണ് ഇത് ചെയ്യുന്നത്. ഓരോ ഒബ്ജക്റ്റിലും <code>path</code> ഉം <code>component</code> ഉം ഉണ്ടാകും.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Routes Array</h3>
+              <p class="mb-3">We configure the router by creating an array of objects. Each object needs two main things:</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4">
+                <li><code>path</code>: The string in the URL (e.g., 'dashboard').</li>
+                <li><code>component</code>: The class name of the page to load (e.g., DashboardComponent).</li>
+              </ul>
+              <p class="mb-2"><strong>Special Case: Redirects</strong></p>
+              <p>When the user opens the app, the path is empty (<code>''</code>). We usually want to auto-forward them to the home page. We use <code>redirectTo: 'home'</code> and <code>pathMatch: 'full'</code>.</p>
+            `,
+            hi: `हम वस्तुओं की एक सरणी बनाकर राउटर को कॉन्फ़िगर करते हैं। प्रत्येक वस्तु को दो मुख्य चीजों की आवश्यकता होती है: path और component।`,
+            ml: `നമ്മൾ ഒബ്ജക്റ്റുകളുടെ ഒരു അറേ ഉണ്ടാക്കുന്നു. ഓരോ ഒബ്ജക്റ്റിനും path ഉം component ഉം ആവശ്യമാണ്.`
           },
           advanced: {
-            en: `The <code>Routes</code> array defines the application's state tree. Key properties include:<br>• <code>path</code>: The URL segment to match.<br>• <code>component</code>: The view to render.<br>• <code>redirectTo</code>: For forwarding users (e.g., from empty <code>''</code> to <code>'home'</code>).<br>• <code>pathMatch</code>: Crucial for redirects. <code>'full'</code> means the entire remaining URL must match.`,
-            hi: `<code>Routes</code> एरे एप्लिकेशन के स्टेट ट्री को परिभाषित करता है। प्रमुख गुणों में path, component, redirectTo, और pathMatch शामिल हैं।`,
-            ml: `<code>Routes</code> അറേ ആപ്ലിക്കേഷന്റെ സ്റ്റേറ്റ് ട്രീ ഡിഫൈൻ ചെയ്യുന്നു. path, component, redirectTo എന്നിവയാണ് പ്രധാനപ്പെട്ടവ.`
+            en: `
+              <p class="mb-3">The <code>pathMatch: 'full'</code> property is critical. Without it, the router matches by "prefix".</p>
+              <p class="mb-3">Since the empty string <code>''</code> is a prefix of <em>every</em> string, a default route without <code>pathMatch: 'full'</code> would match every single URL, causing an infinite loop or loading the wrong page!</p>
+              <p><strong>Where to use:</strong> In your <code>app.routes.ts</code> or <code>app-routing.module.ts</code>.</p>
+            `,
+            hi: `<code>pathMatch: 'full'</code> गुण महत्वपूर्ण है। इसके बिना, राउटर "prefix" द्वारा मेल खाता है।`,
+            ml: `<code>pathMatch: 'full'</code> വളരെ പ്രധാനമാണ്. ഇതില്ലെങ്കിൽ റൗട്ടർ തെറ്റായ പേജ് ലോഡ് ചെയ്തേക്കാം.`
           },
           professional: {
-            en: `This configuration is static by default but can be manipulated dynamically. The Router parses this configuration into a tree of <code>ActivatedRoute</code> objects. <br><br>When matching, the router uses a Depth-First Search (DFS) strategy with a "First Match Wins" policy. This means the order of routes is critical—specific routes must be defined before generic wildcards.`,
-            hi: `राउटर इस कॉन्फ़िगरेशन को <code>ActivatedRoute</code> ऑब्जेक्ट्स के पेड़ में पार्स करता है। मिलान करते समय, राउटर "फर्स्ट मैच विन्स" नीति के साथ डेप्थ-फर्स्ट सर्च (DFS) रणनीति का उपयोग करता है।`,
-            ml: `റൗട്ടർ ഈ കോൺഫിഗറേഷനെ <code>ActivatedRoute</code> ഒബ്ജക്റ്റുകളുടെ ഒരു ട്രീ ആയി മാറ്റുന്നു. ആദ്യം മാച്ച് ആകുന്ന റൂട്ടാണ് എടുക്കുക (First Match Wins).`
+            en: `
+              <p>The Router uses a <strong>Depth-First, First-Match-Wins</strong> strategy. This means the <em>order</em> of your routes matters immensely.</p>
+              <p>If you define a generic route (like a wildcard) before a specific route, the specific route will never be reachable. Angular parses the URL into a <code>UrlTree</code> and attempts to match segments against the configuration nodes recursively.</p>
+            `,
+            hi: `राउटर <strong>Depth-First, First-Match-Wins</strong> रणनीति का उपयोग करता है। इसका मतलब है कि आपके मार्गों का क्रम बहुत मायने रखता है।`,
+            ml: `റൗട്ടർ <strong>Depth-First, First-Match-Wins</strong> സ്ട്രാറ്റജി ഉപയോഗിക്കുന്നു. റൂട്ടുകളുടെ ഓർഡർ വളരെ പ്രധാനമാണ്.`
           }
         })
       },
@@ -133,10 +199,10 @@ export class TutorialService {
         id: 3,
         module: 'Foundations',
         title: this.t({
-          beginner: { en: 'Remote Control', hi: 'रिमोट कंट्रोल', ml: 'റിമോട്ട് കൺട്രോൾ' },
-          intermediate: { en: 'Router Links', hi: 'राउटर लिंक', ml: 'റൗട്ടർ ലിങ്കുകൾ' },
-          advanced: { en: 'The RouterLink Directive', hi: 'RouterLink डायरेक्टिव', ml: 'RouterLink ഡയറക്റ്റീവ്' },
-          professional: { en: 'Declarative Navigation', hi: 'घोषणात्मक नेविगेशन', ml: 'ഡിക്ലറേറ്റീവ് നാവിഗേഷൻ' }
+          beginner: { en: 'The Teleport Button', hi: 'टेलीपोर्ट बटन', ml: 'ടെലിപോർട്ട് ബട്ടൺ' },
+          intermediate: { en: 'RouterLink vs Href', hi: 'RouterLink बनाम Href', ml: 'RouterLink vs Href' },
+          advanced: { en: 'Programmatic Navigation', hi: 'प्रोग्रामेटिक नेविगेशन', ml: 'പ്രോഗ്രാമാറ്റിക് നാവിഗേഷൻ' },
+          professional: { en: 'Navigation Lifecycle', hi: 'नेविगेशन जीवनचक्र', ml: 'നാവിഗേഷൻ ലൈഫ്സൈക്കിൾ' }
         }),
         focusArea: 'primary',
         codeSnippet: this.c({
@@ -147,24 +213,61 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `To change the picture, we need buttons. In a normal webpage, we use links (`+`<a>`+` tags). But in our Magic App, we don't want to reload the whole world.<br><br>So we use a special sticker on our buttons called <code>routerLink</code>. It tells the browser: "Don't reload! Just ask the Angular Router to change the frame."`,
-            hi: `तस्वीर बदलने के लिए हमें बटन चाहिए। हम अपने बटनों पर <code>routerLink</code> नामक एक विशेष स्टिकर का उपयोग करते हैं। यह ब्राउज़र को बताता है: "रीलोड न करें! बस एंगुलर राउटर से फ्रेम बदलने के लिए कहें।"`,
-            ml: `ചിത്രം മാറ്റാൻ നമ്മൾ <code>routerLink</code> ഉപയോഗിക്കുന്നു. പേജ് റീലോഡ് ചെയ്യാതെ തന്നെ ഫ്രെയിം മാറ്റാൻ ഇത് സഹായിക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Walk, Teleport!</h3>
+              <p class="mb-3">In a normal website, clicking a link is like walking to a new house. You have to pack your bags, leave, walk, and enter the new house. This takes time (the screen flashes white).</p>
+              <p class="mb-3">In Angular, we use a special sticker called <code>routerLink</code>.</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4">
+                <li>It works like a <strong>Teleporter</strong>.</li>
+                <li>You press the button, and <em>BAM!</em> You are there instantly.</li>
+                <li>You don't lose the things you were holding in your memory.</li>
+              </ul>
+              <p><strong>Try it:</strong> Click the 'Home' and 'Dash' buttons in the playground. Notice how the screen doesn't blink?</p>
+            `,
+            hi: `एक सामान्य वेबसाइट में, लिंक पर क्लिक करना एक नए घर में जाने जैसा है। एंगुलर में, हम <code>routerLink</code> का उपयोग करते हैं। यह एक टेलीपोर्टर की तरह काम करता है।`,
+            ml: `സാധാരണ വെബ്സൈറ്റുകളിൽ ലിങ്ക് ക്ലിക്ക് ചെയ്യുമ്പോൾ പുതിയ വീട്ടിലേക്ക് നടന്നുപോകുന്ന പോലെയാണ്. എന്നാൽ ആംഗുലറിൽ <code>routerLink</code> ഉപയോഗിക്കുമ്പോൾ ടെലിപോർട്ട് ചെയ്യുന്നത് പോലെ തൽസമയം എത്താം.`
           },
           intermediate: {
-            en: `Never use <code>href="/path"</code> in Angular! That triggers a full page refresh, which kills your app's memory and state. <br><br>Instead, use the <code>routerLink</code> directive. It intercepts the click event, prevents the default browser behavior, and tells the internal Router service to update the URL and view.`,
-            hi: `एंगुलर में कभी भी <code>href="/path"</code> का उपयोग न करें! इसके बजाय, <code>routerLink</code> डायरेक्टिव का उपयोग करें। यह क्लिक इवेंट को रोकता है और आंतरिक राउटर को URL अपडेट करने के लिए कहता है।`,
-            ml: `ആംഗുലറിൽ <code>href</code> ഉപയോഗിക്കരുത്. പകരം <code>routerLink</code> ഉപയോഗിക്കുക. ഇത് പേജ് റീലോഡ് ചെയ്യാതെ നോക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">href vs routerLink</h3>
+              <p class="mb-3">This is the most common interview question.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                  <strong class="text-red-800">HTML (href="/home")</strong>
+                  <p class="text-sm mt-1">Triggers a standard browser request. The browser destroys the current page, downloads index.html again, and restarts Angular. <strong>Slow. loses state.</strong></p>
+                </div>
+                <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                   <strong class="text-green-800">Angular (routerLink="/home")</strong>
+                   <p class="text-sm mt-1">Intercepts the click. It prevents the browser from reloading. It tells the Angular Router to just swap the component. <strong>Fast. keeps state.</strong></p>
+                </div>
+              </div>
+            `,
+            hi: `यह सबसे आम साक्षात्कार प्रश्न है: href बनाम routerLink। href धीमा है और स्थिति खो देता है। routerLink तेज़ है और स्थिति रखता है।`,
+            ml: `ഇതൊരു പ്രധാന ഇന്റർവ്യൂ ചോദ്യമാണ്. href പേജ് റീലോഡ് ചെയ്യുന്നു, അതിനാൽ സ്ലോ ആണ്. routerLink പേജ് റീലോഡ് ചെയ്യാതെ കംപോണന്റ് മാറ്റുന്നു, അതിനാൽ ഫാസ്റ്റ് ആണ്.`
           },
           advanced: {
-            en: `<code>RouterLink</code> accepts an array of segments. <code>['/user', '1']</code> becomes <code>/user/1</code>. This is safer than string concatenation because Angular handles encoding special characters for you.<br><br>You can also navigate programmatically using <code>inject(Router).navigate([...])</code> inside your TypeScript functions.`,
-            hi: `<code>RouterLink</code> सेगमेंट की एक सरणी स्वीकार करता है। <code>['/user', '1']</code> <code>/user/1</code> बन जाता है। आप TypeScript में <code>inject(Router).navigate([...])</code> का भी उपयोग कर सकते हैं।`,
-            ml: `<code>RouterLink</code> ഒരു അറേ ആണ് സ്വീകരിക്കുന്നത്. കോഡിലൂടെ നാവിഗേറ്റ് ചെയ്യാൻ <code>inject(Router).navigate([...])</code> ഉപയോഗിക്കാം.`
+            en: `
+              <p class="mb-3">You can also navigate using TypeScript code (e.g., after a user logs in). Use the <code>Router.navigate()</code> method.</p>
+              <p class="mb-3">You should pass an <strong>array of segments</strong> instead of a string: <code>['/user', 5]</code>. Angular will automatically encode unsafe characters for you (handling spaces, special symbols, etc.), preventing URL errors.</p>
+              <p><strong>Use Case:</strong> Redirecting a user after they successfully submit a form.</p>
+            `,
+            hi: `आप TypeScript कोड का उपयोग करके भी नेविगेट कर सकते हैं। <code>Router.navigate()</code> विधि का उपयोग करें।`,
+            ml: `ലോഗിൻ ചെയ്ത ശേഷം പേജ് മാറ്റാൻ TypeScript കോഡ് വഴി സാധിക്കും. ഇതിനായി <code>Router.navigate()</code> ഉപയോഗിക്കാം.`
           },
           professional: {
-            en: `When you click a RouterLink, Angular executes a complex sequence: <br>1. <strong>UrlTree Creation</strong>: Merges commands with current params.<br>2. <strong>Recognition</strong>: Matches the new URL against config.<br>3. <strong>Guard Checks</strong>: Can we leave current? Can we enter next?<br>4. <strong>Resolve</strong>: Fetch data.<br>5. <strong>Activation</strong>: Update DOM.<br>Using <code>href</code> bypasses all of this logic.`,
-            hi: `जब आप RouterLink पर क्लिक करते हैं, तो एंगुलर एक जटिल अनुक्रम निष्पादित करता है: UrlTree निर्माण, मान्यता, गार्ड चेक, रिज़ॉल्यूशन, और सक्रियण।`,
-            ml: `RouterLink ക്ലിക്ക് ചെയ്യുമ്പോൾ ആംഗുലർ പല കാര്യങ്ങളും ചെയ്യുന്നു: URL നിർമ്മാണം, മാച്ചിംഗ്, ഗാർഡ് ചെക്കിംഗ്, ഡാറ്റ ഫെച്ചിംഗ്, എന്നിവ.`
+            en: `
+              <p>When navigation occurs, a complex lifecycle triggers:</p>
+              <ol class="list-decimal ml-5 space-y-1 mb-4 text-sm">
+                <li><strong>URL Parsing:</strong> Convert string to UrlTree.</li>
+                <li><strong>Recognition:</strong> Find matching config.</li>
+                <li><strong>Guards:</strong> Check CanDeactivate (current) and CanActivate (next).</li>
+                <li><strong>Resolution:</strong> Fetch data (Resolvers).</li>
+                <li><strong>Activation:</strong> Instantiate components and render view.</li>
+              </ol>
+              <p>Using <code>href</code> bypasses all of this, breaking your application logic.</p>
+            `,
+            hi: `जब नेविगेशन होता है, तो एक जटिल जीवनचक्र ट्रिगर होता है: URL पार्सिंग, मान्यता, गार्ड, संकल्प, और सक्रियण।`,
+            ml: `നാവിഗേഷൻ നടക്കുമ്പോൾ പല കാര്യങ്ങൾ സംഭവിക്കുന്നു: URL പാർസിംഗ്, മാച്ചിംഗ്, ഗാർഡുകൾ, റിസോൾവറുകൾ, ആക്റ്റിവേഷൻ.`
           }
         })
       },
@@ -176,10 +279,10 @@ export class TutorialService {
         id: 4,
         module: 'Dynamic Data',
         title: this.t({
-          beginner: { en: 'Custom ID Cards', hi: 'कस्टम आईडी कार्ड', ml: 'ഐഡി കാർഡുകൾ' },
+          beginner: { en: 'The Form Letter', hi: 'फॉर्म लेटर', ml: 'ഫോം ലെറ്റർ' },
           intermediate: { en: 'Route Parameters', hi: 'रूट पैरामीटर', ml: 'റൂട്ട് പാരാമീറ്ററുകൾ' },
-          advanced: { en: 'ActivatedRoute Service', hi: 'ActivatedRoute सर्विस', ml: 'ActivatedRoute സർവീസ്' },
-          professional: { en: 'Observables vs Snapshots', hi: 'Observables बनाम Snapshots', ml: 'Observables vs Snapshots' }
+          advanced: { en: 'ActivatedRoute & Observables', hi: 'ActivatedRoute और Observables', ml: 'ActivatedRoute & Observables' },
+          professional: { en: 'State Reactivity', hi: 'स्थिति प्रतिक्रियाशीलता', ml: 'സ്റ്റേറ്റ് റിയാക്റ്റിവിറ്റി' }
         }),
         focusArea: 'params',
         codeSnippet: this.c({
@@ -190,24 +293,56 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `Imagine we have 1,000 students. We don't want to make 1,000 different pages. We make ONE "ID Card Page" that has blank spaces.<br><br>When you visit <code>/user/1</code>, the URL passes the number "1" to the page. The page reads it and stamps "Student #1" on the card. Try clicking <strong>User 1</strong> and <strong>User 99</strong> below the main box.`,
-            hi: `कल्पना कीजिए कि हमारे पास 1,000 छात्र हैं। हम 1,000 अलग-अलग पेज नहीं बनाना चाहते। हम एक "आईडी कार्ड पेज" बनाते हैं। जब आप <code>/user/1</code> पर जाते हैं, तो पेज "1" पढ़ता है और कार्ड पर "Student #1" मुहर लगाता है।`,
-            ml: `നമുക്ക് 1000 കുട്ടികളുണ്ടെങ്കിൽ 1000 പേജ് ഉണ്ടാക്കാൻ കഴിയില്ല. പകരം നമ്മൾ ഒരു "ID Card Page" ഉണ്ടാക്കുന്നു. URL വഴി വരുന്ന നമ്പർ അനുസരിച്ച് ഇതിലെ വിവരങ്ങൾ മാറുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Write 1,000 Letters</h3>
+              <p class="mb-3">Imagine you want to send a letter to 1,000 friends. Do you hand-write 1,000 completely different letters?</p>
+              <p class="mb-3">No! You write <strong>one</strong> letter and leave a blank space for the name: <em>"Dear [Name]..."</em>.</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4">
+                <li>In Angular, we create <strong>one</strong> page called <code>UserPage</code>.</li>
+                <li>We leave a blank space in the URL: <code>/user/:id</code>.</li>
+                <li>When you visit <code>/user/1</code>, Angular fills the blank with "1". When you visit <code>/user/99</code>, it fills it with "99".</li>
+              </ul>
+              <p><strong>Try it:</strong> Click the User 1 and User 99 buttons. It's the same page, just different data!</p>
+            `,
+            hi: `कल्पना कीजिए कि आप 1,000 दोस्तों को पत्र भेजना चाहते हैं। क्या आप 1,000 अलग-अलग पत्र लिखते हैं? नहीं! आप एक पत्र लिखते हैं और नाम के लिए खाली जगह छोड़ देते हैं।`,
+            ml: `1000 കൂട്ടുകാർക്ക് കത്തെഴുതുമ്പോൾ നമ്മൾ 1000 കത്തെഴുതാറില്ല. ഒരെണ്ണം എഴുതി പേര് മാത്രം മാറ്റും. ആംഗുലറിലും ഇതുപോലെ ഒരു പേജ് ഉണ്ടാക്കി വിവരങ്ങൾ മാത്രം മാറ്റുന്നു.`
           },
           intermediate: {
-            en: `We define a parameter in the route using a colon, like <code>:id</code>. This is a variable placeholder. <br><br>In the component, we can read this variable to fetch data from a database (like fetching user details based on ID).`,
-            hi: `हम रूट में कोलन का उपयोग करके एक पैरामीटर परिभाषित करते हैं, जैसे <code>:id</code>। यह एक वेरिएबल प्लेसहोल्डर है।`,
-            ml: `<code>:id</code> ഉപയോഗിച്ച് നമ്മൾ ഒരു വേരിയബിൾ ഡിഫൈൻ ചെയ്യുന്നു. ഈ വേരിയബിൾ ഉപയോഗിച്ച് ഡാറ്റാബേസിൽ നിന്ന് വിവരങ്ങൾ എടുക്കാം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Defining Parameters</h3>
+              <p class="mb-3">We use a colon <code>:</code> to define a parameter in our route config.</p>
+              <code class="block bg-slate-100 p-2 rounded mb-3">{ path: 'user/:id', component: UserComponent }</code>
+              <p class="mb-3">This tells Angular: <em>"Whatever is in this position of the URL, capture it and call it 'id'."</em></p>
+              <p><strong>Use Cases:</strong></p>
+              <ul class="list-disc ml-5 mb-4 text-sm">
+                <li>Product Details (<code>/product/4502</code>)</li>
+                <li>Order History (<code>/orders/AX-99</code>)</li>
+                <li>Blog Posts (<code>/blog/how-to-code</code>)</li>
+              </ul>
+            `,
+            hi: `हम अपने रूट कॉन्फ़िगरेशन में पैरामीटर को परिभाषित करने के लिए कोलन <code>:</code> का उपयोग करते हैं।`,
+            ml: `റൂട്ട് കോൺഫിഗറേഷനിൽ പാരാമീറ്റർ ഡിഫൈൻ ചെയ്യാൻ നമ്മൾ കോളൻ <code>:</code> ഉപയോഗിക്കുന്നു.`
           },
           advanced: {
-            en: `To access the data, we inject the <code>ActivatedRoute</code> service. It provides a <code>paramMap</code>.<br><br>You might see <code>snapshot.paramMap</code>. This is dangerous! It only reads the ID once when the page loads. If the user clicks "Next User", the URL changes but the component stays the same, so the snapshot doesn't update.`,
-            hi: `डेटा तक पहुंचने के लिए, हम <code>ActivatedRoute</code> सर्विस इंजेक्ट करते हैं। <code>snapshot</code> का उपयोग करना खतरनाक है क्योंकि यह केवल एक बार आईडी पढ़ता है।`,
-            ml: `ഡാറ്റ എടുക്കാൻ <code>ActivatedRoute</code> സർവീസ് ഉപയോഗിക്കുന്നു. <code>snapshot</code> ഉപയോഗിക്കുന്നത് ശ്രദ്ധിച്ചു വേണം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Snapshot Trap</h3>
+              <p class="mb-3">You can read the ID in two ways:</p>
+              <ol class="list-decimal ml-5 space-y-2 mb-4 text-sm">
+                <li><code>route.snapshot.paramMap</code>: Reads the ID <strong>once</strong> when the component is created.</li>
+                <li><code>route.paramMap.subscribe()</code>: Listens for <strong>changes</strong> to the ID.</li>
+              </ol>
+              <p><strong>Warning:</strong> If you use snapshot, and the user clicks from "User 1" to "User 2", the page <strong>won't update</strong> because Angular reuses the component to save energy. Always use the Observable/Signal approach!</p>
+            `,
+            hi: `आप आईडी को दो तरीकों से पढ़ सकते हैं: snapshot और subscribe। यदि आप snapshot का उपयोग करते हैं, तो पेज अपडेट नहीं होगा।`,
+            ml: `ഐഡി രണ്ട് രീതിയിൽ വായിക്കാം: snapshot ഉം subscribe ഉം. snapshot ഉപയോഗിച്ചാൽ പേജ് അപ്ഡേറ്റ് ആകില്ല.`
           },
           professional: {
-            en: `Angular uses a <strong>Route Reuse Strategy</strong>. If the config is the same (<code>/user/1</code> to <code>/user/2</code>), Angular keeps the DOM and component instance alive for performance.<br><br>Therefore, you <strong>MUST</strong> subscribe to the <code>paramMap</code> observable (or use Signals). This ensures your UI reacts to parameter changes without destroying and recreating the entire view.`,
-            hi: `एंगुलर <strong>Route Reuse Strategy</strong> का उपयोग करता है। यदि कॉन्फ़िगरेशन समान है, तो एंगुलर प्रदर्शन के लिए DOM और घटक उदाहरण को जीवित रखता है।`,
-            ml: `ആംഗുലർ <strong>Route Reuse Strategy</strong> ഉപയോഗിക്കുന്നു. ഒരേ പേജിൽ ഡാറ്റ മാറുമ്പോൾ കംപോണന്റ് റീയൂസ് ചെയ്യപ്പെടുന്നു. അതുകൊണ്ട് Observables ഉപയോഗിക്കുന്നതാണ് ഉചിതം.`
+            en: `
+              <p class="mb-3">Angular's <strong>Route Reuse Strategy</strong> is a performance optimization. Destroying and recreating components and DOM nodes is expensive.</p>
+              <p>When only the route parameters change (same component class), Angular keeps the instance alive. This means <code>ngOnInit</code> is NOT called again. You must design your components to be <strong>reactive</strong>. Instead of fetching data once in <code>ngOnInit</code>, you should use a <code>switchMap</code> on the params observable to fetch new data whenever the ID changes.</p>
+            `,
+            hi: `एंगुलर की <strong>Route Reuse Strategy</strong> एक प्रदर्शन अनुकूलन है। घटकों को नष्ट करना और फिर से बनाना महंगा है।`,
+            ml: `ആംഗുലർ പെർഫോമൻസ് കൂട്ടാൻ <strong>Route Reuse Strategy</strong> ഉപയോഗിക്കുന്നു. കംപോണന്റ് റീയൂസ് ചെയ്യുമ്പോൾ <code>ngOnInit</code> വീണ്ടും വർക്ക് ആകില്ല.`
           }
         })
       },
@@ -219,10 +354,10 @@ export class TutorialService {
         id: 5,
         module: 'Styling',
         title: this.t({
-          beginner: { en: 'Glowing Buttons', hi: 'चमकते बटन', ml: 'തിളങ്ങുന്ന ബട്ടണുകൾ' },
-          intermediate: { en: 'Active State', hi: 'सक्रिय स्थिति', ml: 'ആക്ടീവ് സ്റ്റേറ്റ്' },
-          advanced: { en: 'RouterLinkActive', hi: 'RouterLinkActive', ml: 'RouterLinkActive' },
-          professional: { en: 'Tree Inclusion Check', hi: 'ट्री समावेशन जांच', ml: 'ട്രീ ഇൻക്ലൂഷൻ ചെക്ക്' }
+          beginner: { en: 'You Are Here', hi: 'आप यहाँ हैं', ml: 'നിങ്ങൾ ഇവിടെയാണ്' },
+          intermediate: { en: 'Active Links', hi: 'सक्रिय लिंक', ml: 'ആക്ടീവ് ലിങ്കുകൾ' },
+          advanced: { en: 'RouterLinkActive Directive', hi: 'RouterLinkActive डायरेक्टिव', ml: 'RouterLinkActive ഡയറക്റ്റീവ്' },
+          professional: { en: 'Tree Containment Logic', hi: 'ट्री कंटेनमेंट लॉजिक', ml: 'ട്രീ കണ്ടെയ്ൻമെന്റ് ലോജിക്' }
         }),
         focusArea: 'active',
         codeSnippet: this.c({
@@ -233,24 +368,47 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `How does the user know which room they are in? The button on the remote control lights up!<br><br>Angular is smart. If you are looking at the <strong>Settings</strong> page, Angular automatically finds the "Settings" button and paints it purple. Click around and watch the buttons change color.`,
-            hi: `उपयोगकर्ता को कैसे पता चलेगा कि वे किस कमरे में हैं? रिमोट का बटन जल उठता है! यदि आप सेटिंग्स पेज देख रहे हैं, तो एंगुलर स्वचालित रूप से "Settings" बटन को बैंगनी रंग देता है।`,
-            ml: `നമ്മൾ ഏത് മുറിയിലാണെന്ന് എങ്ങനെ അറിയാം? റിമോട്ടിലെ ബട്ടൺ കത്തും. സെറ്റിംഗ്സ് പേജിലാണെങ്കിൽ സെറ്റിംഗ്സ് ബട്ടൺ നിറം മാറും.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Glowing Map Pin</h3>
+              <p class="mb-3">When you walk around a shopping mall, you check the map. It has a big sticker that says: <strong>"YOU ARE HERE"</strong>.</p>
+              <p class="mb-3">Websites need this too. When users click "Settings", the Settings button should light up so they know where they are.</p>
+              <p>Angular does this automatically! We just tell it: <em>"When this button matches the current page, make it purple."</em></p>
+              <p><strong>Look above:</strong> Click 'Home', 'Dash', 'Set'. See how the button glows?</p>
+            `,
+            hi: `जब आप किसी शॉपिंग मॉल में घूमते हैं, तो आप नक्शा देखते हैं। उस पर लिखा होता है: "आप यहाँ हैं"। वेबसाइटों को भी इसकी आवश्यकता होती है।`,
+            ml: `ഷോപ്പിംഗ് മാളിൽ പോകുമ്പോൾ നമ്മൾ മാപ്പ് നോക്കും. അതിൽ "നിങ്ങൾ ഇവിടെയാണ്" എന്ന് കാണാം. വെബ്സൈറ്റുകളിലും ഇത് ആവശ്യമാണ്. ആംഗുലർ ഇത് തനിയെ ചെയ്യുന്നു.`
           },
           intermediate: {
-            en: `This is crucial for User Experience (UX). We use the <code>routerLinkActive</code> directive. You simply tell it: "When this link is active, please add the class 'bg-blue-500'". Angular handles the checking for you automatically.`,
-            hi: `यह यूजर एक्सपीरियंस (UX) के लिए महत्वपूर्ण है। हम <code>routerLinkActive</code> डायरेक्टिव का उपयोग करते हैं। आप बस इसे बताते हैं कि कौन सा क्लास जोड़ना है।`,
-            ml: `യൂസർ എക്സ്പീരിയൻസിന് ഇത് വളരെ പ്രധാനമാണ്. <code>routerLinkActive</code> ഉപയോഗിച്ച് നമുക്ക് ഇഷ്ടമുള്ള CSS ക്ലാസ് ആഡ് ചെയ്യാം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">routerLinkActive</h3>
+              <p class="mb-3">We use the <code>routerLinkActive</code> directive on our link tags.</p>
+              <p class="mb-3"><strong>How to use:</strong></p>
+              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">&lt;a routerLink="/about" routerLinkActive="font-bold underline"&gt;About&lt;/a&gt;</code>
+              <p>This simply adds the classes <code>font-bold</code> and <code>underline</code> to the element whenever the URL starts with <code>/about</code>. You don't need to write complex <code>if/else</code> logic in your component!</p>
+            `,
+            hi: `हम अपने लिंक टैग पर <code>routerLinkActive</code> डायरेक्टिव का उपयोग करते हैं। यह बस तत्व में क्लास जोड़ता है।`,
+            ml: `നമ്മൾ <code>routerLinkActive</code> ഉപയോഗിക്കുന്നു. ഇത് URL മാച്ച് ആകുമ്പോൾ CSS ക്ലാസുകൾ ആഡ് ചെയ്യുന്നു.`
           },
           advanced: {
-            en: `By default, this check is "non-exact". If you link to <code>/user</code>, it will stay active even if you are at <code>/user/1/details</code>. This is usually what you want (parent menu stays active).<br><br>If you want exact matching (e.g., for a "Home" link that shouldn't glow when you are deep inside the app), use <code>[routerLinkActiveOptions]="{exact: true}"</code>.`,
-            hi: `डिफ़ॉल्ट रूप से, यह जांच "गैर-सटीक" है। यदि आप <code>/user</code> से लिंक करते हैं, तो यह तब भी सक्रिय रहेगा जब आप <code>/user/1/details</code> पर होंगे। सटीक मिलान के लिए <code>{exact: true}</code> का उपयोग करें।`,
-            ml: `സാധാരണയായി പേരന്റ് മെനു ആക്ടീവ് ആയിരിക്കാനാണ് നമ്മൾ ആഗ്രഹിക്കുന്നത്. എന്നാൽ കൃത്യമായ മാച്ചിംഗ് വേണമെങ്കിൽ <code>{exact: true}</code> ഉപയോഗിക്കാം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Exact Matching</h3>
+              <p class="mb-3">By default, the matching is "inclusive".</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+                <li>If you link to <code>/user</code>, it stays active even if you are at <code>/user/5/edit</code>. This is great for menus.</li>
+                <li>However, a "Home" link (<code>/</code>) matches <em>everything</em> because every URL starts with <code>/</code>.</li>
+              </ul>
+              <p>To fix the Home link always glowing, use <code>[routerLinkActiveOptions]="{exact: true}"</code>.</p>
+            `,
+            hi: `डिफ़ॉल्ट रूप से, मिलान "समावेशी" है। यदि आप <code>/user</code> से लिंक करते हैं, तो यह तब भी सक्रिय रहेगा जब आप <code>/user/5/edit</code> पर होंगे।`,
+            ml: `സാധാരണയായി പേരന്റ് ലിങ്ക് ആക്ടീവ് ആയിരിക്കും. ഹോം പേജ് എപ്പോഴും ആക്ടീവ് ആകുന്നത് ഒഴിവാക്കാൻ <code>{exact: true}</code> ഉപയോഗിക്കുക.`
           },
           professional: {
-            en: `The directive creates a <code>UrlTree</code> for the link and compares it to the router's current state. It performs a subset check. This is efficient, but be careful with heavy computations in templates. The directive re-evaluates on every navigation event.`,
-            hi: `डायरेक्टिव लिंक के लिए एक <code>UrlTree</code> बनाता है और इसकी तुलना राउटर की वर्तमान स्थिति से करता है। यह एक सबसेट जांच करता है।`,
-            ml: `ലിങ്കിനായി ഒരു <code>UrlTree</code> ഉണ്ടാക്കി നിലവിലെ സ്റ്റേറ്റുമായി താരതമ്യം ചെയ്യുന്നു. ഓരോ നാവിഗേഷനിലും ഇത് നടക്കുന്നു.`
+            en: `
+              <p class="mb-3">The directive compares the <code>UrlTree</code> of the link against the <code>UrlTree</code> of the active route. It performs a <strong>Subset Check</strong>.</p>
+              <p>Be careful with performance: Since this directive runs a tree comparison on <em>every</em> navigation event, having hundreds of these links (like in a massive tree-view menu) can cause UI jank during navigation. In extreme cases, manual change detection or reactive signals might be more performant.</p>
+            `,
+            hi: `डायरेक्टिव लिंक के <code>UrlTree</code> की तुलना सक्रिय रूट के <code>UrlTree</code> से करता है।`,
+            ml: `ഈ ഡയറക്റ്റീവ് രണ്ട് UrlTree കൾ തമ്മിൽ താരതമ്യം ചെയ്യുന്നു. ഒരുപാട് ലിങ്കുകൾ ഉണ്ടെങ്കിൽ ഇത് പെർഫോമൻസിനെ ബാധിച്ചേക്കാം.`
           }
         })
       },
@@ -264,8 +422,8 @@ export class TutorialService {
         title: this.t({
           beginner: { en: 'Picture-in-Picture', hi: 'पिक्चर-इन-पिक्चर', ml: 'പിക്ചർ-ഇൻ-പിക്ചർ' },
           intermediate: { en: 'Multiple Outlets', hi: 'एकाधिक आउटलेट', ml: 'മൾട്ടിപ്പിൾ ഔട്ട്ലെറ്റുകൾ' },
-          advanced: { en: 'Named Outlets', hi: 'नामित आउटलेट्स', ml: 'പേരുള്ള ഔട്ട്ലെറ്റുകൾ' },
-          professional: { en: 'Auxiliary Route State', hi: 'सहायक रूट स्थिति', ml: 'ഓക്സിലിയറി റൂട്ട് സ്റ്റേറ്റ്' }
+          advanced: { en: 'Auxiliary Routes', hi: 'सहायक मार्ग', ml: 'ഓക്സിലിയറി റൂട്ടുകൾ' },
+          professional: { en: 'UrlTree Serialization', hi: 'UrlTree सीरियलाइजेशन', ml: 'UrlTree സീരിയലൈസേഷൻ' }
         }),
         focusArea: 'left',
         codeSnippet: this.c({
@@ -276,24 +434,47 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `Look at the screen. We have a big Blue Box (Primary). But we also have a Green Box (Left) and a Red Box (Right).<br><br>We can change the picture in the Green Box <strong>without touching</strong> the Blue Box. It's like watching a movie on TV while playing a game in a small corner window. Try clicking the "Menu" or "Ads" buttons on the left.`,
-            hi: `स्क्रीन देखें। हमारे पास एक बड़ा नीला बॉक्स है। लेकिन हमारे पास एक हरा बॉक्स और एक लाल बॉक्स भी है। हम नीले बॉक्स को छुए बिना हरे बॉक्स में तस्वीर बदल सकते हैं।`,
-            ml: `നീല ബോക്സിനെ ബാധിക്കാതെ തന്നെ പച്ച ബോക്സിലെ ചിത്രം മാറ്റാം. ടിവിയിൽ സിനിമ കാണുമ്പോൾ ചെറിയ വിൻഡോയിൽ ഗെയിം കളിക്കുന്നത് പോലെയാണിത്.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Watching TV while Gaming</h3>
+              <p class="mb-3">Have you ever seen a TV where you can watch a movie in a big box, but play a video game in a small box in the corner? This is called "Picture-in-Picture".</p>
+              <p class="mb-3">Angular allows this too! We can have a <strong>Main Frame</strong> (Blue) and a <strong>Side Frame</strong> (Green/Red).</p>
+              <p>You can change the Side Frame to show a "Menu" or "Ads" without changing the Main Frame. They are independent!</p>
+              <p><strong>Try it:</strong> Click the 'Menu' or 'Ads' buttons on the Left Card.</p>
+            `,
+            hi: `क्या आपने कभी ऐसा टीवी देखा है जहाँ आप एक बड़े बॉक्स में फिल्म देख सकते हैं, लेकिन कोने में एक छोटे बॉक्स में वीडियो गेम खेल सकते हैं?`,
+            ml: `ഒരു ടിവിയിൽ സിനിമ കാണുമ്പോൾ തന്നെ ചെറിയൊരു ബോക്സിൽ ഗെയിം കളിക്കുന്നത് പോലെയാണിത്. ആംഗുലറിൽ ഒരേ സമയം പല കാര്യങ്ങൾ ചെയ്യാം.`
           },
           intermediate: {
-            en: `Angular allows multiple <code>&lt;router-outlet&gt;</code> tags on one page. One is the "default" (unnamed). The others must have a <code>name</code> attribute (e.g., <code>name="left"</code>).<br><br>These are called <strong>Auxiliary Routes</strong>. They are perfect for sidebars, chat widgets, or modal popups that should have their own URL.`,
-            hi: `एंगुलर एक पेज पर कई <code>&lt;router-outlet&gt;</code> टैग की अनुमति देता है। इन्हें <strong>सहायक मार्ग</strong> कहा जाता है। ये साइडबार या चैट विजेट के लिए एकदम सही हैं।`,
-            ml: `ഒരേ പേജിൽ ഒന്നിലധികം ഔട്ട്ലെറ്റുകൾ വെക്കാം. ഇവയെ <strong>Auxiliary Routes</strong> എന്ന് വിളിക്കുന്നു. സൈഡ്ബാറുകൾക്കും ചാറ്റ് വിൻഡോകൾക്കും ഇത് നല്ലതാണ്.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Named Outlets</h3>
+              <p class="mb-3">A page can have one default <code>&lt;router-outlet&gt;</code> and unlimited <em>named</em> outlets: <code>&lt;router-outlet name="sidebar"&gt;</code>.</p>
+              <p class="mb-3">This is perfect for:</p>
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+                <li><strong>Popups/Modals:</strong> Allow users to bookmark a popup state.</li>
+                <li><strong>Chat Widgets:</strong> Keep chat open while navigating the main app.</li>
+                <li><strong>Sidebars:</strong> Dynamic tools based on context.</li>
+              </ul>
+            `,
+            hi: `एक पेज में एक डिफ़ॉल्ट <code>&lt;router-outlet&gt;</code> और असीमित नामित आउटलेट हो सकते हैं।`,
+            ml: `ഒരു പേജിൽ ഒന്നിലധികം ഔട്ട്ലെറ്റുകൾ വെക്കാം. പോപ്പപ്പുകൾക്കും സൈഡ്ബാറുകൾക്കും ഇത് വളരെ ഉപകാരപ്രദമാണ്.`
           },
           advanced: {
-            en: `The URL for secondary outlets looks unique: <code>/home(left:menu)</code>. The part in parentheses tells Angular: "Keep the primary route at 'home', but ALSO load the 'menu' route into the 'left' outlet."<br><br>To close a secondary outlet, we navigate it to <code>null</code>.`,
-            hi: `माध्यमिक आउटलेट्स के लिए URL अद्वितीय दिखता है: <code>/home(left:menu)</code>। कोष्ठक में भाग एंगुलर को बताता है: "प्राथमिक रूट को 'home' पर रखें, लेकिन 'left' आउटलेट में 'menu' रूट लोड करें।"`,
-            ml: `സെക്കൻഡറി ഔട്ട്ലെറ്റുകൾക്കായി URL ൽ <code>/home(left:menu)</code> എന്ന് കാണാം. ഇതിനെ ക്ലോസ് ചെയ്യാൻ <code>null</code> ലേക്ക് നാവിഗേറ്റ് ചെയ്യുക.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The URL Syntax</h3>
+              <p class="mb-3">When you use secondary outlets, the URL looks weird: <code>/dashboard(left:menu//right:help)</code>.</p>
+              <p class="mb-3">The parentheses <code>(...)</code> tell Angular that these parts are separate from the main path. To close an outlet, you navigate it to <code>null</code>.</p>
+              <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600">this.router.navigate([{ outlets: { left: null } }])</code>
+            `,
+            hi: `जब आप माध्यमिक आउटलेट का उपयोग करते हैं, तो URL अजीब दिखता है। कोष्ठक <code>(...)</code> एंगुलर को बताते हैं कि ये भाग मुख्य पथ से अलग हैं।`,
+            ml: `സെക്കൻഡറി ഔട്ട്ലെറ്റുകൾ ഉപയോഗിക്കുമ്പോൾ URL ൽ <code>(...)</code> കാണാം. ഇത് മെയിൻ പാത്തിൽ നിന്ന് വ്യത്യസ്തമാണെന്ന് കാണിക്കുന്നു.`
           },
           professional: {
-            en: `This feature demonstrates the power of the <strong>UrlTree</strong> serializer. Angular serializes independent route branches into a single string. This ensures the <strong>Back Button</strong> works perfectly—if you open the menu, then click Back, the menu closes (the URL reverts to the previous state). State restoration is built-in.`,
-            hi: `यह सुविधा <strong>UrlTree</strong> सीरियलाइज़र की शक्ति को प्रदर्शित करती है। यह सुनिश्चित करता है कि बैक बटन पूरी तरह से काम करता है।`,
-            ml: `ഇത് <strong>UrlTree</strong> സീരിയലൈസറിന്റെ ശക്തി കാണിക്കുന്നു. ബാക്ക് ബട്ടൺ കൃത്യമായി പ്രവർത്തിക്കുന്നത് ഇതിലൂടെയാണ്.`
+            en: `
+              <p class="mb-3">Named outlets utilize the full power of the <strong>UrlTree</strong> serializer. Angular treats the URL not as a simple string, but as a tree with branches.</p>
+              <p><strong>Benefit:</strong> Deep Linking. A user can copy the URL <code>/product/55(popup:details)</code> and send it to a friend. When the friend opens it, they see the Product Page AND the Details Popup open exactly as it was. This is impossible with standard JavaScript modals.</p>
+            `,
+            hi: `नामित आउटलेट <strong>UrlTree</strong> सीरियलाइज़र की पूरी शक्ति का उपयोग करते हैं। एंगुलर URL को एक साधारण स्ट्रिंग के रूप में नहीं, बल्कि शाखाओं वाले पेड़ के रूप में मानता है।`,
+            ml: `ഇത് <strong>UrlTree</strong> സീരിയലൈസറിന്റെ ശക്തി കാണിക്കുന്നു. ഡീപ് ലിങ്കിംഗ് സാധ്യമാക്കുന്നു. സുഹൃത്തിന് ലിങ്ക് അയച്ചാൽ അതേ പോലെ തന്നെ കാണാം.`
           }
         })
       },
@@ -306,9 +487,9 @@ export class TutorialService {
         module: 'Error Handling',
         title: this.t({
           beginner: { en: 'Lost & Found', hi: 'खोया-पाया', ml: 'നഷ്ടപ്പെട്ടത്' },
-          intermediate: { en: '404 Error', hi: '404 त्रुटि', ml: '404 പിശക്' },
+          intermediate: { en: '404 Error Handling', hi: '404 त्रुटि हैंडलिंग', ml: '404 പിശക് കൈകാര്യം ചെയ്യൽ' },
           advanced: { en: 'Wildcard Route', hi: 'वाइल्डकार्ड रूट', ml: 'വൈൽഡ്കാർഡ് റൂട്ട്' },
-          professional: { en: 'Pattern Matching Fallback', hi: 'पैटर्न मिलान फ़ॉलबैक', ml: 'പാറ്റേൺ മാച്ചിംഗ് ഫോൾബാക്ക്' }
+          professional: { en: 'Pattern Matching Strategy', hi: 'पैटर्न मिलान रणनीति', ml: 'പാറ്റേൺ മാച്ചിംഗ് സ്ട്രാറ്റജി' }
         }),
         focusArea: 'wildcard',
         codeSnippet: this.c({
@@ -319,24 +500,43 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `What happens if you try to go to a room that doesn't exist? Like <code>/magic-room</code>? <br><br>The app shouldn't crash. Instead, it sends you to the <strong>Lost & Found</strong> department. Try clicking the "Broken Link" in the center panel to see our 404 page.`,
-            hi: `क्या होगा यदि आप किसी ऐसे कमरे में जाने का प्रयास करते हैं जो मौजूद नहीं है? ऐप क्रैश नहीं होना चाहिए। इसके बजाय, यह आपको <strong>Lost & Found</strong> विभाग में भेजता है।`,
-            ml: `ഇല്ലാത്ത ഒരു മുറിയിലേക്ക് പോയാൽ എന്ത് സംഭവിക്കും? ആപ്ലിക്കേഷൻ ക്രാഷ് ആകില്ല. പകരം "Lost & Found" ലേക്ക് പോകും.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Mystery Room</h3>
+              <p class="mb-3">What happens if you try to walk into a room that doesn't exist? Like trying to find "The Chocolate Room" in your house?</p>
+              <p class="mb-3">Usually, you would hit a wall. Ouch! But in our app, we have a <strong>Lost & Found</strong> department.</p>
+              <p>If the router doesn't know where to go (like if you typed <code>/magic-room</code>), it automatically sends you to the 404 Page. It's a safety net!</p>
+              <p><strong>Try it:</strong> Click 'Err: Broken Link' in the simulator.</p>
+            `,
+            hi: `क्या होगा यदि आप किसी ऐसे कमरे में जाने का प्रयास करते हैं जो मौजूद नहीं है? आमतौर पर, आप एक दीवार से टकराएंगे।`,
+            ml: `ഇല്ലാത്ത ഒരു മുറിയിലേക്ക് പോയാൽ എന്ത് സംഭവിക്കും? സാധാരണ ഗതിയിൽ നമ്മൾ തട്ടി വീഴും. എന്നാൽ ഇവിടെ "Lost & Found" ലേക്ക് പോകും.`
           },
           intermediate: {
-            en: `In web development, we call this a <strong>404 Not Found</strong>. We configure a special route with a path of <code>**</code> (two stars). <br><br>This means "Match Everything". Since Angular reads routes from top to bottom, if it hasn't found a match by the time it reaches the bottom, it uses this wildcard route.`,
-            hi: `वेब विकास में, हम इसे <strong>404 Not Found</strong> कहते हैं। हम <code>**</code> के पथ के साथ एक विशेष रूट कॉन्फ़िगर करते हैं।`,
-            ml: `ഇതിനെ <strong>404 Not Found</strong> എന്ന് വിളിക്കുന്നു. <code>**</code> എന്ന പാത്ത് ഉപയോഗിച്ചാണ് ഇത് സെറ്റ് ചെയ്യുന്നത്.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Wildcard **</h3>
+              <p class="mb-3">In web terms, a missing page is a <strong>404 Error</strong>. Angular handles this with a special path: <code>**</code>.</p>
+              <p class="mb-3">This "Wildcard" means <em>"Match Anything"</em>.</p>
+              <p class="p-2 bg-yellow-100 rounded text-yellow-800 text-sm border border-yellow-200"><strong>Crucial Rule:</strong> The Wildcard route MUST be the <strong>last</strong> item in your routes array. Angular checks routes from top to bottom. If you put <code>**</code> at the top, it will match everything immediately, and your real pages will never load!</p>
+            `,
+            hi: `वेब शब्दों में, एक लापता पृष्ठ एक <strong>404 त्रुटि</strong> है। एंगुलर इसे एक विशेष पथ के साथ संभालता है: <code>**</code>।`,
+            ml: `ഇതിനെ <strong>404 Error</strong> എന്ന് വിളിക്കുന്നു. <code>**</code> എന്ന പാത്ത് ഉപയോഗിച്ചാണ് ഇത് സെറ്റ് ചെയ്യുന്നത്. ഇത് എപ്പോഴും അവസാനം കൊടുക്കണം.`
           },
           advanced: {
-            en: `Route order is critical. If you defined <code>{ path: '**', ... }</code> at the top of your array, it would match <code>/home</code> immediately (because <code>**</code> matches everything), and your users would never see the home page. Always place the wildcard <strong>LAST</strong>.`,
-            hi: `रूट क्रम महत्वपूर्ण है। यदि आप अपनी सरणी के शीर्ष पर <code>**</code> परिभाषित करते हैं, तो यह तुरंत <code>/home</code> से मेल खाएगा। वाइल्डकार्ड को हमेशा अंत में रखें।`,
-            ml: `റൂട്ടുകളുടെ ഓർഡർ വളരെ പ്രധാനമാണ്. വൈൽഡ്കാർഡ് ആദ്യം കൊടുത്താൽ ബാക്കിയുള്ളവ വർക്ക് ആകില്ല. അതുകൊണ്ട് എപ്പോഴും അവസാനം കൊടുക്കുക.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Smart Redirects</h3>
+              <p class="mb-3">You don't always have to show an error page. Sometimes, it's better to just redirect users to the dashboard if they get lost.</p>
+              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">{ path: '**', redirectTo: 'dashboard' }</code>
+              <p>This is common in dashboards where unauthorized URLs should just bounce the user back to safety.</p>
+            `,
+            hi: `आपको हमेशा एक त्रुटि पृष्ठ दिखाने की आवश्यकता नहीं है। कभी-कभी, उपयोगकर्ताओं को डैशबोर्ड पर पुनर्निर्देशित करना बेहतर होता है।`,
+            ml: `എപ്പോഴും എറർ പേജ് കാണിക്കേണ്ട ആവശ്യമില്ല. ചിലപ്പോൾ ഡാഷ്ബോർഡിലേക്ക് റീഡയറക്ട് ചെയ്യുന്നതാണ് നല്ലത്.`
           },
           professional: {
-            en: `For enterprise apps, we often use a <code>CanActivate</code> guard on the wildcard route to log the 404 error to an analytics service before displaying the component. Alternatively, we might redirect to a landing page.`,
-            hi: `एंटरप्राइज़ ऐप्स के लिए, हम अक्सर 404 त्रुटि को लॉग करने के लिए वाइल्डकार्ड रूट पर CanActivate गार्ड का उपयोग करते हैं।`,
-            ml: `എന്റർപ്രൈസ് ആപ്പുകളിൽ 404 എററുകൾ ലോഗ് ചെയ്യാൻ നമ്മൾ വൈൽഡ്കാർഡ് റൂട്ടിൽ ഗാർഡുകൾ ഉപയോഗിക്കാറുണ്ട്.`
+            en: `
+              <p class="mb-3">In enterprise applications, the Wildcard route is often protected by a Guard.</p>
+              <p>Why? We might want to log the 404 error to an analytics service (like Google Analytics) to track broken links before we show the "Not Found" UI. The Guard can execute this side-effect logic.</p>
+            `,
+            hi: `एंटरप्राइज़ अनुप्रयोगों में, वाइल्डकार्ड रूट अक्सर गार्ड द्वारा सुरक्षित होता है। हम 404 त्रुटि को लॉग करना चाह सकते हैं।`,
+            ml: `എന്റർപ്രൈസ് ആപ്പുകളിൽ 404 എററുകൾ ലോഗ് ചെയ്യാൻ നമ്മൾ ഗാർഡുകൾ ഉപയോഗിക്കാറുണ്ട്.`
           }
         })
       },
@@ -348,9 +548,9 @@ export class TutorialService {
         id: 8,
         module: 'Security',
         title: this.t({
-          beginner: { en: 'The Security Guard', hi: 'सुरक्षा गार्ड', ml: 'സെക്യൂരിറ്റി ഗാർഡ്' },
+          beginner: { en: 'The Bouncer', hi: 'बाउंसर', ml: 'ബൗൺസർ' },
           intermediate: { en: 'Route Guards', hi: 'रूट गार्ड', ml: 'റൂട്ട് ഗാർഡുകൾ' },
-          advanced: { en: 'CanActivateFn', hi: 'CanActivateFn', ml: 'CanActivateFn' },
+          advanced: { en: 'Functional Guards', hi: 'फंक्शनल गार्ड', ml: 'ഫങ്ഷണൽ ഗാർഡുകൾ' },
           professional: { en: 'Navigation Cancellation', hi: 'नेविगेशन रद्दीकरण', ml: 'നാവിഗേഷൻ റദ്ദാക്കൽ' }
         }),
         focusArea: 'intro',
@@ -362,24 +562,50 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `Some rooms are private, like the Principal's Office. We put a <strong>Security Guard</strong> at the door.<br><br>Before the Router lets you enter the "Admin Page", the Guard checks: "Do you have a key?" If yes, you enter. If no, the Guard sends you back home.`,
-            hi: `कुछ कमरे निजी होते हैं, जैसे प्रिंसिपल का कार्यालय। हम दरवाजे पर एक <strong>सुरक्षा गार्ड</strong> रखते हैं। प्रवेश करने से पहले, गार्ड जाँच करता है: "क्या आपके पास चाबी है?"`,
-            ml: `ചില മുറികൾ പ്രൈവറ്റ് ആണ്. അവിടെ നമ്മൾ ഒരു സെക്യൂരിറ്റി ഗാർഡിനെ നിർത്തുന്നു. കീ ഉണ്ടെങ്കിൽ മാത്രമേ അകത്തേക്ക് കടത്തിവിടുള്ളൂ.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Security Guard</h3>
+              <p class="mb-3">Some rooms in a building are private, like the Manager's Office. You can't just walk in.</p>
+              <p class="mb-3">There is a big <strong>Security Guard</strong> at the door. He asks: <em>"Do you have an ID badge?"</em></p>
+              <ul class="list-disc ml-5 space-y-2 mb-4">
+                <li>If <strong>YES</strong>: He steps aside and lets you in.</li>
+                <li>If <strong>NO</strong>: He blocks you and sends you to the Login desk.</li>
+              </ul>
+              <p>In Angular, we call this code a <strong>Guard</strong>.</p>
+            `,
+            hi: `इमारत के कुछ कमरे निजी होते हैं, जैसे प्रबंधक का कार्यालय। दरवाजे पर एक बड़ा सुरक्षा गार्ड है। वह पूछता है: "क्या आपके पास आईडी बैज है?"`,
+            ml: `ചില മുറികൾ പ്രൈവറ്റ് ആണ്. അവിടെ സെക്യൂരിറ്റി ഗാർഡ് ഉണ്ടാകും. ഐഡി കാർഡ് ഉണ്ടെങ്കിൽ മാത്രമേ അകത്തേക്ക് വിടൂ.`
           },
           intermediate: {
-            en: `In Angular, these are called <strong>Guards</strong>. They are functions that run <em>before</em> the navigation finishes.<br><br>The most common one is <code>canActivate</code>. It returns <code>true</code> (allow) or <code>false</code> (block). If blocked, the page never loads.`,
-            hi: `एंगुलर में, इन्हें <strong>Guards</strong> कहा जाता है। ये ऐसे फ़ंक्शन हैं जो नेविगेशन समाप्त होने से पहले चलते हैं। सबसे आम <code>canActivate</code> है।`,
-            ml: `ഇതിനെ <strong>Guards</strong> എന്ന് വിളിക്കുന്നു. നാവിഗേഷൻ പൂർത്തിയാകുന്നതിന് മുൻപ് പ്രവർത്തിക്കുന്ന ഫംഗ്ഷനുകളാണിവ. <code>canActivate</code> ആണ് പ്രധാനം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanActivate</h3>
+              <p class="mb-3">A Guard is a function that runs <em>before</em> the navigation completes. The most common type is <code>canActivate</code>.</p>
+              <p class="mb-3">It returns a boolean:</p>
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+                <li><code>true</code>: Navigation proceeds.</li>
+                <li><code>false</code>: Navigation stops (user stays on current page).</li>
+                <li><code>UrlTree</code>: Navigation is redirected to a new path (e.g., Login).</li>
+              </ul>
+            `,
+            hi: `गार्ड एक फ़ंक्शन है जो नेविगेशन पूरा होने से पहले चलता है। सबसे आम प्रकार <code>canActivate</code> है।`,
+            ml: `നാവിഗേഷൻ പൂർത്തിയാകുന്നതിന് മുൻപ് പ്രവർത്തിക്കുന്ന ഫംഗ്ഷനാണ് ഗാർഡ്. <code>canActivate</code> ആണ് പ്രധാനം.`
           },
           advanced: {
-            en: `Modern Angular uses <strong>Functional Guards</strong> (<code>CanActivateFn</code>). They are simpler than the old Class-based guards. You can inject services directly into the function.<br><br>A guard can also return a <code>UrlTree</code>. If it does, the router cancels the current navigation and redirects to that new URL (e.g., redirecting unauthenticated users to <code>/login</code>).`,
-            hi: `आधुनिक एंगुलर <strong>Functional Guards</strong> का उपयोग करता है। एक गार्ड <code>UrlTree</code> भी लौटा सकता है।`,
-            ml: `പുതിയ ആംഗുലറിൽ <strong>Functional Guards</strong> ആണ് ഉപയോഗിക്കുന്നത്. ഇതിന് <code>UrlTree</code> റിട്ടേൺ ചെയ്യാനും സാധിക്കും.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanDeactivate</h3>
+              <p class="mb-3">Guards can also check if you are allowed to <em>leave</em>. This is called <code>CanDeactivate</code>.</p>
+              <p class="mb-3"><strong>Real World Example:</strong> Have you ever tried to close a tab while filling out a form, and the browser screams: <em>"You have unsaved changes! Are you sure?"</em></p>
+              <p>That is a CanDeactivate guard in action. It protects users from losing data.</p>
+            `,
+            hi: `गार्ड यह भी जांच सकते हैं कि क्या आपको छोड़ने की अनुमति है। इसे <code>CanDeactivate</code> कहा जाता है।`,
+            ml: `പേജിൽ നിന്ന് പുറത്തുപോകുമ്പോൾ പ്രവർത്തിക്കുന്ന ഗാർഡാണ് <code>CanDeactivate</code>. സേവ് ചെയ്യാത്ത ഡാറ്റ നഷ്ടപ്പെടാതിരിക്കാൻ ഇത് സഹായിക്കുന്നു.`
           },
           professional: {
-            en: `Guards execute in a specific order: <code>CanMatch</code> -> <code>CanLoad</code> -> <code>CanActivateChild</code> -> <code>CanActivate</code>. <br><br>Also, check out <code>CanDeactivate</code>. It runs when a user tries to <em>leave</em> a page. It's perfect for "You have unsaved changes!" warnings.`,
-            hi: `गार्ड एक विशिष्ट क्रम में निष्पादित होते हैं। <code>CanDeactivate</code> भी देखें। यह तब चलता है जब कोई उपयोगकर्ता पेज छोड़ने का प्रयास करता है।`,
-            ml: `ഗാർഡുകൾക്ക് ഒരു പ്രത്യേക ഓർഡർ ഉണ്ട്. പേജിൽ നിന്ന് പുറത്തുപോകുമ്പോൾ പ്രവർത്തിക്കുന്ന <code>CanDeactivate</code> ഉം ശ്രദ്ധിക്കുക.`
+            en: `
+              <p class="mb-3">In modern Angular (v16+), we use <strong>Functional Guards</strong>. They are simple functions that can use <code>inject()</code>.</p>
+              <p>We also have <code>CanMatch</code>. This is powerful for <strong>Feature Flags</strong>. If <code>CanMatch</code> returns false, the router pretends that route <em>doesn't even exist</em> and keeps searching down the config list. This allows you to have two routes with the same path (e.g., 'dashboard'), one for 'Admin' and one for 'User', and the guard decides which component actually loads.</p>
+            `,
+            hi: `आधुनिक एंगुलर में, हम फंक्शनल गार्ड का उपयोग करते हैं। हमारे पास CanMatch भी है। यह फीचर फ्लैग के लिए शक्तिशाली है।`,
+            ml: `പുതിയ ആംഗുലറിൽ ഫങ്ഷണൽ ഗാർഡുകൾ ഉപയോഗിക്കുന്നു. <code>CanMatch</code> ഉപയോഗിച്ച് ഒരേ പാത്തിൽ രണ്ട് വ്യത്യസ്ത കംപോണന്റുകൾ ലോഡ് ചെയ്യാം.`
           }
         })
       },
@@ -391,9 +617,9 @@ export class TutorialService {
         id: 9,
         module: 'Performance',
         title: this.t({
-          beginner: { en: 'Loading Levels', hi: 'लेवल लोडिंग', ml: 'ലെവൽ ലോഡിംഗ്' },
+          beginner: { en: 'Packing Light', hi: 'हल्का पैकिंग', ml: 'പാക്കിംഗ് ലൈറ്റ്' },
           intermediate: { en: 'Lazy Loading', hi: 'लेज़ी लोडिंग', ml: 'ലേസി ലോഡിംഗ്' },
-          advanced: { en: 'Code Splitting', hi: 'कोड स्प्लिटिंग', ml: 'കോഡ് स्प्लिटिंग' },
+          advanced: { en: 'Code Splitting', hi: 'कोड स्प्लिटिंग', ml: 'കോഡ് സ്പ്ലിറ്റിംഗ്' },
           professional: { en: 'Bundle Optimization', hi: 'बंडल अनुकूलन', ml: 'ബണ്ടിൽ ഒപ്റ്റിമൈസേഷൻ' }
         }),
         focusArea: 'intro',
@@ -405,24 +631,45 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `If you play a huge video game, it doesn't load all 100 levels at the start. It loads Level 1. When you beat it, it loads Level 2.<br><br>Angular does the same. It only downloads the code for the "Home Page" first. It downloads the "Settings Page" code <strong>only</strong> when you click the Settings button. This makes the app start very fast.`,
-            hi: `यदि आप एक बड़ा वीडियो गेम खेलते हैं, तो यह शुरुआत में सभी 100 स्तरों को लोड नहीं करता है। एंगुलर भी ऐसा ही करता है। यह "सेटिंग्स पेज" कोड केवल तभी डाउनलोड करता है जब आप सेटिंग्स बटन पर क्लिक करते हैं।`,
-            ml: `ഒരു വലിയ ഗെയിം കളിക്കുമ്പോൾ എല്ലാ ലെവലുകളും ആദ്യം തന്നെ ലോഡ് ആകില്ല. അതുപോലെ ആംഗുലറും ആവശ്യമായ പേജുകൾ മാത്രമേ ആദ്യം ലോഡ് ചെയ്യൂ. ഇതിനെ ലേസി ലോഡിംഗ് എന്ന് വിളിക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Pack the Winter Coat</h3>
+              <p class="mb-3">Imagine you are going on a summer vacation. Do you pack your heavy winter coat, snow boots, and scarf? No! That would make your bag too heavy to carry.</p>
+              <p class="mb-3">Computers are the same. If a user only visits the "Home Page", why force them to download the code for the "Settings Page"?</p>
+              <p>Angular waits. It only downloads the "Settings" code <em>when the user actually clicks the button</em>. This makes the app start super fast!</p>
+            `,
+            hi: `कल्पना कीजिए कि आप गर्मियों की छुट्टी पर जा रहे हैं। क्या आप अपना भारी विंटर कोट पैक करते हैं? नहीं! कंप्यूटर भी ऐसे ही होते हैं।`,
+            ml: `വേനൽക്കാല യാത്രയ്ക്ക് നമ്മൾ തണുപ്പുകാല വസ്ത്രങ്ങൾ എടുക്കാറില്ല. അത് ബാഗിന്റെ ഭാരം കൂട്ടും. അതുപോലെ കമ്പ്യൂട്ടറും ആവശ്യമുള്ളപ്പോൾ മാത്രമേ കോഡ് ഡൗൺലോഡ് ചെയ്യൂ.`
           },
           intermediate: {
-            en: `This technique is called <strong>Lazy Loading</strong>. Instead of one giant JavaScript file (<code>main.js</code>), the build process splits your code into many small chunks.<br><br>We use the <code>loadChildren</code> or <code>loadComponent</code> property in the route config instead of <code>component</code>.`,
-            hi: `इस तकनीक को <strong>Lazy Loading</strong> कहा जाता है। एक विशाल जावास्क्रिप्ट फ़ाइल के बजाय, निर्माण प्रक्रिया आपके कोड को कई छोटे टुकड़ों में विभाजित करती है।`,
-            ml: `ഇതിനെ <strong>Lazy Loading</strong> എന്ന് വിളിക്കുന്നു. വലിയ ഫയലുകൾക്ക് പകരം ചെറിയ ചങ്കുകളായി കോഡിനെ മാറ്റുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lazy Loading</h3>
+              <p class="mb-3">By default, Angular creates one giant JavaScript file (<code>main.js</code>). If your app is huge, this file takes 10 seconds to load.</p>
+              <p class="mb-3">Lazy loading splits your code into "chunks".</p>
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+                <li><strong>Eager:</strong> <code>component: Dashboard</code> (Loads instantly at startup)</li>
+                <li><strong>Lazy:</strong> <code>loadChildren: () => import(...)</code> (Loads on demand)</li>
+              </ul>
+              <p><strong>Result:</strong> Your main bundle is tiny, and the app loads instantly.</p>
+            `,
+            hi: `डिफ़ॉल्ट रूप से, एंगुलर एक विशाल जावास्क्रिप्ट फ़ाइल बनाता है। लेज़ी लोडिंग आपके कोड को "हिस्सों" में विभाजित करता है।`,
+            ml: `ലേസി ലോഡിംഗ് കോഡിനെ ചെറിയ ഭാഗങ്ങളായി തിരിക്കുന്നു. ആവശ്യമുള്ളപ്പോൾ മാത്രം ഡൗൺലോഡ് ചെയ്യുന്നു.`
           },
           advanced: {
-            en: `The syntax <code>import('./path')</code> uses dynamic imports, a modern JavaScript feature. It returns a Promise. Angular waits for the network request to finish, loads the class, and then renders the route.<br><br>While loading, the router hangs. You should usually implement a global Loading Indicator to show the user something is happening.`,
-            hi: `सिंटैक्स <code>import('./path')</code> डायनामिक आयात का उपयोग करता है। यह एक प्रॉमिस लौटाता है। लोड करते समय, राउटर रुक जाता है।`,
-            ml: `<code>import('./path')</code> എന്നത് ഡൈനാമിക് ഇമ്പോർട്ട് ആണ്. ഇത് ഒരു പ്രോമിസ് റിട്ടേൺ ചെയ്യുന്നു. ലോഡിംഗ് സമയത്ത് ഒരു ഇൻഡിക്കേറ്റർ കാണിക്കുന്നത് നല്ലതാണ്.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Dynamic Imports</h3>
+              <p class="mb-3">We use the JavaScript dynamic import syntax: <code>import('./path')</code>. This returns a Promise.</p>
+              <p class="mb-3">When the router matches a lazy route, it pauses, fires a network request to fetch the JS file, executes it, and then renders the component. You might see a slight delay, which is why we often use loading spinners during this pause.</p>
+            `,
+            hi: `हम जावास्क्रिप्ट डायनामिक आयात सिंटैक्स का उपयोग करते हैं। यह एक प्रॉमिस लौटाता है।`,
+            ml: `നമ്മൾ ഡൈനാമിക് ഇമ്പോർട്ട് സിന്റാക്സ് ഉപയോഗിക്കുന്നു. ഇത് ഒരു പ്രോമിസ് റിട്ടേൺ ചെയ്യുന്നു.`
           },
           professional: {
-            en: `To optimize User Experience, we use <code>PreloadAllModules</code> or custom preloading strategies. This downloads the lazy chunks in the background <em>after</em> the main page renders, so the user gets instant navigation when they eventually click the link.`,
-            hi: `उपयोगकर्ता अनुभव को अनुकूलित करने के लिए, हम PreloadAllModules का उपयोग करते हैं। यह पृष्ठभूमि में लेज़ी चंक्स डाउनलोड करता है।`,
-            ml: `യൂസർ എക്സ്പീരിയൻസ് മെച്ചപ്പെടുത്താൻ PreloadAllModules ഉപയോഗിക്കുന്നു. ഇത് ബാക്ക്ഗ്രൗണ്ടിൽ ഫയലുകൾ ഡൗൺലോഡ് ചെയ്യുന്നു.`
+            en: `
+              <p class="mb-3">To get the best of both worlds (Fast Start + Fast Navigation), we use <strong>Preloading Strategies</strong>.</p>
+              <p class="mb-3">We configure the router to load the main page first. Then, while the user is reading the home page, Angular secretly downloads the "Settings" and "Admin" chunks in the background. When the user eventually clicks, the code is already there!</p>
+            `,
+            hi: `दोनों दुनिया के सर्वश्रेष्ठ (तेज़ शुरुआत + तेज़ नेविगेशन) प्राप्त करने के लिए, हम प्रीलोडिंग रणनीतियों का उपयोग करते हैं।`,
+            ml: `വേഗത്തിലുള്ള തുടക്കവും നാവിഗേഷനും ലഭിക്കാൻ നമ്മൾ പ്രീലോഡിംഗ് സ്ട്രാറ്റജികൾ ഉപയോഗിക്കുന്നു. ബാക്ക്ഗ്രൗണ്ടിൽ കോഡ് ഡൗൺലോഡ് ചെയ്യുന്നു.`
           }
         })
       },
@@ -434,10 +681,10 @@ export class TutorialService {
         id: 10,
         module: 'Deep Dive',
         title: this.t({
-          beginner: { en: 'Birth and Death', hi: 'जन्म और मृत्यु', ml: 'ജനനവും മരണവും' },
+          beginner: { en: 'Hello and Goodbye', hi: 'नमस्ते और अलविदा', ml: 'ഹലോയും ഗുഡ്ബൈയും' },
           intermediate: { en: 'Component Lifecycle', hi: 'घटक जीवनचक्र', ml: 'കംപോണന്റ് ലൈഫ്സൈക്കിൾ' },
           advanced: { en: 'OnInit vs OnDestroy', hi: 'OnInit बनाम OnDestroy', ml: 'OnInit vs OnDestroy' },
-          professional: { en: 'Memory Management', hi: 'मेमोरी प्रबंधन', ml: 'മെമ്മറി മാനേജ്മെന്റ്' }
+          professional: { en: 'Memory Leak Prevention', hi: 'मेमोरी लीक रोकथाम', ml: 'മെമ്മറി ലീക്ക് തടയൽ' }
         }),
         focusArea: 'intro',
         codeSnippet: this.c({
@@ -448,24 +695,45 @@ export class TutorialService {
         }),
         content: this.t({
           beginner: {
-            en: `When the frame shows a new picture, that picture is "Born". When we switch to a different picture, the old one is "Destroyed".<br><br>Angular lets us run code at these moments. We can say "Hello" when a page opens and "Goodbye" when it closes.`,
-            hi: `जब फ्रेम एक नई तस्वीर दिखाता है, तो वह तस्वीर "पैदा" होती है। जब हम दूसरी तस्वीर पर स्विच करते हैं, तो पुरानी "नष्ट" हो जाती है।`,
-            ml: `ഒരു പുതിയ ചിത്രം വരുമ്പോൾ അത് "ജനിക്കുന്നു". മറ്റൊന്നിലേക്ക് മാറുമ്പോൾ പഴയത് "നശിക്കുന്നു". ഈ സമയങ്ങളിൽ നമുക്ക് കോഡ് റൺ ചെയ്യാം.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Clean Up Your Room!</h3>
+              <p class="mb-3">When a page appears, it says "Hello!" (Born). When it disappears, it says "Goodbye!" (Destroyed).</p>
+              <p class="mb-3">Imagine you turn on the water tap (start a timer) when you enter the kitchen. If you leave the kitchen without turning it off, the house floods!</p>
+              <p>In Angular, we use the "Goodbye" moment (<code>ngOnDestroy</code>) to turn off taps, stop timers, and clean up the memory so the computer doesn't get slow.</p>
+            `,
+            hi: `जब कोई पेज दिखाई देता है, तो वह "नमस्ते!" कहता है। जब यह गायब हो जाता है, तो वह "अलविदा!" कहता है।`,
+            ml: `ഒരു പേജ് വരുമ്പോൾ അത് "ഹലോ" പറയുന്നു. പോകുമ്പോൾ "ഗുഡ്ബൈ" പറയുന്നു. അടുക്കളയിൽ നിന്ന് പോകുമ്പോൾ പൈപ്പ് അടയ്ക്കുന്നത് പോലെ ആംഗുലറിലും നമ്മൾ ക്ലീൻ അപ്പ് ചെയ്യണം.`
           },
           intermediate: {
-            en: `These are called <strong>Lifecycle Hooks</strong>. <br>• <code>ngOnInit</code> runs when the component enters the screen.<br>• <code>ngOnDestroy</code> runs when it leaves.<br><br>Use <code>ngOnDestroy</code> to clean up mess, like stopping timers or closing database connections, so your computer doesn't get slow.`,
-            hi: `इन्हें <strong>Lifecycle Hooks</strong> कहा जाता है। <code>ngOnInit</code> तब चलता है जब घटक स्क्रीन में प्रवेश करता है। सफाई के लिए <code>ngOnDestroy</code> का उपयोग करें।`,
-            ml: `ഇവയെ <strong>Lifecycle Hooks</strong> എന്ന് വിളിക്കുന്നു. <code>ngOnInit</code> കംപോണന്റ് വരുമ്പോഴും <code>ngOnDestroy</code> പോകുമ്പോഴും പ്രവർത്തിക്കുന്നു.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lifecycle Hooks</h3>
+              <p class="mb-3">Angular gives us hooks to run code at specific times:</p>
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+                <li><code>ngOnInit()</code>: Runs ONCE when the component is created. Great for fetching data from an API.</li>
+                <li><code>ngOnDestroy()</code>: Runs ONCE when the component is removed. Use this to unsubscribe from Observables.</li>
+              </ul>
+            `,
+            hi: `एंगुलर हमें विशिष्ट समय पर कोड चलाने के लिए हुक देता है: ngOnInit और ngOnDestroy।`,
+            ml: `ആംഗുലർ നമുക്ക് ഹുക്കുകൾ നൽകുന്നു: ngOnInit ഉം ngOnDestroy ഉം. ഡാറ്റ എടുക്കാനും ക്ലീൻ ചെയ്യാനും ഇവ ഉപയോഗിക്കുന്നു.`
           },
           advanced: {
-            en: `A common trap for beginners: If you use the same component for two routes (like User 1 to User 2), <strong>ngOnDestroy does NOT run</strong>. The component is reused. <br><br>Always assume your component might stay alive while data changes around it.`,
-            hi: `शुरुआती लोगों के लिए एक आम जाल: यदि आप दो रूट के लिए एक ही घटक का उपयोग करते हैं, तो <strong>ngOnDestroy</strong> नहीं चलता है। घटक का पुन: उपयोग किया जाता है।`,
-            ml: `ഒരേ കംപോണന്റ് റീയൂസ് ചെയ്യുമ്പോൾ <code>ngOnDestroy</code> പ്രവർത്തിക്കില്ല എന്നത് ശ്രദ്ധിക്കുക.`
+            en: `
+              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Reuse Trap</h3>
+              <p class="mb-3">Here is a trap that catches everyone: If you go from <code>/user/1</code> to <code>/user/2</code>...</p>
+              <p class="font-bold text-red-600 mb-2">ngOnDestroy and ngOnInit DO NOT RUN.</p>
+              <p class="mb-3">Why? Because it's the <em>same</em> component class. Angular is smart and reuses it. It only updates the parameter. This is why you must listen to parameter changes instead of relying on <code>ngOnInit</code>.</p>
+            `,
+            hi: `यहाँ एक जाल है: यदि आप /user/1 से /user/2 पर जाते हैं, तो ngOnDestroy और ngOnInit नहीं चलते हैं।`,
+            ml: `ഒരേ പേജിൽ ഡാറ്റ മാറുമ്പോൾ ngOnDestroy ഉം ngOnInit ഉം പ്രവർത്തിക്കില്ല. ആംഗുലർ കംപോണന്റ് റീയൂസ് ചെയ്യുന്നതാണ് കാരണം.`
           },
           professional: {
-            en: `In reactive programming (RxJS), manual subscription management is error-prone. We prefer using the <code>async</code> pipe in templates or <code>takeUntilDestroyed</code> operator in logic to automatically handle lifecycle cleanup.`,
-            hi: `RxJS में, हम मैन्युअल सदस्यता से बचते हैं। हम स्वचालित सफाई के लिए async पाइप या takeUntilDestroyed का उपयोग करना पसंद करते हैं।`,
-            ml: `RxJS ഉപയോഗിക്കുമ്പോൾ മെമ്മറി ലീക്ക് ഒഴിവാക്കാൻ async പൈപ്പ് അല്ലെങ്കിൽ takeUntilDestroyed ഉപയോഗിക്കുന്നു.`
+            en: `
+              <p class="mb-3"><strong>Memory Leaks</strong> are the #1 performance killer in SPAs. If you subscribe to a global service (like a ChatService) in a component but forget to unsubscribe in <code>ngOnDestroy</code>, that subscription stays alive forever.</p>
+              <p class="mb-3">If the user opens and closes that page 100 times, you now have 100 ghost subscriptions running in the background, eating RAM and CPU.</p>
+              <p><strong>Solution:</strong> Use the <code>async</code> pipe or the <code>takeUntilDestroyed</code> operator.</p>
+            `,
+            hi: `मेमोरी लीक SPAs में #1 प्रदर्शन हत्यारा है। यदि आप सदस्यता लेते हैं लेकिन सदस्यता समाप्त करना भूल जाते हैं, तो वह हमेशा के लिए जीवित रहता है।`,
+            ml: `മെമ്മറി ലീക്ക് ആണ് പ്രധാന വില്ലൻ. സബ്സ്ക്രിപ്ഷനുകൾ ക്ലീൻ ചെയ്തില്ലെങ്കിൽ അത് റാം ഉപയോഗിച്ചുകൊണ്ടിരിക്കും. async പൈപ്പ് ഉപയോഗിക്കുന്നത് നല്ലതാണ്.`
           }
         })
       }
