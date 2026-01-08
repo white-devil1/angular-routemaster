@@ -19,7 +19,7 @@
 
 ---
 
-## ☁️ How to Publis h (Auto-Deploy)
+## ☁️ How to Publish (Auto-Deploy)
 
 This project uses **GitHub Actions** to build and deploy itself. You do not need to run build commands locally.
 
