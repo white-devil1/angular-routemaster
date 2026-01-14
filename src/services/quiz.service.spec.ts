@@ -92,7 +92,12 @@ describe('QuizService', () => {
 
   it('should reset state', () => {
     service.startQuiz('advanced');
-    service.score.set(50);
+    // FIX: The 'score' signal is computed and cannot be set directly via .set().
+    // To test the reset functionality, we first answer a question to get a non-zero score.
+    const question = service.currentQuestion();
+    if (question) {
+      service.submitAnswer(question.correctAnswer as string);
+    }
     
     service.reset();
     

@@ -43,7 +43,7 @@ import { TutorialService } from '../services/tutorial.service';
             <div class="p-8 bg-slate-50 border-b border-slate-200">
                <div class="flex justify-between mb-4">
                  <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide">
-                   Question {{quiz.currentQuestionIndex() + 1}}
+                   Question {{quiz.currentQuestionIndex() + 1}} of {{ quiz.totalQuestionsInLevel() }}
                  </span>
                  <span class="text-xs font-bold text-slate-400 uppercase">{{q.type}}</span>
                </div>
@@ -133,37 +133,66 @@ import { TutorialService } from '../services/tutorial.service';
 
         <!-- STATE: RESULT -->
         @if(quiz.quizState() === 'result') {
-          <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8 text-center animate-pop-in border border-slate-100 relative overflow-hidden">
+          @let scorePercent = quiz.scorePercentage();
+          <div class="max-w-lg w-full bg-white rounded-2xl shadow-2xl p-8 text-center animate-pop-in border border-slate-100 relative overflow-hidden">
              
-             <!-- SUCCESS -->
-             @if(quiz.score() >= 30) {
-               <div class="absolute inset-0 pointer-events-none">
-                  <!-- CSS Confetti dots -->
-                  <div class="absolute top-0 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-confetti-1"></div>
-                  <div class="absolute top-0 left-1/2 w-3 h-3 bg-blue-500 rounded-full animate-confetti-2"></div>
-                  <div class="absolute top-0 right-1/4 w-2 h-2 bg-green-500 rounded-full animate-confetti-3"></div>
-               </div>
-               
-               <div class="text-8xl mb-4 animate-bounce">🏆</div>
-               <h2 class="text-3xl font-black text-slate-800 mb-2">Excellent Work!</h2>
-               <p class="text-slate-500 mb-6">You've mastered the {{quiz.currentLevel()}} level.</p>
-             } 
-             
-             <!-- FAIL -->
-             @else {
-               <div class="text-8xl mb-4 animate-pulse grayscale">📉</div>
-               <h2 class="text-3xl font-black text-slate-800 mb-2">Needs Improvement</h2>
-               <p class="text-slate-500 mb-6">Review the tutorials and try again.</p>
-             }
+            <!-- Tier 4: 90-100% -->
+            @if (scorePercent >= 90) {
+              <div class="absolute inset-0 pointer-events-none">
+                <!-- Gold Confetti -->
+                <div class="absolute top-0 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-confetti-1"></div>
+                <div class="absolute top-0 left-1/2 w-3 h-3 bg-yellow-300 rounded-full animate-confetti-2"></div>
+                <div class="absolute top-0 right-1/4 w-2 h-2 bg-amber-400 rounded-full animate-confetti-3"></div>
+              </div>
+              <div class="text-8xl mb-4 animate-trophy-bounce">🏆</div>
+              <h2 class="text-3xl font-black text-amber-600 mb-2">Mastery!</h2>
+              <p class="text-slate-500 mb-6">You have an expert understanding of this topic.</p>
+            }
+            <!-- Tier 3: 70-89% -->
+            @else if (scorePercent >= 70) {
+              <div class="text-8xl mb-4 animate-star-pulse">✨</div>
+              <h2 class="text-3xl font-black text-indigo-600 mb-2">Excellent Work!</h2>
+              <p class="text-slate-500 mb-6">You have a strong grasp of the concepts.</p>
+            }
+            <!-- Tier 2: 40-69% -->
+            @else if (scorePercent >= 40) {
+              <div class="text-8xl mb-4 animate-thumbs-up">👍</div>
+              <h2 class="text-3xl font-black text-sky-600 mb-2">Good Effort!</h2>
+              <p class="text-slate-500 mb-6">You're on the right track. Keep studying!</p>
+            }
+            <!-- Tier 1: < 40% -->
+            @else {
+              <div class="text-8xl mb-4 animate-gentle-shake">📉</div>
+              <h2 class="text-3xl font-black text-slate-700 mb-2">Needs Improvement</h2>
+              <p class="text-slate-500 mb-6">Review the tutorials and try again.</p>
+            }
 
-             <div class="text-6xl font-black mb-2" [class.text-indigo-600]="quiz.score() >= 30" [class.text-gray-400]="quiz.score() < 30">
-                {{quiz.score()}}
-             </div>
-             <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Final Score</div>
+             <!-- Score Display -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <div class="text-6xl font-black text-slate-800">
+                  {{ scorePercent }}<span class="text-4xl text-slate-400">%</span>
+              </div>
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Final Score</div>
+              
+              <div class="flex justify-center divide-x divide-slate-200">
+                <div class="px-4">
+                  <div class="text-2xl font-bold text-green-600">{{ quiz.correctCount() }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-500">Correct</div>
+                </div>
+                <div class="px-4">
+                  <div class="text-2xl font-bold text-red-600">{{ quiz.totalQuestionsInLevel() - quiz.correctCount() }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-500">Incorrect</div>
+                </div>
+                 <div class="px-4">
+                  <div class="text-2xl font-bold text-slate-700">{{ quiz.score() }}</div>
+                  <div class="text-[10px] uppercase font-bold text-slate-500">Points</div>
+                </div>
+              </div>
+            </div>
 
-             <div class="flex gap-3 justify-center">
+             <div class="flex gap-3 justify-center mt-8">
                <button (click)="goHome()" class="px-6 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200">Exit</button>
-               <button (click)="retry()" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md hover:shadow-lg">Retry</button>
+               <button (click)="retry()" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md hover:shadow-lg">Retry Quiz</button>
              </div>
           </div>
         }
@@ -177,10 +206,23 @@ import { TutorialService } from '../services/tutorial.service';
     @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
     
-    @keyframes confettiFall { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(400px) rotate(360deg); opacity: 0; } }
+    /* Result Animations */
+    @keyframes confettiFall { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(500px) rotate(360deg); opacity: 0; } }
     .animate-confetti-1 { animation: confettiFall 2s linear infinite; }
     .animate-confetti-2 { animation: confettiFall 2.5s linear infinite 0.5s; }
     .animate-confetti-3 { animation: confettiFall 1.8s linear infinite 1s; }
+
+    @keyframes trophyBounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-20px) rotate(5deg) scale(1.1); } }
+    .animate-trophy-bounce { animation: trophyBounce 1s cubic-bezier(0.5, 0, 0.5, 1) infinite; }
+    
+    @keyframes starPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.8; } }
+    .animate-star-pulse { animation: starPulse 1.5s ease-in-out infinite; }
+    
+    @keyframes thumbsUp { 0%, 100% { transform: scale(1) rotate(0); } 25% { transform: scale(1.1) rotate(-10deg); } 75% { transform: scale(1.1) rotate(10deg); } }
+    .animate-thumbs-up { animation: thumbsUp 1.2s ease-in-out; }
+    
+    @keyframes gentleShake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+    .animate-gentle-shake { animation: gentleShake 0.4s ease-in-out; }
   `]
 })
 export class QuizComponent implements OnInit {
@@ -200,7 +242,7 @@ export class QuizComponent implements OnInit {
   }
 
   submit(answer: string) {
-    if (!answer) return;
+    if (!answer || this.quiz.showExplanation()) return;
     this.quiz.submitAnswer(answer);
   }
 
