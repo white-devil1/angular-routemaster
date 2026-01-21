@@ -6,64 +6,68 @@ import { AngularLogoComponent } from './svg/angular-logo.component';
   standalone: true,
   imports: [AngularLogoComponent],
   template: `
-    <div class="fixed inset-0 z-[100] bg-[#000000] flex items-center justify-center overflow-hidden">
+    <div class="fixed inset-0 z-[100] bg-slate-950 flex items-center justify-center font-sans">
       
-      <!-- === SCENE: THE ROUTING NETWORK === -->
-      <div class="relative w-[100vw] h-[100vh] flex items-center justify-center perspective-container">
+      <!-- BACKGROUND: Matrix-like data stream -->
+      <div class="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-indigo-500 to-transparent animate-rain"></div>
+        <div class="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent animate-rain delay-700"></div>
+        <div class="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-purple-500 to-transparent animate-rain delay-300"></div>
+      </div>
 
-        <!-- 1. Background Grid (The Web) -->
-        <div class="absolute inset-0 grid-floor opacity-20"></div>
-
-        <!-- 2. Connection Paths (The Routes) -->
-        <!-- Diagonal lines converging to center -->
-        <div class="absolute w-[140vmax] h-[2px] bg-slate-800 rotate-45 transform origin-center"></div>
-        <div class="absolute w-[140vmax] h-[2px] bg-slate-800 -rotate-45 transform origin-center"></div>
+      <!-- MAIN CONTAINER: The "Browser" Simulation -->
+      <div class="relative w-[90vw] max-w-[400px] flex flex-col gap-6 items-center">
         
-        <!-- 3. Moving Data Packets (Navigation Events) -->
-        <!-- Packet 1: Top-Left -> Center (Blue) -->
-        <div class="absolute top-1/2 left-1/2 w-32 h-[4px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_#22d3ee] z-10 packet-1"></div>
-        
-        <!-- Packet 2: Bottom-Right -> Center (Pink) -->
-        <div class="absolute top-1/2 left-1/2 w-32 h-[4px] bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent shadow-[0_0_15px_#d946ef] z-10 packet-2"></div>
-        
-        <!-- Packet 3: Top-Right -> Center (Yellow) -->
-        <div class="absolute top-1/2 left-1/2 w-32 h-[4px] bg-gradient-to-r from-transparent via-yellow-400 to-transparent shadow-[0_0_15px_#facc15] z-10 packet-3"></div>
-        
-        <!-- Packet 4: Bottom-Left -> Center (Green) -->
-        <div class="absolute top-1/2 left-1/2 w-32 h-[4px] bg-gradient-to-r from-transparent via-emerald-400 to-transparent shadow-[0_0_15px_#34d399] z-10 packet-4"></div>
-
-
-        <!-- 4. The Central "Router Outlet" (The Frame) -->
-        <div class="relative z-50">
-          
-          <!-- Outer Spinning Rings (Processing) -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-slate-700/50 rounded-full animate-spin-slow"></div>
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 border-t border-b border-indigo-500/30 rounded-full animate-spin-reverse"></div>
-
-          <!-- The Core Container -->
-          <div class="relative w-24 h-24 bg-[#0f172a] rounded-xl border border-slate-700 flex items-center justify-center shadow-2xl overflow-hidden core-container">
-            
-            <!-- Impact Flash (White screen overlay when packets hit) -->
-            <div class="absolute inset-0 bg-white z-50 impact-flash opacity-0"></div>
-            
-            <!-- Inner Glow -->
-            <div class="absolute inset-0 bg-indigo-900/20 core-glow"></div>
-
-            <!-- THE ANGULAR LOGO (Reveals at end) -->
-            <div class="w-14 h-14 relative z-20 logo-reveal opacity-0 scale-0">
-               <app-angular-logo></app-angular-logo>
-            </div>
-
-            <!-- Loading Spinner (Initial State) -->
-            <div class="absolute inset-0 border-2 border-indigo-500 border-t-transparent rounded-xl animate-spin z-10 initial-loader"></div>
+        <!-- 1. THE URL BAR (Visualizing the Route Request) -->
+        <div class="w-full bg-slate-900 rounded-lg border border-slate-700 p-3 flex items-center gap-3 shadow-2xl relative overflow-hidden group">
+          <!-- Traffic Lights -->
+          <div class="flex gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
           </div>
           
-          <!-- Final Shockwave -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-indigo-500 rounded-full opacity-0 shockwave"></div>
+          <!-- Address Field -->
+          <div class="flex-1 bg-slate-950/50 rounded h-6 flex items-center px-2 text-xs font-mono text-slate-400 overflow-hidden relative">
+            <span class="text-slate-600 mr-1">https://</span>
+            <span class="animate-typewriter text-indigo-400 font-bold whitespace-nowrap">angular-router/init...</span>
+            <span class="w-1.5 h-4 bg-indigo-500 animate-blink ml-0.5"></span>
+          </div>
 
+          <!-- Progress Bar (The Navigation) -->
+          <div class="absolute bottom-0 left-0 h-0.5 bg-indigo-500 animate-loading-bar"></div>
+        </div>
+
+        <!-- 2. THE ROUTER (Processing) -->
+        <div class="flex flex-col items-center gap-2 animate-fade-in-delayed">
+          <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest animate-pulse">Resolving Route...</div>
+          <div class="flex items-center gap-1 text-slate-600">
+             <div class="w-1 h-1 bg-slate-500 rounded-full animate-bounce"></div>
+             <div class="w-1 h-1 bg-slate-500 rounded-full animate-bounce delay-100"></div>
+             <div class="w-1 h-1 bg-slate-500 rounded-full animate-bounce delay-200"></div>
+          </div>
+        </div>
+
+        <!-- 3. THE OUTLET (Component Mounting) -->
+        <div class="relative w-32 h-32 flex items-center justify-center">
+           
+           <!-- The "Frame" appearing -->
+           <div class="absolute inset-0 border-2 border-dashed border-slate-700 rounded-xl animate-expand-frame"></div>
+           
+           <!-- The Logo (Component) Dropping In -->
+           <div class="w-20 h-20 animate-mount-component filter drop-shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+              <app-angular-logo></app-angular-logo>
+           </div>
+        </div>
+
+        <!-- 4. Text -->
+        <div class="text-center animate-slide-up-fade">
+           <h1 class="text-2xl font-bold text-white tracking-tight">RouteMaster</h1>
+           <p class="text-xs text-slate-500 mt-1">Initializing Application Shell</p>
         </div>
 
       </div>
+
     </div>
   `,
   styles: [`
@@ -71,137 +75,64 @@ import { AngularLogoComponent } from './svg/angular-logo.component';
 
     /* --- ANIMATIONS --- */
 
-    /* 1. Packets Traveling */
-    /* They start far away and converge to (0,0) center */
+    /* Typing Effect */
+    @keyframes typewriter {
+      0% { width: 0; opacity: 0; }
+      10% { opacity: 1; }
+      100% { width: 100%; opacity: 1; }
+    }
+    .animate-typewriter {
+      overflow: hidden;
+      display: inline-block;
+      width: 0;
+      animation: typewriter 1.5s steps(20, end) forwards 0.5s;
+    }
+
+    /* Cursor Blink */
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .animate-blink { animation: blink 0.8s infinite; }
+
+    /* Loading Bar */
+    @keyframes loadingBar { 0% { width: 0; } 50% { width: 70%; } 100% { width: 100%; } }
+    .animate-loading-bar { width: 0; animation: loadingBar 2.5s ease-in-out forwards; }
+
+    /* Frame Expansion */
+    @keyframes expandFrame {
+      0% { transform: scale(0.5); opacity: 0; border-color: #6366f1; }
+      50% { opacity: 1; border-color: #6366f1; }
+      100% { transform: scale(1); opacity: 0.2; border-color: #334155; }
+    }
+    .animate-expand-frame { animation: expandFrame 1.5s ease-out forwards 1.5s; opacity: 0; }
+
+    /* Component Mounting (Drop in) */
+    @keyframes mountComponent {
+      0% { transform: scale(0) translateY(-50px); opacity: 0; }
+      60% { transform: scale(1.1) translateY(0); opacity: 1; }
+      100% { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .animate-mount-component { animation: mountComponent 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 2s; opacity: 0; }
+
+    /* General Fades */
+    .animate-fade-in-delayed { animation: fadeIn 0.5s ease-out forwards 1s; opacity: 0; }
+    .animate-slide-up-fade { animation: slideUpFade 0.8s ease-out forwards 2.5s; opacity: 0; }
     
-    .packet-1 {
-      /* Top-Left (-100vw, -100vh) to Center */
-      transform-origin: center right;
-      animation: travel-tl 2.5s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
-    }
-    @keyframes travel-tl {
-      0% { transform: translate(-100vw, -100vh) rotate(45deg) scaleX(1); opacity: 0; }
-      10% { opacity: 1; }
-      80% { transform: translate(-50px, -50px) rotate(45deg) scaleX(0.5); opacity: 1; }
-      100% { transform: translate(0, 0) rotate(45deg) scaleX(0); opacity: 0; }
-    }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUpFade { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-    .packet-2 {
-      /* Bottom-Right (100vw, 100vh) to Center */
-      transform-origin: center left;
-      animation: travel-br 2.5s cubic-bezier(0.1, 0.7, 0.1, 1) forwards 0.2s;
-      opacity: 0;
-    }
-    @keyframes travel-br {
-      0% { transform: translate(100vw, 100vh) rotate(45deg) scaleX(1); opacity: 0; }
-      10% { opacity: 1; }
-      80% { transform: translate(50px, 50px) rotate(45deg) scaleX(0.5); opacity: 1; }
-      100% { transform: translate(0, 0) rotate(45deg) scaleX(0); opacity: 0; }
-    }
-
-    .packet-3 {
-      /* Top-Right (100vw, -100vh) to Center */
-      transform-origin: center right;
-      animation: travel-tr 2.5s cubic-bezier(0.1, 0.7, 0.1, 1) forwards 0.5s;
-      opacity: 0;
-    }
-    @keyframes travel-tr {
-      0% { transform: translate(100vw, -100vh) rotate(-45deg) scaleX(1); opacity: 0; }
-      10% { opacity: 1; }
-      80% { transform: translate(50px, -50px) rotate(-45deg) scaleX(0.5); opacity: 1; }
-      100% { transform: translate(0, 0) rotate(-45deg) scaleX(0); opacity: 0; }
-    }
-
-    .packet-4 {
-      /* Bottom-Left (-100vw, 100vh) to Center */
-      transform-origin: center left;
-      animation: travel-bl 2.5s cubic-bezier(0.1, 0.7, 0.1, 1) forwards 0.8s;
-      opacity: 0;
-    }
-    @keyframes travel-bl {
-      0% { transform: translate(-100vw, 100vh) rotate(-45deg) scaleX(1); opacity: 0; }
-      10% { opacity: 1; }
-      80% { transform: translate(-50px, 50px) rotate(-45deg) scaleX(0.5); opacity: 1; }
-      100% { transform: translate(0, 0) rotate(-45deg) scaleX(0); opacity: 0; }
-    }
-
-    /* 2. Core Reaction */
-    .core-container {
-      animation: core-shake 3s linear forwards;
-    }
-    @keyframes core-shake {
-      0%, 80% { transform: scale(1); border-color: #334155; } /* Slate 700 */
-      85% { transform: scale(1.1); border-color: #6366f1; box-shadow: 0 0 30px #6366f1; } /* Hit 1 */
-      90% { transform: scale(1.15); border-color: #d946ef; box-shadow: 0 0 40px #d946ef; } /* Hit 2 */
-      95% { transform: scale(1.2); border-color: #ffffff; box-shadow: 0 0 60px #ffffff; background: #fff; } /* Overload */
-      100% { transform: scale(1.5); border-color: #ffffff; background: #0f172a; } /* Stabilize */
-    }
-
-    /* 3. Impact Flashes */
-    .impact-flash {
-      animation: flash-sequence 3s linear forwards;
-    }
-    @keyframes flash-sequence {
-      0%, 80% { opacity: 0; }
-      82% { opacity: 0.8; } /* Hit 1 */
-      84% { opacity: 0; }
-      88% { opacity: 0.8; } /* Hit 2 */
-      90% { opacity: 0; }
-      96% { opacity: 1; } /* Explosion */
-      100% { opacity: 0; }
-    }
-
-    /* 4. Initial Loader (Disappears when Logo Appears) */
-    .initial-loader {
-      animation: spin 1s linear infinite, fade-out-loader 0.2s linear forwards 2.8s;
-    }
-    @keyframes fade-out-loader {
-      to { opacity: 0; border-width: 0; }
-    }
-
-    /* 5. Logo Reveal (Final) */
-    .logo-reveal {
-      animation: logo-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 3s;
-    }
-    @keyframes logo-pop {
-      from { opacity: 0; transform: scale(0); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    /* 6. Shockwave (Final Transition) */
-    .shockwave {
-      animation: expand-wave 0.8s ease-out forwards 3s;
-    }
-    @keyframes expand-wave {
-      0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); border: 2px solid white; }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(30); border: 0px solid white; }
-    }
-
-    /* Utility Animations */
-    .animate-spin-slow { animation: spin 10s linear infinite; }
-    .animate-spin-reverse { animation: spin 15s linear infinite reverse; }
-    @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
-
-    /* Grid Background */
-    .grid-floor {
-      background-image: 
-        linear-gradient(rgba(51, 65, 85, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(51, 65, 85, 0.3) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
+    /* Background Rain */
+    @keyframes rain { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+    .animate-rain { animation: rain 3s linear infinite; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-700 { animation-delay: 0.7s; }
   `]
 })
 export class SplashScreenComponent implements OnInit {
   finished = output<void>();
 
   ngOnInit() {
-    // Total animation sequence is roughly 3.5s
-    // 0-2.5s: Packets travel
-    // 3.0s: Explosion/Logo Reveal
-    // 3.5s: Stabilize
-    // 4.0s: Emit Finish
+    // Sequence duration ~ 3.5s
     setTimeout(() => {
       this.finished.emit();
-    }, 4000);
+    }, 3800);
   }
 }

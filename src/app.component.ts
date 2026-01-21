@@ -1,5 +1,5 @@
 
-import { Component, signal, inject, computed, effect } from '@angular/core';
+import { Component, signal, inject, computed, effect, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 import { TutorialService } from './services/tutorial.service';
@@ -37,9 +37,14 @@ import { filter } from 'rxjs/operators';
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    
+    /* Sidebar Transition */
+    .sidebar-transition {
+      transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
   `]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   tutorial = inject(TutorialService);
   speech = inject(SpeechService);
   langService = inject(LanguageService);
@@ -53,8 +58,11 @@ export class AppComponent {
   currentUrlStr = signal('/');
   showCode = signal(false);
   isSpeaking = this.speech.isSpeaking;
-  isSidebarOpen = signal(false); // Mobile sidebar state
-  isPlaygroundOpen = signal(false); // Toggle between Tutorial and Playground
+  
+  // UI State
+  isSidebarOpen = signal(true); 
+  isPlaygroundOpen = signal(false); 
+  isMobile = signal(false);
 
   // React to lesson changes to stop speech
   constructor() {
@@ -62,8 +70,10 @@ export class AppComponent {
       filter(e => e instanceof NavigationEnd)
     ).subscribe((e: any) => {
       this.currentUrlStr.set(e.urlAfterRedirects);
-      // Close sidebar on mobile navigation
-      this.isSidebarOpen.set(false);
+      // Close sidebar on mobile navigation automatically, keep open on desktop
+      if (this.isMobile()) {
+        this.isSidebarOpen.set(false);
+      }
     });
     
     // Auto-stop speech when changing lessons
@@ -71,6 +81,33 @@ export class AppComponent {
       const step = this.tutorial.currentStep(); // Dependency
       this.speech.stop();
     });
+  }
+
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    // Determine if mobile (portrait or narrow width)
+    const width = window.innerWidth;
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const wasMobile = this.isMobile();
+    
+    this.isMobile.set(width < 768 || (width < 1024 && isPortrait));
+
+    // Reset layout defaults only if the mode actually changed (prevent jarring resets)
+    if (this.isMobile() !== wasMobile) {
+      if (this.isMobile()) {
+        this.isSidebarOpen.set(false); // Default close on mobile
+      } else {
+        this.isSidebarOpen.set(true); // Default open on desktop
+      }
+    }
   }
 
   // --- Actions ---
@@ -81,15 +118,16 @@ export class AppComponent {
 
   startTutorial() {
     // RESET ALL STATE FOR A FRESH SESSION
-    // 1. Reset Internal Services
     this.quiz.reset();
     this.interview.reset();
     
-    // 2. Hide Landing Page
     this.showLandingPage.set(false);
     this.isPlaygroundOpen.set(false);
+    
+    // Set proper sidebar state
+    this.isSidebarOpen.set(!this.isMobile());
 
-    // 3. Force clean navigation
+    // Force clean navigation
     this.router.navigate(['/home', { outlets: { left: null, right: null } }]);
   }
 
@@ -107,7 +145,16 @@ export class AppComponent {
   }
 
   togglePlayground() {
-    this.isPlaygroundOpen.update(v => !v);
+    const newState = !this.isPlaygroundOpen();
+    this.isPlaygroundOpen.set(newState);
+
+    if (newState) {
+      // Focus Mode: Hide Sidebar when entering playground
+      this.isSidebarOpen.set(false);
+    } else {
+      // Restore Mode: Show Sidebar if desktop, else keep closed
+      this.isSidebarOpen.set(!this.isMobile());
+    }
   }
 
   toggleSpeech() {
@@ -125,9 +172,10 @@ export class AppComponent {
     if (url.includes('quiz') || url.includes('interview')) {
       this.router.navigate(['/home']);
     }
-    this.isSidebarOpen.set(false);
-    // Optional: Reset to reading mode when changing steps?
-    // this.isPlaygroundOpen.set(false); 
+    
+    if (this.isMobile()) {
+      this.isSidebarOpen.set(false);
+    }
   }
 
   // --- Visualization Helpers ---
