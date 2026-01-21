@@ -6,7 +6,8 @@
   <base href="/angular-routemaster/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="/manifest.json">
+  <!-- Path updated to src/manifest.json -->
+  <link rel="manifest" href="src/manifest.json">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Custom Scrollbar for log area */
@@ -54,7 +55,8 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        // Path updated to src/sw.js
+        navigator.serviceWorker.register('src/sw.js')
           .then(registration => {
             console.log('SW registered: ', registration);
           })
@@ -64,5 +66,5 @@
       });
     }
   </script>
-<script src="main-IXX7EJ3U.js" type="module"></script></body>
+<script src="main-ZYY3ZLCZ.js" type="module"></script></body>
 </html>
