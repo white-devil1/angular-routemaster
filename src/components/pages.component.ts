@@ -1,5 +1,6 @@
+
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, ParamMap } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
@@ -74,8 +75,8 @@ export class SettingsPageComponent {}
   styles: [`:host { display: block; height: 100%; } .animate-fade-in { animation: fadeIn 0.5s; } @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }`]
 })
 export class UserPageComponent {
-  private route = inject(ActivatedRoute);
-  userId = toSignal(this.route.paramMap.pipe(map(params => params.get('id'))));
+  private route: ActivatedRoute = inject(ActivatedRoute);
+  userId = toSignal(this.route.paramMap.pipe(map((params: ParamMap) => params.get('id'))));
 }
 
 // --- NEW COMPONENT FOR WILDCARD / 404 ---

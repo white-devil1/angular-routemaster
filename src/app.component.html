@@ -1,337 +1,357 @@
-@if (showLandingPage()) {
-  <app-landing-page (start)="startTutorial()"></app-landing-page>
+@if (showSplash()) {
+  <app-splash-screen (finished)="onSplashFinish()"></app-splash-screen>
 } @else {
-  <!-- APP CONTAINER -->
-  <div class="flex h-[100dvh] overflow-hidden font-sans landing-bg-flow text-slate-200 selection:bg-pink-500 selection:text-white">
 
-    <!-- === MOBILE BACKDROP === -->
-    @if(isSidebarOpen()) {
-      <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 md:hidden animate-fade-in" (click)="toggleSidebar()"></div>
-    }
+  @if (showLandingPage()) {
+    <app-landing-page (start)="startTutorial()"></app-landing-page>
+  } @else {
+    <!-- APP CONTAINER -->
+    <div class="flex h-[100dvh] overflow-hidden font-sans landing-bg-flow text-slate-200 selection:bg-pink-500 selection:text-white relative">
 
-    <!-- === SIDEBAR === -->
-    <aside class="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-slate-900 border-r border-white/10 flex flex-col shadow-2xl transform transition-transform duration-300 md:relative md:translate-x-0 md:shadow-none"
-           [class.-translate-x-full]="!isSidebarOpen()"
-           [class.translate-x-0]="isSidebarOpen()">
-        <!-- Header -->
-        <div class="p-5 bg-slate-950 text-white flex flex-col gap-3 relative overflow-hidden shrink-0 border-b border-white/5">
-             <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-             
-             <div class="flex justify-between items-start relative z-10">
-               <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 flex items-center justify-center filter drop-shadow-lg">
-                    <app-angular-logo></app-angular-logo>
-                  </div>
-                  <div>
-                    <h1 class="font-bold text-sm leading-tight uppercase tracking-wider text-slate-200">Classroom</h1>
-                    <p class="text-[10px] font-bold text-indigo-300 bg-indigo-900/30 px-2 py-0.5 rounded-full w-fit mt-1 border border-indigo-500/30">
-                      {{ tutorial.currentLevel() | titlecase }}
-                    </p>
-                  </div>
-               </div>
-               <button class="md:hidden text-slate-400 hover:text-white transition-colors" (click)="toggleSidebar()">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-               </button>
-             </div>
-             
-             <button (click)="goBack()" class="mt-2 w-full py-2 px-3 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-medium text-center border border-white/10 transition-colors flex items-center justify-center gap-2 group text-slate-300">
-                <span class="group-hover:-translate-x-1 transition-transform">⬅️</span> Exit Class
-             </button>
-        </div>
+      <!-- === MOBILE BACKDROP (Closes Sidebar) === -->
+      @if(isSidebarOpen()) {
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 md:hidden animate-fade-in cursor-pointer" 
+             (click)="toggleSidebar()"></div>
+      }
 
-        <!-- Modules List -->
-        <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-900 pb-20">
-            <!-- EXAM SECTION -->
-            <div class="py-2 border-b border-white/5 mb-2">
-              <h3 class="px-5 py-2 text-[10px] font-black text-indigo-400 uppercase tracking-widest">Assessment</h3>
-              <div class="flex flex-col gap-1 px-2">
-                <a routerLink="/quiz" routerLinkActive="bg-indigo-600/20 text-indigo-300 border border-indigo-500/30" class="px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all hover:bg-white/5 group text-slate-400 border border-transparent">
-                  <div class="w-6 h-6 rounded-md bg-indigo-900/50 text-indigo-400 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">📝</div>
-                  <span class="group-hover:text-slate-200 transition-colors">Take Quiz</span>
-                </a>
-                <a routerLink="/interview" routerLinkActive="bg-purple-600/20 text-purple-300 border border-purple-500/30" class="px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all hover:bg-white/5 group text-slate-400 border border-transparent">
-                  <div class="w-6 h-6 rounded-md bg-purple-900/50 text-purple-400 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">🤝</div>
-                  <span class="group-hover:text-slate-200 transition-colors">Interview Q&A</span>
-                </a>
-              </div>
-            </div>
-
-            @for(group of tutorial.modules(); track group[0]) {
-              <div class="py-2">
-                <h3 class="px-5 py-1 text-[10px] font-black text-slate-500 uppercase tracking-widest">{{ group[0] }}</h3>
-                <div class="flex flex-col gap-0.5 px-2">
-                  @for(step of group[1]; track step.id) {
-                    <button (click)="selectStep(step.id - 1)"
-                            class="relative px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all w-full border border-transparent"
-                            [class.bg-white/10]="tutorial.currentStep().id === step.id"
-                            [class.text-white]="tutorial.currentStep().id === step.id"
-                            [class.border-white/10]="tutorial.currentStep().id === step.id"
-                            [class.text-slate-400]="tutorial.currentStep().id !== step.id"
-                            [class.hover:bg-white/5]="tutorial.currentStep().id !== step.id"
-                            [class.hover:text-slate-300]="tutorial.currentStep().id !== step.id">
-                      
-                      @if(tutorial.currentStep().id === step.id) {
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-1 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
-                      }
-
-                      <div class="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold transition-colors shrink-0"
-                          [class.bg-indigo-600]="tutorial.currentStep().id === step.id"
-                          [class.text-white]="tutorial.currentStep().id === step.id"
-                          [class.bg-slate-800]="tutorial.currentStep().id !== step.id"
-                          [class.text-slate-500]="tutorial.currentStep().id !== step.id">
-                        {{ step.id }}
-                      </div>
-                      <span class="truncate leading-tight">{{ step.title }}</span>
-                    </button>
-                  }
-                </div>
-              </div>
-            }
-        </div>
-    </aside>
-
-    <!-- === MAIN AREA === -->
-    <main class="flex-1 flex flex-col min-w-0 bg-transparent relative h-full overflow-hidden">
-
-        <!-- MODE: QUIZ / INTERVIEW (Full Scroll) -->
-        @if(router.url.includes('quiz') || router.url.includes('interview')) {
-             <div class="flex-1 overflow-y-auto custom-scrollbar p-4 relative">
-                 <button class="md:hidden absolute top-4 right-4 z-50 p-2 bg-slate-800 rounded-full text-white shadow-lg" (click)="toggleSidebar()">
-                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                 </button>
-                 <router-outlet></router-outlet>
-             </div>
-        } 
-        <!-- MODE: CLASSROOM (Split View) -->
-        @else {
-            
-            <!-- 1. TOP: INSTRUCTIONS (Fixed Height, Scrollable) -->
-            <div class="shrink-0 max-h-[40vh] overflow-y-auto custom-scrollbar bg-slate-900/20 backdrop-blur-md border-b border-white/10 relative z-20">
-                <div class="max-w-6xl mx-auto p-4 md:p-6 flex flex-col md:flex-row gap-4 md:gap-6 md:items-start">
-                   
-                   <!-- Mobile Header -->
-                   <div class="flex items-center justify-between md:hidden w-full shrink-0">
-                      <div class="flex items-center gap-3">
-                        <button class="p-2 -ml-2 text-slate-300 hover:bg-white/10 rounded-lg transition-colors" (click)="toggleSidebar()">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                        </button>
-                        <span class="font-bold text-white">Part {{tutorial.currentStep().id}}</span>
-                      </div>
-                      <div class="flex gap-2">
-                         <button (click)="toggleSpeech()" class="p-2 rounded-full bg-white/10 text-white">
-                           @if(isSpeaking()) { 🔊 } @else { 🔈 }
-                         </button>
-                      </div>
-                   </div>
-
-                   <!-- Desktop Avatar -->
-                   <div class="hidden md:flex flex-col items-center gap-2 shrink-0">
-                     <div class="w-12 h-12 rounded-full bg-slate-800 border-2 border-indigo-500/50 shadow-lg flex items-center justify-center text-xl relative">
-                        <div class="absolute inset-0 bg-indigo-500/20 rounded-full animate-pulse"></div>
-                       @if(tutorial.currentLevel() === 'professional' || tutorial.currentLevel() === 'advanced') { 🏛️ }
-                       @else { 👩‍🏫 }
-                     </div>
-                     <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest bg-indigo-900/50 px-2 py-0.5 rounded-full border border-indigo-500/30">Teacher</span>
-                   </div>
-
-                   <!-- Content -->
-                   <div class="flex-1 min-w-0">
-                      <!-- Desktop Title -->
-                      <div class="hidden md:flex justify-between items-start mb-2">
-                         <div>
-                           <span class="text-[10px] font-bold text-white bg-indigo-600 px-2 py-0.5 rounded shadow-lg shadow-indigo-900/50 mb-1 inline-block">Lesson {{tutorial.currentStep().id}}</span>
-                           <h2 class="text-xl font-bold text-white tracking-tight drop-shadow-md">
-                             {{ tutorial.currentStep().title }}
-                           </h2>
-                         </div>
-                         <div class="flex gap-2">
-                            <button (click)="toggleSpeech()" 
-                                    [class.bg-indigo-500]="isSpeaking()"
-                                    [class.text-white]="isSpeaking()"
-                                    class="p-2 rounded-lg hover:bg-white/10 text-slate-300 transition-colors border border-white/10 bg-slate-800/50" title="Read Aloud">
-                              @if(isSpeaking()) { 🔊 } @else { 🔈 }
-                            </button>
-                            <button (click)="toggleCode()" 
-                                    [class.bg-amber-500]="showCode()"
-                                    [class.text-white]="showCode()"
-                                    [class.border-amber-400]="showCode()"
-                                    class="px-3 py-2 rounded-lg hover:bg-white/10 text-slate-300 text-xs font-bold transition-colors border border-white/10 bg-slate-800/50 flex items-center gap-2">
-                              <!-- ESCAPED BRACES HERE: HTML Entities are safer than interpolation for { } -->
-                              <span>&#123; &#125;</span> Code
-                            </button>
-                         </div>
-                      </div>
-
-                      <div class="prose prose-sm prose-invert max-w-none text-slate-300 leading-relaxed" 
-                           [innerHTML]="tutorial.currentStep().content"></div>
-                      
-                      @if(showCode()) {
-                         <div class="mt-4 p-4 bg-slate-950 rounded-lg border border-amber-500/30 relative group animate-slide-down">
-                            <div class="absolute top-2 right-2 text-[10px] font-mono text-slate-500 uppercase">TypeScript / HTML</div>
-                            <pre class="font-mono text-sm text-amber-100 overflow-x-auto whitespace-pre-wrap">{{ tutorial.currentStep().codeSnippet }}</pre>
-                         </div>
-                      }
-                   </div>
-                </div>
-            </div>
-
-            <!-- 2. BOTTOM: PLAYGROUND (Flex Grow) -->
-            <div class="flex-1 relative bg-slate-900/50 flex flex-col overflow-hidden pb-24">
-                
-                <!-- URL Bar Simulation -->
-                <div class="shrink-0 p-4 border-b border-white/5 bg-slate-900/80 backdrop-blur-sm z-10 flex justify-center">
-                   <div class="w-full max-w-3xl flex items-center gap-2 bg-slate-950 rounded-lg p-1.5 border border-slate-700 shadow-inner"
-                        [class.ring-2]="shouldDim('url')" [class.ring-pink-500]="shouldDim('url')">
-                      <div class="flex gap-1.5 px-2">
-                         <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                         <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                         <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                      </div>
-                      
-                      <div class="flex-1 bg-slate-900 rounded px-3 py-1.5 text-xs md:text-sm font-mono text-slate-400 flex items-center overflow-hidden">
-                        <span class="text-slate-600 mr-1">localhost:4200/</span>
-                        
-                        <span class="text-indigo-400 font-bold animate-pulse">{{ parsedUrl().primary }}</span>
-                        
-                        @if(parsedUrl().id) {
-                          <span class="text-fuchsia-400 font-bold">/{{ parsedUrl().id }}</span>
-                        }
-                        
-                        @if(parsedUrl().left) {
-                           <span class="text-slate-500">(<span class="text-green-400">left:{{ parsedUrl().left }}</span>)</span>
-                        }
-                        @if(parsedUrl().right) {
-                           <span class="text-slate-500">(<span class="text-orange-400">right:{{ parsedUrl().right }}</span>)</span>
-                        }
-                      </div>
-                      <div class="px-2 text-slate-500 text-xs">↻</div>
-                   </div>
-                </div>
-
-                <!-- ROUTER OUTLET VISUALIZER -->
-                <div class="flex-1 overflow-y-auto custom-scrollbar p-4 flex flex-col items-center">
-                    
-                    <div class="w-full max-w-5xl h-full grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch content-center">
-                       
-                       <!-- LEFT OUTLET -->
-                       <div class="hidden lg:block lg:col-span-1 rounded-xl border-2 border-dashed border-green-500/30 bg-green-900/10 p-2 relative min-h-[200px]"
-                            [class.ring-4]="shouldDim('left')" [class.ring-green-500]="shouldDim('left')">
-                          <div class="absolute -top-3 left-4 bg-slate-900 px-2 text-[10px] font-mono text-green-500 border border-green-500/30 rounded">outlet="left"</div>
-                          <router-outlet name="left"></router-outlet>
-                          @if(!parsedUrl().left) {
-                            <div class="h-full flex items-center justify-center text-green-500/30 text-xs text-center p-4">
-                              (Empty)<br>Use controls below to load content here
-                            </div>
-                          }
-                       </div>
-
-                       <!-- PRIMARY OUTLET -->
-                       <div class="col-span-1 lg:col-span-2 rounded-xl border-4 border-indigo-500/50 bg-slate-950 shadow-2xl overflow-hidden relative min-h-[300px] flex flex-col"
-                            [class.ring-4]="shouldDim('primary')" [class.ring-indigo-500]="shouldDim('primary')">
-                          <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-                          <div class="absolute top-2 right-2 bg-slate-900/80 px-2 py-1 rounded text-[10px] font-mono text-indigo-300 border border-indigo-500/30 backdrop-blur-md z-10">
-                            &lt;router-outlet&gt;
-                          </div>
-                          
-                          <div class="flex-1 p-1 relative">
-                             <!-- The actual Angular Router Outlet -->
-                             <router-outlet></router-outlet>
-                          </div>
-                       </div>
-
-                       <!-- RIGHT OUTLET -->
-                       <div class="hidden lg:block lg:col-span-1 rounded-xl border-2 border-dashed border-orange-500/30 bg-orange-900/10 p-2 relative min-h-[200px]"
-                            [class.ring-4]="shouldDim('right')" [class.ring-orange-500]="shouldDim('right')">
-                          <div class="absolute -top-3 right-4 bg-slate-900 px-2 text-[10px] font-mono text-orange-500 border border-orange-500/30 rounded">outlet="right"</div>
-                          <router-outlet name="right"></router-outlet>
-                          @if(!parsedUrl().right) {
-                            <div class="h-full flex items-center justify-center text-orange-500/30 text-xs text-center p-4">
-                              (Empty)<br>Load auxiliary routes
-                            </div>
-                          }
-                       </div>
-
+      <!-- === SIDEBAR (Drawer on Mobile, Column on Desktop) === -->
+      <aside class="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-slate-900 border-r border-white/10 flex flex-col shadow-2xl transition-transform duration-300 ease-out md:relative md:translate-x-0 md:shadow-none"
+             [class.-translate-x-full]="!isSidebarOpen()"
+             [class.translate-x-0]="isSidebarOpen()">
+          
+          <!-- Sidebar Header -->
+          <div class="p-5 bg-slate-950 text-white flex flex-col gap-3 relative overflow-hidden shrink-0 border-b border-white/5">
+               <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+               
+               <div class="flex justify-between items-start relative z-10">
+                 <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 flex items-center justify-center filter drop-shadow-lg">
+                      <app-angular-logo></app-angular-logo>
                     </div>
+                    <div>
+                      <h1 class="font-bold text-sm leading-tight uppercase tracking-wider text-slate-200">Classroom</h1>
+                      <p class="text-[10px] font-bold text-indigo-300 bg-indigo-900/30 px-2 py-0.5 rounded-full w-fit mt-1 border border-indigo-500/30">
+                        {{ tutorial.currentLevel() | titlecase }}
+                      </p>
+                    </div>
+                 </div>
+                 <!-- Close Button (Mobile Only) -->
+                 <button class="md:hidden text-slate-400 hover:text-white transition-colors p-1" (click)="toggleSidebar()">
+                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                 </button>
+               </div>
+               
+               <button (click)="goBack()" class="mt-2 w-full py-2 px-3 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-medium text-center border border-white/10 transition-colors flex items-center justify-center gap-2 group text-slate-300">
+                  <span class="group-hover:-translate-x-1 transition-transform">⬅️</span> Exit Class
+               </button>
+          </div>
 
+          <!-- Modules List -->
+          <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-900 pb-20">
+              <!-- EXAM SECTION -->
+              <div class="py-2 border-b border-white/5 mb-2">
+                <h3 class="px-5 py-2 text-[10px] font-black text-indigo-400 uppercase tracking-widest">Assessment</h3>
+                <div class="flex flex-col gap-1 px-2">
+                  <a routerLink="/quiz" routerLinkActive="bg-indigo-600/20 text-indigo-300 border border-indigo-500/30" class="px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all hover:bg-white/5 group text-slate-400 border border-transparent">
+                    <div class="w-6 h-6 rounded-md bg-indigo-900/50 text-indigo-400 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">📝</div>
+                    <span class="group-hover:text-slate-200 transition-colors">Take Quiz</span>
+                  </a>
+                  <a routerLink="/interview" routerLinkActive="bg-purple-600/20 text-purple-300 border border-purple-500/30" class="px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all hover:bg-white/5 group text-slate-400 border border-transparent">
+                    <div class="w-6 h-6 rounded-md bg-purple-900/50 text-purple-400 flex items-center justify-center text-xs group-hover:scale-110 transition-transform">🤝</div>
+                    <span class="group-hover:text-slate-200 transition-colors">Interview Q&A</span>
+                  </a>
                 </div>
+              </div>
 
-                <!-- CONTROLS FOOTER (Floating) -->
-                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl bg-slate-800/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-3 z-30 animate-slide-up flex flex-col gap-2">
-                   
-                   <!-- Navigation Buttons -->
-                   <div class="flex flex-wrap items-center justify-center gap-2">
-                      <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-2 hidden md:block">Primary</div>
-                      
-                      <a routerLink="/home" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent" [routerLinkActiveOptions]="{exact:true}" 
-                         class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
-                         Home
-                      </a>
-                      <a routerLink="/dashboard" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent"
-                         class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
-                         Dash
-                      </a>
-                      <a routerLink="/settings" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent"
-                         class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
-                         Set
-                      </a>
+              <!-- TUTORIAL MODULES -->
+              @for(group of tutorial.modules(); track group[0]) {
+                <div class="py-2">
+                  <h3 class="px-5 py-1 text-[10px] font-black text-slate-500 uppercase tracking-widest">{{ group[0] }}</h3>
+                  <div class="flex flex-col gap-0.5 px-2">
+                    @for(step of group[1]; track step.id) {
+                      <button (click)="selectStep(step.id - 1)"
+                              class="relative px-3 py-2.5 rounded-lg text-left text-xs font-medium flex items-center gap-3 transition-all w-full border border-transparent"
+                              [class.bg-white/10]="tutorial.currentStep().id === step.id"
+                              [class.text-white]="tutorial.currentStep().id === step.id"
+                              [class.border-white/10]="tutorial.currentStep().id === step.id"
+                              [class.text-slate-400]="tutorial.currentStep().id !== step.id"
+                              [class.hover:bg-white/5]="tutorial.currentStep().id !== step.id"
+                              [class.hover:text-slate-300]="tutorial.currentStep().id !== step.id">
+                        
+                        @if(tutorial.currentStep().id === step.id) {
+                          <div class="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-1 bg-indigo-500 rounded-r-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+                        }
 
-                      <div class="w-px h-6 bg-white/10 mx-2"></div>
-                      
-                      <!-- Params -->
-                      <a routerLink="/user/1" routerLinkActive="bg-fuchsia-600 text-white border-transparent"
-                         class="px-3 py-2 rounded-lg bg-slate-700 text-fuchsia-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600">
-                         User 1
-                      </a>
-                      <a routerLink="/user/99" routerLinkActive="bg-fuchsia-600 text-white border-transparent"
-                         class="px-3 py-2 rounded-lg bg-slate-700 text-fuchsia-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600">
-                         User 99
-                      </a>
-                   </div>
-
-                   <!-- Secondary Controls -->
-                   <div class="flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-white/5">
-                      <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-2 hidden md:block">Auxiliary</div>
-                      
-                      <!-- Left Outlet Controls -->
-                      <div class="flex gap-1">
-                          <a [routerLink]="[{ outlets: { left: 'menu' } }]" 
-                             routerLinkActive="bg-green-600/20 text-green-300 border-green-500/50"
-                             class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-green-300">
-                             + Menu (L)
-                          </a>
-                          <a [routerLink]="[{ outlets: { left: 'ads' } }]"
-                             routerLinkActive="bg-green-600/20 text-green-300 border-green-500/50"
-                             class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-green-300">
-                             + Ads (L)
-                          </a>
-                          <a [routerLink]="[{ outlets: { left: null } }]" class="px-2 py-1.5 rounded bg-red-900/20 text-red-400 border border-red-500/30 hover:bg-red-900/40 text-[10px]">✕</a>
-                      </div>
-
-                      <div class="w-px h-4 bg-white/10 mx-1"></div>
-
-                      <!-- Right Outlet Controls -->
-                      <div class="flex gap-1">
-                          <a [routerLink]="[{ outlets: { right: 'help' } }]" 
-                             routerLinkActive="bg-orange-600/20 text-orange-300 border-orange-500/50"
-                             class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-orange-300">
-                             + Help (R)
-                          </a>
-                          <a [routerLink]="[{ outlets: { right: 'notes' } }]"
-                             routerLinkActive="bg-orange-600/20 text-orange-300 border-orange-500/50"
-                             class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-orange-300">
-                             + Notes (R)
-                          </a>
-                          <a [routerLink]="[{ outlets: { right: null } }]" class="px-2 py-1.5 rounded bg-red-900/20 text-red-400 border border-red-500/30 hover:bg-red-900/40 text-[10px]">✕</a>
-                      </div>
-                      
-                      <div class="ml-auto">
-                        <a routerLink="/broken-link-404" class="px-2 py-1 text-[10px] text-red-400 hover:underline">Err: Broken Link</a>
-                      </div>
-                   </div>
+                        <div class="w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-bold transition-colors shrink-0"
+                            [class.bg-indigo-600]="tutorial.currentStep().id === step.id"
+                            [class.text-white]="tutorial.currentStep().id === step.id"
+                            [class.bg-slate-800]="tutorial.currentStep().id !== step.id"
+                            [class.text-slate-500]="tutorial.currentStep().id !== step.id">
+                          {{ step.id }}
+                        </div>
+                        <span class="truncate leading-tight">{{ step.title }}</span>
+                      </button>
+                    }
+                  </div>
                 </div>
+              }
+          </div>
+      </aside>
 
-            </div>
-        }
-    </main>
-  </div>
+      <!-- === MAIN AREA === -->
+      <main class="flex-1 flex flex-col min-w-0 bg-transparent relative h-full overflow-hidden">
+
+          <!-- MODE A: QUIZ / INTERVIEW (Full Scroll, Mobile Friendly) -->
+          @if(router.url.includes('quiz') || router.url.includes('interview')) {
+               <div class="flex-1 overflow-y-auto custom-scrollbar p-4 relative">
+                   <button class="md:hidden absolute top-4 right-4 z-50 p-2 bg-slate-800/80 backdrop-blur rounded-full text-white shadow-lg border border-white/10" (click)="toggleSidebar()">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                   </button>
+                   <router-outlet></router-outlet>
+               </div>
+          } 
+          <!-- MODE B: CLASSROOM (Responsive Split View) -->
+          @else {
+              
+              <!-- 1. TOP: INSTRUCTIONS -->
+              <!-- ON MOBILE: grows to full height (h-full). ON DESKTOP: fixed height (max-h-[40vh]) -->
+              <div class="flex-1 md:flex-none md:max-h-[40vh] overflow-y-auto custom-scrollbar bg-slate-900/20 backdrop-blur-md border-b border-white/10 relative z-20">
+                  <div class="max-w-6xl mx-auto p-4 md:p-6 flex flex-col md:flex-row gap-4 md:gap-6 md:items-start">
+                     
+                     <!-- Mobile Header: Menu + Title -->
+                     <div class="flex items-center justify-between md:hidden w-full shrink-0 sticky top-0 bg-slate-900/90 p-2 rounded-lg backdrop-blur-md border border-white/10 z-30 shadow-xl">
+                        <div class="flex items-center gap-3">
+                          <button class="p-2 text-indigo-300 hover:bg-white/10 rounded-lg transition-colors" (click)="toggleSidebar()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                          </button>
+                          <div class="flex flex-col">
+                             <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Lesson {{tutorial.currentStep().id}}</span>
+                             <span class="font-bold text-white text-sm leading-none line-clamp-1">{{tutorial.currentStep().title}}</span>
+                          </div>
+                        </div>
+                        <div class="flex gap-2">
+                           <button (click)="toggleSpeech()" class="p-2 rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-500/30">
+                             @if(isSpeaking()) { 🔊 } @else { 🔈 }
+                           </button>
+                        </div>
+                     </div>
+
+                     <!-- Desktop Avatar (Hidden on Mobile) -->
+                     <div class="hidden md:flex flex-col items-center gap-2 shrink-0">
+                       <div class="w-12 h-12 rounded-full bg-slate-800 border-2 border-indigo-500/50 shadow-lg flex items-center justify-center text-xl relative">
+                          <div class="absolute inset-0 bg-indigo-500/20 rounded-full animate-pulse"></div>
+                         @if(tutorial.currentLevel() === 'professional' || tutorial.currentLevel() === 'advanced') { 🏛️ }
+                         @else { 👩‍🏫 }
+                       </div>
+                       <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest bg-indigo-900/50 px-2 py-0.5 rounded-full border border-indigo-500/30">Teacher</span>
+                     </div>
+
+                     <!-- Content Body -->
+                     <div class="flex-1 min-w-0 pb-10 md:pb-0">
+                        <!-- Desktop Title Row (Hidden on Mobile) -->
+                        <div class="hidden md:flex justify-between items-start mb-2">
+                           <div>
+                             <span class="text-[10px] font-bold text-white bg-indigo-600 px-2 py-0.5 rounded shadow-lg shadow-indigo-900/50 mb-1 inline-block">Lesson {{tutorial.currentStep().id}}</span>
+                             <h2 class="text-xl font-bold text-white tracking-tight drop-shadow-md">
+                               {{ tutorial.currentStep().title }}
+                             </h2>
+                           </div>
+                           <div class="flex gap-2">
+                              <button (click)="toggleSpeech()" 
+                                      [class.bg-indigo-500]="isSpeaking()"
+                                      [class.text-white]="isSpeaking()"
+                                      class="p-2 rounded-lg hover:bg-white/10 text-slate-300 transition-colors border border-white/10 bg-slate-800/50" title="Read Aloud">
+                                @if(isSpeaking()) { 🔊 } @else { 🔈 }
+                              </button>
+                              <button (click)="toggleCode()" 
+                                      [class.bg-amber-500]="showCode()"
+                                      [class.text-white]="showCode()"
+                                      [class.border-amber-400]="showCode()"
+                                      class="px-3 py-2 rounded-lg hover:bg-white/10 text-slate-300 text-xs font-bold transition-colors border border-white/10 bg-slate-800/50 flex items-center gap-2">
+                                <span>&#123; &#125;</span> Code
+                              </button>
+                           </div>
+                        </div>
+
+                        <!-- Main Text -->
+                        <div class="prose prose-sm prose-invert max-w-none text-slate-300 leading-relaxed md:text-base" 
+                             [innerHTML]="tutorial.currentStep().content"></div>
+                        
+                        <!-- Mobile Code Toggle Button -->
+                        <button (click)="toggleCode()" class="md:hidden w-full mt-4 py-3 rounded-lg border border-amber-500/30 text-amber-300 bg-amber-900/20 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+                           <span>&#123; &#125;</span> {{ showCode() ? 'Hide Code' : 'View Code Snippet' }}
+                        </button>
+
+                        @if(showCode()) {
+                           <div class="mt-4 p-4 bg-slate-950 rounded-lg border border-amber-500/30 relative group animate-slide-down shadow-2xl">
+                              <div class="absolute top-2 right-2 text-[10px] font-mono text-slate-500 uppercase">TypeScript / HTML</div>
+                              <pre class="font-mono text-xs md:text-sm text-amber-100 overflow-x-auto whitespace-pre-wrap">{{ tutorial.currentStep().codeSnippet }}</pre>
+                           </div>
+                        }
+                     </div>
+                  </div>
+              </div>
+
+              <!-- 2. BOTTOM: PLAYGROUND (Flex Grow) -->
+              <!-- ON MOBILE: HIDDEN. The user wants to focus on reading. -->
+              <!-- ON DESKTOP: Visible (`hidden md:flex`) -->
+              <div class="hidden md:flex flex-1 relative bg-slate-900/50 flex-col overflow-hidden pb-24 border-t border-white/10">
+                  
+                  <!-- URL Bar Simulation -->
+                  <div class="shrink-0 p-4 border-b border-white/5 bg-slate-900/80 backdrop-blur-sm z-10 flex justify-center">
+                     <div class="w-full max-w-3xl flex items-center gap-2 bg-slate-950 rounded-lg p-1.5 border border-slate-700 shadow-inner"
+                          [class.ring-2]="shouldDim('url')" [class.ring-pink-500]="shouldDim('url')">
+                        <div class="flex gap-1.5 px-2">
+                           <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                           <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                           <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                        </div>
+                        
+                        <div class="flex-1 bg-slate-900 rounded px-3 py-1.5 text-xs md:text-sm font-mono text-slate-400 flex items-center overflow-hidden">
+                          <span class="text-slate-600 mr-1">localhost:4200/</span>
+                          
+                          <span class="text-indigo-400 font-bold animate-pulse">{{ parsedUrl().primary }}</span>
+                          
+                          @if(parsedUrl().id) {
+                            <span class="text-fuchsia-400 font-bold">/{{ parsedUrl().id }}</span>
+                          }
+                          
+                          @if(parsedUrl().left) {
+                             <span class="text-slate-500">(<span class="text-green-400">left:{{ parsedUrl().left }}</span>)</span>
+                          }
+                          @if(parsedUrl().right) {
+                             <span class="text-slate-500">(<span class="text-orange-400">right:{{ parsedUrl().right }}</span>)</span>
+                          }
+                        </div>
+                        <div class="px-2 text-slate-500 text-xs">↻</div>
+                     </div>
+                  </div>
+
+                  <!-- ROUTER OUTLET VISUALIZER -->
+                  <div class="flex-1 overflow-y-auto custom-scrollbar p-4 flex flex-col items-center">
+                      
+                      <div class="w-full max-w-5xl h-full grid grid-cols-1 lg:grid-cols-4 gap-4 items-stretch content-center">
+                         
+                         <!-- LEFT OUTLET -->
+                         <div class="hidden lg:block lg:col-span-1 rounded-xl border-2 border-dashed border-green-500/30 bg-green-900/10 p-2 relative min-h-[200px]"
+                              [class.ring-4]="shouldDim('left')" [class.ring-green-500]="shouldDim('left')">
+                            <div class="absolute -top-3 left-4 bg-slate-900 px-2 text-[10px] font-mono text-green-500 border border-green-500/30 rounded">outlet="left"</div>
+                            <router-outlet name="left"></router-outlet>
+                            @if(!parsedUrl().left) {
+                              <div class="h-full flex items-center justify-center text-green-500/30 text-xs text-center p-4">
+                                (Empty)<br>Use controls below to load content here
+                              </div>
+                            }
+                         </div>
+
+                         <!-- PRIMARY OUTLET -->
+                         <div class="col-span-1 lg:col-span-2 rounded-xl border-4 border-indigo-500/50 bg-slate-950 shadow-2xl overflow-hidden relative min-h-[300px] flex flex-col"
+                              [class.ring-4]="shouldDim('primary')" [class.ring-indigo-500]="shouldDim('primary')">
+                            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+                            <div class="absolute top-2 right-2 bg-slate-900/80 px-2 py-1 rounded text-[10px] font-mono text-indigo-300 border border-indigo-500/30 backdrop-blur-md z-10">
+                              &lt;router-outlet&gt;
+                            </div>
+                            
+                            <div class="flex-1 p-1 relative">
+                               <!-- The actual Angular Router Outlet -->
+                               <router-outlet></router-outlet>
+                            </div>
+                         </div>
+
+                         <!-- RIGHT OUTLET -->
+                         <div class="hidden lg:block lg:col-span-1 rounded-xl border-2 border-dashed border-orange-500/30 bg-orange-900/10 p-2 relative min-h-[200px]"
+                              [class.ring-4]="shouldDim('right')" [class.ring-orange-500]="shouldDim('right')">
+                            <div class="absolute -top-3 right-4 bg-slate-900 px-2 text-[10px] font-mono text-orange-500 border border-orange-500/30 rounded">outlet="right"</div>
+                            <router-outlet name="right"></router-outlet>
+                            @if(!parsedUrl().right) {
+                              <div class="h-full flex items-center justify-center text-orange-500/30 text-xs text-center p-4">
+                                (Empty)<br>Load auxiliary routes
+                              </div>
+                            }
+                         </div>
+
+                      </div>
+
+                  </div>
+
+                  <!-- CONTROLS FOOTER (Floating) -->
+                  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-4xl bg-slate-800/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-3 z-30 animate-slide-up flex flex-col gap-2">
+                     
+                     <!-- Navigation Buttons -->
+                     <div class="flex flex-wrap items-center justify-center gap-2">
+                        <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-2 hidden md:block">Primary</div>
+                        
+                        <a routerLink="/home" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent" [routerLinkActiveOptions]="{exact:true}" 
+                           class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
+                           Home
+                        </a>
+                        <a routerLink="/dashboard" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent"
+                           class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
+                           Dash
+                        </a>
+                        <a routerLink="/settings" routerLinkActive="bg-indigo-600 text-white shadow-lg shadow-indigo-500/50 border-transparent"
+                           class="px-4 py-2 rounded-lg bg-slate-700 text-slate-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600 hover:scale-105 active:scale-95">
+                           Set
+                        </a>
+
+                        <div class="w-px h-6 bg-white/10 mx-2"></div>
+                        
+                        <!-- Params -->
+                        <a routerLink="/user/1" routerLinkActive="bg-fuchsia-600 text-white border-transparent"
+                           class="px-3 py-2 rounded-lg bg-slate-700 text-fuchsia-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600">
+                           User 1
+                        </a>
+                        <a routerLink="/user/99" routerLinkActive="bg-fuchsia-600 text-white border-transparent"
+                           class="px-3 py-2 rounded-lg bg-slate-700 text-fuchsia-300 text-xs font-bold border border-slate-600 transition-all hover:bg-slate-600">
+                           User 99
+                        </a>
+                     </div>
+
+                     <!-- Secondary Controls -->
+                     <div class="flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-white/5">
+                        <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mr-2 hidden md:block">Auxiliary</div>
+                        
+                        <!-- Left Outlet Controls -->
+                        <div class="flex gap-1">
+                            <a [routerLink]="[{ outlets: { left: 'menu' } }]" 
+                               routerLinkActive="bg-green-600/20 text-green-300 border-green-500/50"
+                               class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-green-300">
+                               + Menu (L)
+                            </a>
+                            <a [routerLink]="[{ outlets: { left: 'ads' } }]"
+                               routerLinkActive="bg-green-600/20 text-green-300 border-green-500/50"
+                               class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-green-300">
+                               + Ads (L)
+                            </a>
+                            <a [routerLink]="[{ outlets: { left: null } }]" class="px-2 py-1.5 rounded bg-red-900/20 text-red-400 border border-red-500/30 hover:bg-red-900/40 text-[10px]">✕</a>
+                        </div>
+
+                        <div class="w-px h-4 bg-white/10 mx-1"></div>
+
+                        <!-- Right Outlet Controls -->
+                        <div class="flex gap-1">
+                            <a [routerLink]="[{ outlets: { right: 'help' } }]" 
+                               routerLinkActive="bg-orange-600/20 text-orange-300 border-orange-500/50"
+                               class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-orange-300">
+                               + Help (R)
+                            </a>
+                            <a [routerLink]="[{ outlets: { right: 'notes' } }]"
+                               routerLinkActive="bg-orange-600/20 text-orange-300 border-orange-500/50"
+                               class="px-2 py-1.5 rounded bg-slate-700/50 text-slate-400 text-[10px] font-bold border border-slate-600 transition-colors hover:text-orange-300">
+                               + Notes (R)
+                            </a>
+                            <a [routerLink]="[{ outlets: { right: null } }]" class="px-2 py-1.5 rounded bg-red-900/20 text-red-400 border border-red-500/30 hover:bg-red-900/40 text-[10px]">✕</a>
+                        </div>
+                        
+                        <div class="ml-auto">
+                          <a routerLink="/broken-link-404" class="px-2 py-1 text-[10px] text-red-400 hover:underline">Err: Broken Link</a>
+                        </div>
+                     </div>
+                  </div>
+
+              </div>
+          }
+      </main>
+    </div>
+  }
 }

@@ -1,3 +1,4 @@
+
 import { Component, signal, inject, computed, effect } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
@@ -7,13 +8,14 @@ import { LanguageService } from './services/language.service';
 import { QuizService } from './services/quiz.service';
 import { InterviewService } from './services/interview.service';
 import { LandingPageComponent } from './components/landing.component';
+import { SplashScreenComponent } from './components/splash.component';
 import { AngularLogoComponent } from './components/svg/angular-logo.component';
 import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, LandingPageComponent, TitleCasePipe, AngularLogoComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, LandingPageComponent, SplashScreenComponent, TitleCasePipe, AngularLogoComponent],
   templateUrl: './app.component.html',
   styles: [`
     @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -43,9 +45,10 @@ export class AppComponent {
   langService = inject(LanguageService);
   quiz = inject(QuizService);
   interview = inject(InterviewService);
-  router = inject(Router);
+  router: Router = inject(Router);
 
   // App State
+  showSplash = signal(true);
   showLandingPage = signal(true);
   currentUrlStr = signal('/');
   showCode = signal(false);
@@ -59,7 +62,6 @@ export class AppComponent {
     ).subscribe((e: any) => {
       this.currentUrlStr.set(e.urlAfterRedirects);
       // Close sidebar on mobile navigation
-      // Note: We also close it in selectStep, but this catches routerLink clicks
       this.isSidebarOpen.set(false);
     });
     
@@ -72,6 +74,10 @@ export class AppComponent {
 
   // --- Actions ---
 
+  onSplashFinish() {
+    this.showSplash.set(false);
+  }
+
   startTutorial() {
     // RESET ALL STATE FOR A FRESH SESSION
     // 1. Reset Internal Services
@@ -82,8 +88,6 @@ export class AppComponent {
     this.showLandingPage.set(false);
 
     // 3. Force clean navigation
-    // We navigate to /home AND explicitly nullify secondary outlets 
-    // to ensure no left/right panels persist from previous sessions.
     this.router.navigate(['/home', { outlets: { left: null, right: null } }]);
   }
 
@@ -105,28 +109,16 @@ export class AppComponent {
       this.speech.stop();
     } else {
       const text = this.tutorial.currentStep().content;
-      // Use current language code
       this.speech.speak(text, this.langService.currentLang());
     }
   }
 
-  /**
-   * Main navigation handler for Tutorial Steps.
-   * Ensures user is brought back to the playground view if they are in Quiz/Interview.
-   */
   selectStep(index: number) {
-    // 1. Update Tutorial State
     this.tutorial.goTo(index);
-
-    // 2. Ensure we are in "Playground Mode"
-    // If the user is currently taking a quiz or interview, force them back to home
-    // so they can see the tutorial content ("Teacher's Desk").
     const url = this.router.url;
     if (url.includes('quiz') || url.includes('interview')) {
       this.router.navigate(['/home']);
     }
-
-    // 3. Mobile UX: Close the drawer after selection
     this.isSidebarOpen.set(false);
   }
 
@@ -141,7 +133,6 @@ export class AppComponent {
       return result;
     }
 
-    // Regex parsing for display
     const leftMatch = raw.match(/left:([^)\/]+)/);
     if (leftMatch) result.left = leftMatch[1];
 

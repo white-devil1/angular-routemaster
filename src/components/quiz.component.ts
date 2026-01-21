@@ -1,3 +1,4 @@
+
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -228,7 +229,7 @@ import { TutorialService } from '../services/tutorial.service';
 export class QuizComponent implements OnInit {
   quiz = inject(QuizService);
   tutorial = inject(TutorialService);
-  router = inject(Router);
+  router: Router = inject(Router);
 
   ngOnInit() {
     this.retry();

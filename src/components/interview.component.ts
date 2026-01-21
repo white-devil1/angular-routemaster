@@ -1,3 +1,4 @@
+
 import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InterviewService } from '../services/interview.service';
@@ -69,7 +70,7 @@ import { Router } from '@angular/router';
 export class InterviewComponent {
   service = inject(InterviewService);
   tutorial = inject(TutorialService);
-  router = inject(Router);
+  router: Router = inject(Router);
 
   // Automatically sync with the global tutorial level
   currentLevel = computed(() => this.tutorial.currentLevel());
