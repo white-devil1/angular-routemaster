@@ -72,34 +72,31 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Imagine a Magic Frame</h3>
-              <p class="mb-3">Think of your house. You have a wall. On that wall, you hang a <strong>Magic Picture Frame</strong>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>Normally, if you want to see a new photo, you have to take the frame down, open the back, swap the photo, and hang it up again. That takes a long time! (This is how old websites worked).</li>
-                <li>With the <strong>Magic Frame</strong>, you just press a button on a remote, and the photo changes <em>instantly</em>. The wall doesn't move. The frame doesn't move. Only the picture inside changes.</li>
-              </ul>
-              <p>In Angular, this frame is called <code>&lt;router-outlet&gt;</code>. It creates a space on the screen where different pages can appear without reloading the whole computer.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Magic Frame</h3>
+              <p class="mb-3">Imagine a <strong>Magic Picture Frame</strong> on your wall. Unlike a normal frame, you don't need to take it down to change the photo.</p>
+              <p class="mb-3">You just press a button, and <em>POOF</em>! The picture changes instantly. The wall doesn't move. The frame doesn't move. Only the picture inside changes.</p>
+              <p>In Angular, this magic frame is called <code>&lt;router-outlet&gt;</code>. It's a special spot where pages appear instantly without reloading.</p>
             `,
             hi: `एक जादुई फ्रेम की कल्पना करें। एंगुलर में, इसे <code>&lt;router-outlet&gt;</code> कहा जाता है।`,
             ml: `ഒരു മാജിക്കൽ ഫ്രെയിം സങ്കൽപ്പിക്കുക. ആംഗുലറിൽ ഇതിനെ <code>&lt;router-outlet&gt;</code> എന്ന് വിളിക്കുന്നു.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">What is it really?</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">What is it really?</h3>
               <p class="mb-3">The <code>&lt;router-outlet&gt;</code> is a placeholder directive. It tells Angular: <em>"Dynamically render the active component right here."</em></p>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100">
-                  <strong class="text-indigo-800">✅ Pros (Why use it?)</strong>
-                  <ul class="list-disc ml-4 text-sm mt-1">
-                    <li><strong>No White Flash:</strong> The page doesn't blink or go white when navigating.</li>
-                    <li><strong>Speed:</strong> We only fetch data, not the entire HTML page structure.</li>
-                    <li><strong>State:</strong> Variables in your header/sidebar stay alive.</li>
+                <div class="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
+                  <strong class="text-indigo-300">✅ Pros</strong>
+                  <ul class="list-disc ml-4 text-sm mt-1 text-slate-300">
+                    <li><strong>No White Flash:</strong> The page doesn't blink when navigating.</li>
+                    <li><strong>Speed:</strong> Only fetches data, not the whole HTML page.</li>
+                    <li><strong>State:</strong> Sidebar/Header stay alive.</li>
                   </ul>
                 </div>
-                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
-                   <strong class="text-red-800">❌ Cons</strong>
-                   <ul class="list-disc ml-4 text-sm mt-1">
+                <div class="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                   <strong class="text-red-300">❌ Cons</strong>
+                   <ul class="list-disc ml-4 text-sm mt-1 text-slate-300">
                      <li><strong>Complexity:</strong> Harder to setup than basic HTML files.</li>
                      <li><strong>SEO:</strong> Search engines need help to read these dynamic pages (SSR).</li>
                    </ul>
@@ -114,7 +111,7 @@ export class TutorialService {
             en: `
               <p class="mb-3">The <code>RouterOutlet</code> is a structural directive that acts as a sink for the instantiated component. When a route is matched, the Router looks for the nearest outlet in the component tree.</p>
               <p class="mb-3">Technically, it creates a <strong>Sibling</strong> of the outlet tag in the DOM, not a child. This is a common misconception.</p>
-              <div class="p-3 bg-slate-100 rounded border border-slate-200 text-sm">
+              <div class="p-3 bg-slate-800 rounded border border-slate-700 text-sm">
                 <strong>Key Concept:</strong> Outlets can be nested. A parent component can have an outlet, and the child component loaded into that outlet can have <em>another</em> outlet. This creates a hierarchy of views.
               </div>
             `,
@@ -155,23 +152,20 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Giving Directions</h3>
-              <p class="mb-3">Imagine you invite a robot to your house. The robot doesn't know where the kitchen is. You have to give it a <strong>Map</strong>.</p>
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4">
-                 <p class="font-mono text-sm text-slate-600">
-                   • If I say "Kitchen" -> Go to Room A.<br>
-                   • If I say "Bedroom" -> Go to Room B.<br>
-                   • If I say nothing -> Go to the Living Room (Default).
-                 </p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Giving Directions</h3>
+              <p class="mb-3">Imagine a robot visiting your house. It doesn't know where the kitchen is. You need to give it a <strong>Map</strong>.</p>
+              <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mb-4 font-mono text-sm text-indigo-200">
+                 <p>• If I say "Kitchen" -> Go to Room A.</p>
+                 <p>• If I say "Bedroom" -> Go to Room B.</p>
               </div>
-              <p>In Angular, this map is a list called <code>routes</code>. It connects a <strong>word</strong> in the address bar (like '/home') to a <strong>picture</strong> (Component) to show in the frame.</p>
+              <p>In Angular, this map is called <code>routes</code>. It tells the app which picture to put in the Magic Frame when the address changes.</p>
             `,
             hi: `कल्पना कीजिए कि आप एक रोबोट को अपने घर आमंत्रित करते हैं। आपको उसे एक <strong>नक्शा</strong> देना होगा।`,
             ml: `നിങ്ങൾ ഒരു റോബോട്ടിനെ വീട്ടിലേക്ക് ക്ഷണിക്കുന്നു. അതിന് അടുക്കള എവിടെയാണെന്ന് അറിയില്ല. നിങ്ങൾ അതിനൊരു <strong>മാപ്പ്</strong> നൽകണം.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Routes Array</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Routes Array</h3>
               <p class="mb-3">We configure the router by creating an array of objects. Each object needs two main things:</p>
               <ul class="list-disc ml-5 space-y-2 mb-4">
                 <li><code>path</code>: The string in the URL (e.g., 'dashboard').</li>
@@ -226,31 +220,27 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Walk, Teleport!</h3>
-              <p class="mb-3">In a normal website, clicking a link is like walking to a new house. You have to pack your bags, leave, walk, and enter the new house. This takes time (the screen flashes white).</p>
-              <p class="mb-3">In Angular, we use a special sticker called <code>routerLink</code>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>It works like a <strong>Teleporter</strong>.</li>
-                <li>You press the button, and <em>BAM!</em> You are there instantly.</li>
-                <li>You don't lose the things you were holding in your memory.</li>
-              </ul>
-              <p><strong>Try it:</strong> Click the 'Home' and 'Dash' buttons in the playground. Notice how the screen doesn't blink?</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Teleport Button</h3>
+              <p class="mb-3">Clicking a normal link is like walking to a new house. It takes time. The screen flashes white.</p>
+              <p class="mb-3">Angular uses a <strong>Teleport Button</strong> called <code>routerLink</code>.</p>
+              <p class="mb-3">You click it, and <em>ZAP</em>! You are there instantly. No waiting. No reloading.</p>
+              <p><strong>Try it:</strong> Click the 'Home' and 'Dash' buttons below. See how fast it is?</p>
             `,
             hi: `एक सामान्य वेबसाइट में, लिंक पर क्लिक करना एक नए घर में जाने जैसा है। एंगुलर में, हम <code>routerLink</code> का उपयोग करते हैं। यह एक टेलीपोर्टर की तरह काम करता है।`,
             ml: `സാധാരണ വെബ്സൈറ്റുകളിൽ ലിങ്ക് ക്ലിക്ക് ചെയ്യുമ്പോൾ പുതിയ വീട്ടിലേക്ക് നടന്നുപോകുന്ന പോലെയാണ്. എന്നാൽ ആംഗുലറിൽ <code>routerLink</code> ഉപയോഗിക്കുമ്പോൾ ടെലിപോർട്ട് ചെയ്യുന്നത് പോലെ തൽസമയം എത്താം.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">href vs routerLink</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">href vs routerLink</h3>
               <p class="mb-3">This is the most common interview question.</p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
-                  <strong class="text-red-800">HTML (href="/home")</strong>
-                  <p class="text-sm mt-1">Triggers a standard browser request. The browser destroys the current page, downloads index.html again, and restarts Angular. <strong>Slow. loses state.</strong></p>
+                <div class="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                  <strong class="text-red-300">HTML (href="/home")</strong>
+                  <p class="text-sm mt-1 text-slate-300">Destroys the current page. Downloads index.html again. Restarts Angular. <strong>Slow. Loses state.</strong></p>
                 </div>
-                <div class="bg-green-50 p-3 rounded-lg border border-green-100">
-                   <strong class="text-green-800">Angular (routerLink="/home")</strong>
-                   <p class="text-sm mt-1">Intercepts the click. It prevents the browser from reloading. It tells the Angular Router to just swap the component. <strong>Fast. keeps state.</strong></p>
+                <div class="bg-green-500/10 p-3 rounded-lg border border-green-500/20">
+                   <strong class="text-green-300">Angular (routerLink="/home")</strong>
+                   <p class="text-sm mt-1 text-slate-300">Prevents reload. Just swaps the component. <strong>Fast. Keeps state.</strong></p>
                 </div>
               </div>
             `,
@@ -269,7 +259,7 @@ export class TutorialService {
           professional: {
             en: `
               <p>When navigation occurs, a complex lifecycle triggers:</p>
-              <ol class="list-decimal ml-5 space-y-1 mb-4 text-sm">
+              <ol class="list-decimal ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>URL Parsing:</strong> Convert string to UrlTree.</li>
                 <li><strong>Recognition:</strong> Find matching config.</li>
                 <li><strong>Guards:</strong> Check CanDeactivate (current) and CanActivate (next).</li>
@@ -307,30 +297,24 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Write 1,000 Letters</h3>
-              <p class="mb-3">Imagine you want to send a letter to 1,000 friends. Do you hand-write 1,000 completely different letters?</p>
-              <p class="mb-3">No! You write <strong>one</strong> letter and leave a blank space for the name: <em>"Dear [Name]..."</em>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>In Angular, we create <strong>one</strong> page called <code>UserPage</code>.</li>
-                <li>We leave a blank space in the URL: <code>/user/:id</code>.</li>
-                <li>When you visit <code>/user/1</code>, Angular fills the blank with "1". When you visit <code>/user/99</code>, it fills it with "99".</li>
-              </ul>
-              <p><strong>Try it:</strong> Click the User 1 and User 99 buttons. It's the same page, just different data!</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">One Letter, Many Friends</h3>
+              <p class="mb-3">Do you write 1,000 different letters for 1,000 friends? No! You write <strong>one</strong> letter and leave a blank space: <em>"Dear [Name]..."</em>.</p>
+              <p class="mb-3">Angular does the same. We make <strong>one</strong> page called 'User', and leave a blank space for the ID: <code>/user/:id</code>.</p>
+              <p>When you visit <code>/user/1</code>, it fills in "1". When you visit <code>/user/99</code>, it fills it with "99". Same page, different info!</p>
             `,
             hi: `कल्पना कीजिए कि आप 1,000 दोस्तों को पत्र भेजना चाहते हैं। क्या आप 1,000 अलग-अलग पत्र लिखते हैं? नहीं! आप एक पत्र लिखते हैं और नाम के लिए खाली जगह छोड़ देते हैं।`,
             ml: `1000 കൂട്ടുകാർക്ക് കത്തെഴുതുമ്പോൾ നമ്മൾ 1000 കത്തെഴുതാറില്ല. ഒരെണ്ണം എഴുതി പേര് മാത്രം മാറ്റും. ആംഗുലറിലും ഇതുപോലെ ഒരു പേജ് ഉണ്ടാക്കി വിവരങ്ങൾ മാത്രം മാറ്റുന്നു.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Defining Parameters</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Defining Parameters</h3>
               <p class="mb-3">We use a colon <code>:</code> to define a parameter in our route config.</p>
-              <code class="block bg-slate-100 p-2 rounded mb-3">{ path: 'user/:id', component: UserComponent }</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-indigo-200">{ path: 'user/:id', component: UserComponent }</code>
               <p class="mb-3">This tells Angular: <em>"Whatever is in this position of the URL, capture it and call it 'id'."</em></p>
               <p><strong>Use Cases:</strong></p>
-              <ul class="list-disc ml-5 mb-4 text-sm">
+              <ul class="list-disc ml-5 mb-4 text-sm text-slate-300">
                 <li>Product Details (<code>/product/4502</code>)</li>
                 <li>Order History (<code>/orders/AX-99</code>)</li>
-                <li>Blog Posts (<code>/blog/how-to-code</code>)</li>
               </ul>
             `,
             hi: `हम अपने रूट कॉन्फ़िगरेशन में पैरामीटर को परिभाषित करने के लिए कोलन <code>:</code> का उपयोग करते हैं।`,
@@ -338,9 +322,9 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Snapshot Trap</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Snapshot Trap</h3>
               <p class="mb-3">You can read the ID in two ways:</p>
-              <ol class="list-decimal ml-5 space-y-2 mb-4 text-sm">
+              <ol class="list-decimal ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li><code>route.snapshot.paramMap</code>: Reads the ID <strong>once</strong> when the component is created.</li>
                 <li><code>route.paramMap.subscribe()</code>: Listens for <strong>changes</strong> to the ID.</li>
               </ol>
@@ -383,21 +367,20 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Glowing Map Pin</h3>
-              <p class="mb-3">When you walk around a shopping mall, you check the map. It has a big sticker that says: <strong>"YOU ARE HERE"</strong>.</p>
-              <p class="mb-3">Websites need this too. When users click "Settings", the Settings button should light up so they know where they are.</p>
-              <p>Angular does this automatically! We just tell it: <em>"When this button matches the current page, make it purple."</em></p>
-              <p><strong>Look above:</strong> Click 'Home', 'Dash', 'Set'. See how the button glows?</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">You Are Here</h3>
+              <p class="mb-3">When you are in a huge shopping mall, the map has a sticker that says <strong>"YOU ARE HERE"</strong>.</p>
+              <p class="mb-3">Websites need this too. When you are on the 'Home' page, the 'Home' button should glow so you know where you are.</p>
+              <p>Angular does this automatically! Look at the buttons below—the active one is always glowing.</p>
             `,
             hi: `जब आप किसी शॉपिंग मॉल में घूमते हैं, तो आप नक्शा देखते हैं। उस पर लिखा होता है: "आप यहाँ हैं"। वेबसाइटों को भी इसकी आवश्यकता होती है।`,
             ml: `ഷോപ്പിംഗ് മാളിൽ പോകുമ്പോൾ നമ്മൾ മാപ്പ് നോക്കും. അതിൽ "നിങ്ങൾ ഇവിടെയാണ്" എന്ന് കാണാം. വെബ്സൈറ്റുകളിലും ഇത് ആവശ്യമാണ്. ആംഗുലർ ഇത് തനിയെ ചെയ്യുന്നു.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">routerLinkActive</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">routerLinkActive</h3>
               <p class="mb-3">We use the <code>routerLinkActive</code> directive on our link tags.</p>
               <p class="mb-3"><strong>How to use:</strong></p>
-              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">&lt;a routerLink="/about" routerLinkActive="font-bold underline"&gt;About&lt;/a&gt;</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-xs text-indigo-200">&lt;a routerLink="/about" routerLinkActive="font-bold underline"&gt;About&lt;/a&gt;</code>
               <p>This simply adds the classes <code>font-bold</code> and <code>underline</code> to the element whenever the URL starts with <code>/about</code>. You don't need to write complex <code>if/else</code> logic in your component!</p>
             `,
             hi: `हम अपने लिंक टैग पर <code>routerLinkActive</code> डायरेक्टिव का उपयोग करते हैं। यह बस तत्व में क्लास जोड़ता है।`,
@@ -405,9 +388,9 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Exact Matching</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Exact Matching</h3>
               <p class="mb-3">By default, the matching is "inclusive".</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li>If you link to <code>/user</code>, it stays active even if you are at <code>/user/5/edit</code>. This is great for menus.</li>
                 <li>However, a "Home" link (<code>/</code>) matches <em>everything</em> because every URL starts with <code>/</code>.</li>
               </ul>
@@ -450,23 +433,21 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Watching TV while Gaming</h3>
-              <p class="mb-3">Have you ever seen a TV where you can watch a movie in a big box, but play a video game in a small box in the corner? This is called "Picture-in-Picture".</p>
-              <p class="mb-3">Angular allows this too! We can have a <strong>Main Frame</strong> (Blue) and a <strong>Side Frame</strong> (Green/Red).</p>
-              <p>You can change the Side Frame to show a "Menu" or "Ads" without changing the Main Frame. They are independent!</p>
-              <p><strong>Try it:</strong> Click the 'Menu' or 'Ads' buttons on the Left Card.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Picture-in-Picture</h3>
+              <p class="mb-3">Imagine watching a movie on TV, but playing a video game in a small box in the corner. That's <strong>Picture-in-Picture</strong>!</p>
+              <p class="mb-3">Angular can do this too. We have a <strong>Main Frame</strong> (Blue) and a <strong>Side Frame</strong> (Green/Red).</p>
+              <p>You can change the Side Frame (like opening a Menu) without stopping the movie in the Main Frame!</p>
             `,
             hi: `क्या आपने कभी ऐसा टीवी देखा है जहाँ आप एक बड़े बॉक्स में फिल्म देख सकते हैं, लेकिन कोने में एक छोटे बॉक्स में वीडियो गेम खेल सकते हैं?`,
             ml: `ഒരു ടിവിയിൽ സിനിമ കാണുമ്പോൾ തന്നെ ചെറിയൊരു ബോക്സിൽ ഗെയിം കളിക്കുന്നത് പോലെയാണിത്. ആംഗുലറിൽ ഒരേ സമയം പല കാര്യങ്ങൾ ചെയ്യാം.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Named Outlets</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Named Outlets</h3>
               <p class="mb-3">A page can have one default <code>&lt;router-outlet&gt;</code> and unlimited <em>named</em> outlets: <code>&lt;router-outlet name="sidebar"&gt;</code>.</p>
               <p class="mb-3">This is perfect for:</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>Popups/Modals:</strong> Allow users to bookmark a popup state.</li>
-                <li><strong>Chat Widgets:</strong> Keep chat open while navigating the main app.</li>
                 <li><strong>Sidebars:</strong> Dynamic tools based on context.</li>
               </ul>
             `,
@@ -475,10 +456,10 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The URL Syntax</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The URL Syntax</h3>
               <p class="mb-3">When you use secondary outlets, the URL looks weird: <code>/dashboard(left:menu//right:help)</code>.</p>
               <p class="mb-3">The parentheses <code>(...)</code> tell Angular that these parts are separate from the main path. To close an outlet, you navigate it to <code>null</code>.</p>
-              <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600">this.router.navigate([{ outlets: { left: null } }])</code>
+              <code class="block bg-slate-800 p-2 rounded text-xs text-indigo-200">this.router.navigate([{ outlets: { left: null } }])</code>
             `,
             hi: `जब आप माध्यमिक आउटलेट का उपयोग करते हैं, तो URL अजीब दिखता है। कोष्ठक <code>(...)</code> एंगुलर को बताते हैं कि ये भाग मुख्य पथ से अलग हैं।`,
             ml: `സെക്കൻഡറി ഔട്ട്ലെറ്റുകൾ ഉപയോഗിക്കുമ്പോൾ URL ൽ <code>(...)</code> കാണാം. ഇത് മെയിൻ പാത്തിൽ നിന്ന് വ്യത്യസ്തമാണെന്ന് കാണിക്കുന്നു.`
@@ -517,30 +498,29 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Mystery Room</h3>
-              <p class="mb-3">What happens if you try to walk into a room that doesn't exist? Like trying to find "The Chocolate Room" in your house?</p>
-              <p class="mb-3">Usually, you would hit a wall. Ouch! But in our app, we have a <strong>Lost & Found</strong> department.</p>
-              <p>If the router doesn't know where to go (like if you typed <code>/magic-room</code>), it automatically sends you to the 404 Page. It's a safety net!</p>
-              <p><strong>Try it:</strong> Click 'Err: Broken Link' in the simulator.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lost & Found</h3>
+              <p class="mb-3">What if you try to walk into a room that doesn't exist? You'd hit a wall! Ouch.</p>
+              <p class="mb-3">In our app, we have a special <strong>Lost & Found</strong> department.</p>
+              <p>If someone types a wrong link (like <code>/magic-room</code>), the router catches them and sends them to a safe "404 Error" page instead of breaking.</p>
             `,
             hi: `क्या होगा यदि आप किसी ऐसे कमरे में जाने का प्रयास करते हैं जो मौजूद नहीं है? आमतौर पर, आप एक दीवार से टकराएंगे।`,
             ml: `ഇല്ലാത്ത ഒരു മുറിയിലേക്ക് പോയാൽ എന്ത് സംഭവിക്കും? സാധാരണ ഗതിയിൽ നമ്മൾ തട്ടി വീഴും. എന്നാൽ ഇവിടെ "Lost & Found" ലേക്ക് പോകും.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Wildcard **</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Wildcard **</h3>
               <p class="mb-3">In web terms, a missing page is a <strong>404 Error</strong>. Angular handles this with a special path: <code>**</code>.</p>
               <p class="mb-3">This "Wildcard" means <em>"Match Anything"</em>.</p>
-              <p class="p-2 bg-yellow-100 rounded text-yellow-800 text-sm border border-yellow-200"><strong>Crucial Rule:</strong> The Wildcard route MUST be the <strong>last</strong> item in your routes array. Angular checks routes from top to bottom. If you put <code>**</code> at the top, it will match everything immediately, and your real pages will never load!</p>
+              <p class="p-2 bg-yellow-400/10 rounded text-yellow-200 text-sm border border-yellow-500/20"><strong>Crucial Rule:</strong> The Wildcard route MUST be the <strong>last</strong> item in your routes array. Angular checks routes from top to bottom. If you put <code>**</code> at the top, it will match everything immediately!</p>
             `,
             hi: `वेब शब्दों में, एक लापता पृष्ठ एक <strong>404 त्रुटि</strong> है। एंगुलर इसे एक विशेष पथ के साथ संभालता है: <code>**</code>।`,
             ml: `ഇതിനെ <strong>404 Error</strong> എന്ന് വിളിക്കുന്നു. <code>**</code> എന്ന പാത്ത് ഉപയോഗിച്ചാണ് ഇത് സെറ്റ് ചെയ്യുന്നത്. ഇത് എപ്പോഴും അവസാനം കൊടുക്കണം.`
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Smart Redirects</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Smart Redirects</h3>
               <p class="mb-3">You don't always have to show an error page. Sometimes, it's better to just redirect users to the dashboard if they get lost.</p>
-              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">{ path: '**', redirectTo: 'dashboard' }</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-xs text-indigo-200">{ path: '**', redirectTo: 'dashboard' }</code>
               <p>This is common in dashboards where unauthorized URLs should just bounce the user back to safety.</p>
             `,
             hi: `आपको हमेशा एक त्रुटि पृष्ठ दिखाने की आवश्यकता नहीं है। कभी-कभी, उपयोगकर्ताओं को डैशबोर्ड पर पुनर्निर्देशित करना बेहतर होता है।`,
@@ -567,7 +547,7 @@ export class TutorialService {
           beginner: { en: 'The Bouncer', hi: 'बाउंसर', ml: 'ബൗൺസർ' },
           intermediate: { en: 'Route Guards', hi: 'रूट गार्ड', ml: 'റൂട്ട് ഗാർഡുകൾ' },
           advanced: { en: 'Functional Guards', hi: 'फंक्शनल गार्ड', ml: 'ഫങ്ഷണൽ ഗാർഡുകൾ' },
-          professional: { en: 'Navigation Cancellation', hi: 'नेविगेशन रद्दीकरण', ml: 'നാവിഗേഷൻ റദ്ദാക്കൽ' }
+          professional: { en: 'Navigation Cancellation', hi: 'नेविगेशन रद्दीकरण', ml: 'നാവിഗേഷൻ रद्दीकरण' }
         }),
         focusArea: 'intro',
         playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
@@ -580,24 +560,24 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Security Guard</h3>
-              <p class="mb-3">Some rooms in a building are private, like the Manager's Office. You can't just walk in.</p>
-              <p class="mb-3">There is a big <strong>Security Guard</strong> at the door. He asks: <em>"Do you have an ID badge?"</em></p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Security Guard</h3>
+              <p class="mb-3">Some rooms are private, like the Principal's Office. You can't just walk in.</p>
+              <p class="mb-3">There is a <strong>Security Guard</strong> at the door. He asks: <em>"Do you have a pass?"</em></p>
               <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>If <strong>YES</strong>: He steps aside and lets you in.</li>
-                <li>If <strong>NO</strong>: He blocks you and sends you to the Login desk.</li>
+                <li><strong>YES:</strong> Come in.</li>
+                <li><strong>NO:</strong> Go away!</li>
               </ul>
-              <p>In Angular, we call this code a <strong>Guard</strong>.</p>
+              <p>In Angular, we call this a <strong>Guard</strong>. It protects secret pages.</p>
             `,
             hi: `इमारत के कुछ कमरे निजी होते हैं, जैसे प्रबंधक का कार्यालय। दरवाजे पर एक बड़ा सुरक्षा गार्ड है। वह पूछता है: "क्या आपके पास आईडी बैज है?"`,
             ml: `ചില മുറികൾ പ്രൈവറ്റ് ആണ്. അവിടെ സെക്യൂരിറ്റി ഗാർഡ് ഉണ്ടാകും. ഐഡി കാർഡ് ഉണ്ടെങ്കിൽ മാത്രമേ അകത്തേക്ക് വിടൂ.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanActivate</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">CanActivate</h3>
               <p class="mb-3">A Guard is a function that runs <em>before</em> the navigation completes. The most common type is <code>canActivate</code>.</p>
               <p class="mb-3">It returns a boolean:</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><code>true</code>: Navigation proceeds.</li>
                 <li><code>false</code>: Navigation stops (user stays on current page).</li>
                 <li><code>UrlTree</code>: Navigation is redirected to a new path (e.g., Login).</li>
@@ -608,7 +588,7 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanDeactivate</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">CanDeactivate</h3>
               <p class="mb-3">Guards can also check if you are allowed to <em>leave</em>. This is called <code>CanDeactivate</code>.</p>
               <p class="mb-3"><strong>Real World Example:</strong> Have you ever tried to close a tab while filling out a form, and the browser screams: <em>"You have unsaved changes! Are you sure?"</em></p>
               <p>That is a CanDeactivate guard in action. It protects users from losing data.</p>
@@ -619,7 +599,7 @@ export class TutorialService {
           professional: {
             en: `
               <p class="mb-3">In modern Angular (v16+), we use <strong>Functional Guards</strong>. They are simple functions that can use <code>inject()</code>.</p>
-              <p>We also have <code>CanMatch</code>. This is powerful for <strong>Feature Flags</strong>. If <code>CanMatch</code> returns false, the router pretends that route <em>doesn't even exist</em> and keeps searching down the config list. This allows you to have two routes with the same path (e.g., 'dashboard'), one for 'Admin' and one for 'User', and the guard decides which component actually loads.</p>
+              <p>We also have <code>CanMatch</code>. This is powerful for <strong>Feature Flags</strong>. If <code>CanMatch</code> returns false, the router pretends that route <em>doesn't even exist</em> and keeps searching down the config list.</p>
             `,
             hi: `आधुनिक एंगुलर में, हम फंक्शनल गार्ड का उपयोग करते हैं। हमारे पास CanMatch भी है। यह फीचर फ्लैग के लिए शक्तिशाली है।`,
             ml: `പുതിയ ആംഗുലറിൽ ഫങ്ഷണൽ ഗാർഡുകൾ ഉപയോഗിക്കുന്നു. <code>CanMatch</code> ഉപയോഗിച്ച് ഒരേ പാത്തിൽ രണ്ട് വ്യത്യസ്ത കംപോണന്റുകൾ ലോഡ് ചെയ്യാം.`
@@ -650,20 +630,20 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Pack the Winter Coat</h3>
-              <p class="mb-3">Imagine you are going on a summer vacation. Do you pack your heavy winter coat, snow boots, and scarf? No! That would make your bag too heavy to carry.</p>
-              <p class="mb-3">Computers are the same. If a user only visits the "Home Page", why force them to download the code for the "Settings Page"?</p>
-              <p>Angular waits. It only downloads the "Settings" code <em>when the user actually clicks the button</em>. This makes the app start super fast!</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Packing Light</h3>
+              <p class="mb-3">Going on a summer trip? You don't pack your heavy winter coat! That would make your bag too heavy.</p>
+              <p class="mb-3">Computers are the same. If you are only looking at the Home Page, why download the code for the Settings Page?</p>
+              <p><strong>Lazy Loading</strong> means we only pack what we need right now. It makes the app super fast!</p>
             `,
             hi: `कल्पना कीजिए कि आप गर्मियों की छुट्टी पर जा रहे हैं। क्या आप अपना भारी विंटर कोट पैक करते हैं? नहीं! कंप्यूटर भी ऐसे ही होते हैं।`,
             ml: `വേനൽക്കാല യാത്രയ്ക്ക് നമ്മൾ തണുപ്പുകാല വസ്ത്രങ്ങൾ എടുക്കാറില്ല. അത് ബാഗിന്റെ ഭാരം കൂട്ടും. അതുപോലെ കമ്പ്യൂട്ടറും ആവശ്യമുള്ളപ്പോൾ മാത്രമേ കോഡ് ഡൗൺലോഡ് ചെയ്യൂ.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lazy Loading</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lazy Loading</h3>
               <p class="mb-3">By default, Angular creates one giant JavaScript file (<code>main.js</code>). If your app is huge, this file takes 10 seconds to load.</p>
               <p class="mb-3">Lazy loading splits your code into "chunks".</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>Eager:</strong> <code>component: Dashboard</code> (Loads instantly at startup)</li>
                 <li><strong>Lazy:</strong> <code>loadChildren: () => import(...)</code> (Loads on demand)</li>
               </ul>
@@ -674,7 +654,7 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Dynamic Imports</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Dynamic Imports</h3>
               <p class="mb-3">We use the JavaScript dynamic import syntax: <code>import('./path')</code>. This returns a Promise.</p>
               <p class="mb-3">When the router matches a lazy route, it pauses, fires a network request to fetch the JS file, executes it, and then renders the component. You might see a slight delay, which is why we often use loading spinners during this pause.</p>
             `,
@@ -715,19 +695,19 @@ export class TutorialService {
         content: this.t({
           beginner: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Clean Up Your Room!</h3>
-              <p class="mb-3">When a page appears, it says "Hello!" (Born). When it disappears, it says "Goodbye!" (Destroyed).</p>
-              <p class="mb-3">Imagine you turn on the water tap (start a timer) when you enter the kitchen. If you leave the kitchen without turning it off, the house floods!</p>
-              <p>In Angular, we use the "Goodbye" moment (<code>ngOnDestroy</code>) to turn off taps, stop timers, and clean up the memory so the computer doesn't get slow.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Clean Up Time!</h3>
+              <p class="mb-3">When a page opens, it says "Hello!". When it closes, it says "Goodbye!".</p>
+              <p class="mb-3">Imagine you turn on a water tap in the kitchen. If you leave without turning it off, the house floods!</p>
+              <p>In Angular, we use the "Goodbye" moment to turn off taps and clean up memory so the computer stays fast.</p>
             `,
             hi: `जब कोई पेज दिखाई देता है, तो वह "नमस्ते!" कहता है। जब यह गायब हो जाता है, तो वह "अलविदा!" कहता है।`,
             ml: `ഒരു പേജ് വരുമ്പോൾ അത് "ഹലോ" പറയുന്നു. പോകുമ്പോൾ "ഗുഡ്ബൈ" പറയുന്നു. അടുക്കളയിൽ നിന്ന് പോകുമ്പോൾ പൈപ്പ് അടയ്ക്കുന്നത് പോലെ ആംഗുലറിലും നമ്മൾ ക്ലീൻ അപ്പ് ചെയ്യണം.`
           },
           intermediate: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lifecycle Hooks</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lifecycle Hooks</h3>
               <p class="mb-3">Angular gives us hooks to run code at specific times:</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li><code>ngOnInit()</code>: Runs ONCE when the component is created. Great for fetching data from an API.</li>
                 <li><code>ngOnDestroy()</code>: Runs ONCE when the component is removed. Use this to unsubscribe from Observables.</li>
               </ul>
@@ -737,9 +717,9 @@ export class TutorialService {
           },
           advanced: {
             en: `
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Reuse Trap</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Reuse Trap</h3>
               <p class="mb-3">Here is a trap that catches everyone: If you go from <code>/user/1</code> to <code>/user/2</code>...</p>
-              <p class="font-bold text-red-600 mb-2">ngOnDestroy and ngOnInit DO NOT RUN.</p>
+              <p class="font-bold text-red-500 mb-2">ngOnDestroy and ngOnInit DO NOT RUN.</p>
               <p class="mb-3">Why? Because it's the <em>same</em> component class. Angular is smart and reuses it. It only updates the parameter. This is why you must listen to parameter changes instead of relying on <code>ngOnInit</code>.</p>
             `,
             hi: `यहाँ एक जाल है: यदि आप /user/1 से /user/2 पर जाते हैं, तो ngOnDestroy और ngOnInit नहीं चलते हैं।`,
