@@ -54,6 +54,7 @@ export class AppComponent {
   showCode = signal(false);
   isSpeaking = this.speech.isSpeaking;
   isSidebarOpen = signal(false); // Mobile sidebar state
+  isPlaygroundOpen = signal(false); // Toggle between Tutorial and Playground
 
   // React to lesson changes to stop speech
   constructor() {
@@ -86,6 +87,7 @@ export class AppComponent {
     
     // 2. Hide Landing Page
     this.showLandingPage.set(false);
+    this.isPlaygroundOpen.set(false);
 
     // 3. Force clean navigation
     this.router.navigate(['/home', { outlets: { left: null, right: null } }]);
@@ -104,6 +106,10 @@ export class AppComponent {
     this.showCode.update(v => !v);
   }
 
+  togglePlayground() {
+    this.isPlaygroundOpen.update(v => !v);
+  }
+
   toggleSpeech() {
     if (this.isSpeaking()) {
       this.speech.stop();
@@ -120,6 +126,8 @@ export class AppComponent {
       this.router.navigate(['/home']);
     }
     this.isSidebarOpen.set(false);
+    // Optional: Reset to reading mode when changing steps?
+    // this.isPlaygroundOpen.set(false); 
   }
 
   // --- Visualization Helpers ---
