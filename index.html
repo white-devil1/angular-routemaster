@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0f172a">
   <!-- Path updated to src/manifest.json -->
-  <link rel="manifest" href="src/manifest.json">
+  <link rel="manifest" href="manifest.json">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Custom Scrollbar for log area */
@@ -56,7 +56,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         // Path updated to src/sw.js
-        navigator.serviceWorker.register('src/sw.js')
+        navigator.serviceWorker.register('sw.js')
           .then(registration => {
             console.log('SW registered: ', registration);
           })
