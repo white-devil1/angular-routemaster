@@ -46,29 +46,26 @@ ${n.map((r,i)=>`${i+1}) ${r.toString()}`).join(`
 @Directive({ selector: 'router-outlet' })
 export class RouterOutlet implements OnDestroy, OnInit { ... }`,professional:`// Internal Logic
 this.viewContainerRef.createComponent(factory, index, injector);`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Imagine a Magic Frame</h3>
-              <p class="mb-3">Think of your house. You have a wall. On that wall, you hang a <strong>Magic Picture Frame</strong>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>Normally, if you want to see a new photo, you have to take the frame down, open the back, swap the photo, and hang it up again. That takes a long time! (This is how old websites worked).</li>
-                <li>With the <strong>Magic Frame</strong>, you just press a button on a remote, and the photo changes <em>instantly</em>. The wall doesn't move. The frame doesn't move. Only the picture inside changes.</li>
-              </ul>
-              <p>In Angular, this frame is called <code>&lt;router-outlet&gt;</code>. It creates a space on the screen where different pages can appear without reloading the whole computer.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Magic Frame</h3>
+              <p class="mb-3">Imagine a <strong>Magic Picture Frame</strong> on your wall. Unlike a normal frame, you don't need to take it down to change the photo.</p>
+              <p class="mb-3">You just press a button, and <em>POOF</em>! The picture changes instantly. The wall doesn't move. The frame doesn't move. Only the picture inside changes.</p>
+              <p>In Angular, this magic frame is called <code>&lt;router-outlet&gt;</code>. It's a special spot where pages appear instantly without reloading.</p>
             `,hi:"\u090F\u0915 \u091C\u093E\u0926\u0941\u0908 \u092B\u094D\u0930\u0947\u092E \u0915\u0940 \u0915\u0932\u094D\u092A\u0928\u093E \u0915\u0930\u0947\u0902\u0964 \u090F\u0902\u0917\u0941\u0932\u0930 \u092E\u0947\u0902, \u0907\u0938\u0947 <code>&lt;router-outlet&gt;</code> \u0915\u0939\u093E \u091C\u093E\u0924\u093E \u0939\u0948\u0964",ml:"\u0D12\u0D30\u0D41 \u0D2E\u0D3E\u0D1C\u0D3F\u0D15\u0D4D\u0D15\u0D7D \u0D2B\u0D4D\u0D30\u0D46\u0D2F\u0D3F\u0D02 \u0D38\u0D19\u0D4D\u0D15\u0D7D\u0D2A\u0D4D\u0D2A\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D15. \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D7D \u0D07\u0D24\u0D3F\u0D28\u0D46 <code>&lt;router-outlet&gt;</code> \u0D0E\u0D28\u0D4D\u0D28\u0D4D \u0D35\u0D3F\u0D33\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">What is it really?</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">What is it really?</h3>
               <p class="mb-3">The <code>&lt;router-outlet&gt;</code> is a placeholder directive. It tells Angular: <em>"Dynamically render the active component right here."</em></p>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100">
-                  <strong class="text-indigo-800">\u2705 Pros (Why use it?)</strong>
-                  <ul class="list-disc ml-4 text-sm mt-1">
-                    <li><strong>No White Flash:</strong> The page doesn't blink or go white when navigating.</li>
-                    <li><strong>Speed:</strong> We only fetch data, not the entire HTML page structure.</li>
-                    <li><strong>State:</strong> Variables in your header/sidebar stay alive.</li>
+                <div class="bg-indigo-500/10 p-3 rounded-lg border border-indigo-500/20">
+                  <strong class="text-indigo-300">\u2705 Pros</strong>
+                  <ul class="list-disc ml-4 text-sm mt-1 text-slate-300">
+                    <li><strong>No White Flash:</strong> The page doesn't blink when navigating.</li>
+                    <li><strong>Speed:</strong> Only fetches data, not the whole HTML page.</li>
+                    <li><strong>State:</strong> Sidebar/Header stay alive.</li>
                   </ul>
                 </div>
-                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
-                   <strong class="text-red-800">\u274C Cons</strong>
-                   <ul class="list-disc ml-4 text-sm mt-1">
+                <div class="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                   <strong class="text-red-300">\u274C Cons</strong>
+                   <ul class="list-disc ml-4 text-sm mt-1 text-slate-300">
                      <li><strong>Complexity:</strong> Harder to setup than basic HTML files.</li>
                      <li><strong>SEO:</strong> Search engines need help to read these dynamic pages (SSR).</li>
                    </ul>
@@ -78,7 +75,7 @@ this.viewContainerRef.createComponent(factory, index, injector);`}),content:this
             `,hi:"<code>&lt;router-outlet&gt;</code> \u090F\u0915 \u092A\u094D\u0932\u0947\u0938\u0939\u094B\u0932\u094D\u0921\u0930 \u0921\u093E\u092F\u0930\u0947\u0915\u094D\u091F\u093F\u0935 \u0939\u0948\u0964 \u092F\u0939 \u090F\u0902\u0917\u0941\u0932\u0930 \u0915\u094B \u0938\u0915\u094D\u0930\u093F\u092F \u0918\u091F\u0915 \u0915\u094B \u092F\u0939\u093E\u0901 \u0930\u0947\u0902\u0921\u0930 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0915\u0939\u0924\u093E \u0939\u0948\u0964",ml:"<code>&lt;router-outlet&gt;</code> \u0D12\u0D30\u0D41 \u0D2A\u0D4D\u0D32\u0D47\u0D38\u0D4D\u200C\u0D39\u0D4B\u0D7E\u0D21\u0D7C \u0D21\u0D2F\u0D31\u0D15\u0D4D\u200C\u0D1F\u0D40\u0D35\u0D4D \u0D06\u0D23\u0D4D. \u0D06\u0D15\u0D4D\u0D31\u0D4D\u0D31\u0D40\u0D35\u0D4D \u0D15\u0D02\u0D2A\u0D4B\u0D23\u0D28\u0D4D\u0D31\u0D3F\u0D28\u0D46 \u0D07\u0D35\u0D3F\u0D1F\u0D46 \u0D31\u0D46\u0D7B\u0D21\u0D7C \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D7B \u0D07\u0D24\u0D4D \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D28\u0D4B\u0D1F\u0D4D \u0D2A\u0D31\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41."},advanced:{en:`
               <p class="mb-3">The <code>RouterOutlet</code> is a structural directive that acts as a sink for the instantiated component. When a route is matched, the Router looks for the nearest outlet in the component tree.</p>
               <p class="mb-3">Technically, it creates a <strong>Sibling</strong> of the outlet tag in the DOM, not a child. This is a common misconception.</p>
-              <div class="p-3 bg-slate-100 rounded border border-slate-200 text-sm">
+              <div class="p-3 bg-slate-800 rounded border border-slate-700 text-sm">
                 <strong>Key Concept:</strong> Outlets can be nested. A parent component can have an outlet, and the child component loaded into that outlet can have <em>another</em> outlet. This creates a hierarchy of views.
               </div>
             `,hi:"<code>RouterOutlet</code> \u090F\u0915 \u0938\u094D\u091F\u094D\u0930\u0915\u094D\u091A\u0930\u0932 \u0921\u093E\u092F\u0930\u0947\u0915\u094D\u091F\u093F\u0935 \u0939\u0948\u0964 \u091C\u092C \u0915\u094B\u0908 \u0930\u0942\u091F \u092E\u0947\u0932 \u0916\u093E\u0924\u093E \u0939\u0948, \u0924\u094B \u0930\u093E\u0909\u091F\u0930 \u0918\u091F\u0915 \u091F\u094D\u0930\u0940 \u092E\u0947\u0902 \u0928\u093F\u0915\u091F\u0924\u092E \u0906\u0909\u091F\u0932\u0947\u091F \u0915\u0940 \u0924\u0932\u093E\u0936 \u0915\u0930\u0924\u093E \u0939\u0948\u0964",ml:"<code>RouterOutlet</code> \u0D12\u0D30\u0D41 \u0D38\u0D4D\u0D1F\u0D4D\u0D30\u0D15\u0D4D\u0D1A\u0D4D\u0D1A\u0D31\u0D7D \u0D21\u0D2F\u0D31\u0D15\u0D4D\u0D31\u0D4D\u0D31\u0D40\u0D35\u0D4D \u0D06\u0D23\u0D4D. \u0D31\u0D42\u0D1F\u0D4D\u0D1F\u0D4D \u0D2E\u0D3E\u0D1A\u0D4D\u0D1A\u0D4D \u0D06\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E, \u0D31\u0D57\u0D1F\u0D4D\u0D1F\u0D7C \u0D0F\u0D31\u0D4D\u0D31\u0D35\u0D41\u0D02 \u0D05\u0D1F\u0D41\u0D24\u0D4D\u0D24\u0D41\u0D33\u0D4D\u0D33 \u0D14\u0D1F\u0D4D\u0D1F\u0D4D\u0D32\u0D46\u0D31\u0D4D\u0D31\u0D4D \u0D15\u0D23\u0D4D\u0D1F\u0D46\u0D24\u0D4D\u0D24\u0D41\u0D28\u0D4D\u0D28\u0D41."},professional:{en:`
@@ -99,18 +96,15 @@ If URL is "dashboard" -> Show GraphPicture`,intermediate:`const routes: Routes =
 ];`,professional:`// The config is a recursive tree structure.
 // 'pathMatch: full' ensures exact URL matching for redirects.
 // Empty path '' routes are often used for layout wrappers.`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Giving Directions</h3>
-              <p class="mb-3">Imagine you invite a robot to your house. The robot doesn't know where the kitchen is. You have to give it a <strong>Map</strong>.</p>
-              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-4">
-                 <p class="font-mono text-sm text-slate-600">
-                   \u2022 If I say "Kitchen" -> Go to Room A.<br>
-                   \u2022 If I say "Bedroom" -> Go to Room B.<br>
-                   \u2022 If I say nothing -> Go to the Living Room (Default).
-                 </p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Giving Directions</h3>
+              <p class="mb-3">Imagine a robot visiting your house. It doesn't know where the kitchen is. You need to give it a <strong>Map</strong>.</p>
+              <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mb-4 font-mono text-sm text-indigo-200">
+                 <p>\u2022 If I say "Kitchen" -> Go to Room A.</p>
+                 <p>\u2022 If I say "Bedroom" -> Go to Room B.</p>
               </div>
-              <p>In Angular, this map is a list called <code>routes</code>. It connects a <strong>word</strong> in the address bar (like '/home') to a <strong>picture</strong> (Component) to show in the frame.</p>
+              <p>In Angular, this map is called <code>routes</code>. It tells the app which picture to put in the Magic Frame when the address changes.</p>
             `,hi:"\u0915\u0932\u094D\u092A\u0928\u093E \u0915\u0940\u091C\u093F\u090F \u0915\u093F \u0906\u092A \u090F\u0915 \u0930\u094B\u092C\u094B\u091F \u0915\u094B \u0905\u092A\u0928\u0947 \u0918\u0930 \u0906\u092E\u0902\u0924\u094D\u0930\u093F\u0924 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092A\u0915\u094B \u0909\u0938\u0947 \u090F\u0915 <strong>\u0928\u0915\u094D\u0936\u093E</strong> \u0926\u0947\u0928\u093E \u0939\u094B\u0917\u093E\u0964",ml:"\u0D28\u0D3F\u0D19\u0D4D\u0D19\u0D7E \u0D12\u0D30\u0D41 \u0D31\u0D4B\u0D2C\u0D4B\u0D1F\u0D4D\u0D1F\u0D3F\u0D28\u0D46 \u0D35\u0D40\u0D1F\u0D4D\u0D1F\u0D3F\u0D32\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D15\u0D4D\u0D37\u0D23\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D05\u0D24\u0D3F\u0D28\u0D4D \u0D05\u0D1F\u0D41\u0D15\u0D4D\u0D15\u0D33 \u0D0E\u0D35\u0D3F\u0D1F\u0D46\u0D2F\u0D3E\u0D23\u0D46\u0D28\u0D4D\u0D28\u0D4D \u0D05\u0D31\u0D3F\u0D2F\u0D3F\u0D32\u0D4D\u0D32. \u0D28\u0D3F\u0D19\u0D4D\u0D19\u0D7E \u0D05\u0D24\u0D3F\u0D28\u0D4A\u0D30\u0D41 <strong>\u0D2E\u0D3E\u0D2A\u0D4D\u0D2A\u0D4D</strong> \u0D28\u0D7D\u0D15\u0D23\u0D02."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Routes Array</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Routes Array</h3>
               <p class="mb-3">We configure the router by creating an array of objects. Each object needs two main things:</p>
               <ul class="list-disc ml-5 space-y-2 mb-4">
                 <li><code>path</code>: The string in the URL (e.g., 'dashboard').</li>
@@ -137,26 +131,22 @@ this.router.navigate(['../', 'sibling'], { relativeTo: this.route });
 
 // URL Creation Strategy
 const urlTree = this.router.createUrlTree(['/home'], { queryParams: { ref: 'email' } });`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Walk, Teleport!</h3>
-              <p class="mb-3">In a normal website, clicking a link is like walking to a new house. You have to pack your bags, leave, walk, and enter the new house. This takes time (the screen flashes white).</p>
-              <p class="mb-3">In Angular, we use a special sticker called <code>routerLink</code>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>It works like a <strong>Teleporter</strong>.</li>
-                <li>You press the button, and <em>BAM!</em> You are there instantly.</li>
-                <li>You don't lose the things you were holding in your memory.</li>
-              </ul>
-              <p><strong>Try it:</strong> Click the 'Home' and 'Dash' buttons in the playground. Notice how the screen doesn't blink?</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Teleport Button</h3>
+              <p class="mb-3">Clicking a normal link is like walking to a new house. It takes time. The screen flashes white.</p>
+              <p class="mb-3">Angular uses a <strong>Teleport Button</strong> called <code>routerLink</code>.</p>
+              <p class="mb-3">You click it, and <em>ZAP</em>! You are there instantly. No waiting. No reloading.</p>
+              <p><strong>Try it:</strong> Click the 'Home' and 'Dash' buttons below. See how fast it is?</p>
             `,hi:"\u090F\u0915 \u0938\u093E\u092E\u093E\u0928\u094D\u092F \u0935\u0947\u092C\u0938\u093E\u0907\u091F \u092E\u0947\u0902, \u0932\u093F\u0902\u0915 \u092A\u0930 \u0915\u094D\u0932\u093F\u0915 \u0915\u0930\u0928\u093E \u090F\u0915 \u0928\u090F \u0918\u0930 \u092E\u0947\u0902 \u091C\u093E\u0928\u0947 \u091C\u0948\u0938\u093E \u0939\u0948\u0964 \u090F\u0902\u0917\u0941\u0932\u0930 \u092E\u0947\u0902, \u0939\u092E <code>routerLink</code> \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u092F\u0939 \u090F\u0915 \u091F\u0947\u0932\u0940\u092A\u094B\u0930\u094D\u091F\u0930 \u0915\u0940 \u0924\u0930\u0939 \u0915\u093E\u092E \u0915\u0930\u0924\u093E \u0939\u0948\u0964",ml:"\u0D38\u0D3E\u0D27\u0D3E\u0D30\u0D23 \u0D35\u0D46\u0D2C\u0D4D\u0D38\u0D48\u0D31\u0D4D\u0D31\u0D41\u0D15\u0D33\u0D3F\u0D7D \u0D32\u0D3F\u0D19\u0D4D\u0D15\u0D4D \u0D15\u0D4D\u0D32\u0D3F\u0D15\u0D4D\u0D15\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D2A\u0D41\u0D24\u0D3F\u0D2F \u0D35\u0D40\u0D1F\u0D4D\u0D1F\u0D3F\u0D32\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D28\u0D1F\u0D28\u0D4D\u0D28\u0D41\u0D2A\u0D4B\u0D15\u0D41\u0D28\u0D4D\u0D28 \u0D2A\u0D4B\u0D32\u0D46\u0D2F\u0D3E\u0D23\u0D4D. \u0D0E\u0D28\u0D4D\u0D28\u0D3E\u0D7D \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D7D <code>routerLink</code> \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D1F\u0D46\u0D32\u0D3F\u0D2A\u0D4B\u0D7C\u0D1F\u0D4D\u0D1F\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D4D \u0D2A\u0D4B\u0D32\u0D46 \u0D24\u0D7D\u0D38\u0D2E\u0D2F\u0D02 \u0D0E\u0D24\u0D4D\u0D24\u0D3E\u0D02."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">href vs routerLink</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">href vs routerLink</h3>
               <p class="mb-3">This is the most common interview question.</p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div class="bg-red-50 p-3 rounded-lg border border-red-100">
-                  <strong class="text-red-800">HTML (href="/home")</strong>
-                  <p class="text-sm mt-1">Triggers a standard browser request. The browser destroys the current page, downloads index.html again, and restarts Angular. <strong>Slow. loses state.</strong></p>
+                <div class="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                  <strong class="text-red-300">HTML (href="/home")</strong>
+                  <p class="text-sm mt-1 text-slate-300">Destroys the current page. Downloads index.html again. Restarts Angular. <strong>Slow. Loses state.</strong></p>
                 </div>
-                <div class="bg-green-50 p-3 rounded-lg border border-green-100">
-                   <strong class="text-green-800">Angular (routerLink="/home")</strong>
-                   <p class="text-sm mt-1">Intercepts the click. It prevents the browser from reloading. It tells the Angular Router to just swap the component. <strong>Fast. keeps state.</strong></p>
+                <div class="bg-green-500/10 p-3 rounded-lg border border-green-500/20">
+                   <strong class="text-green-300">Angular (routerLink="/home")</strong>
+                   <p class="text-sm mt-1 text-slate-300">Prevents reload. Just swaps the component. <strong>Fast. Keeps state.</strong></p>
                 </div>
               </div>
             `,hi:"\u092F\u0939 \u0938\u092C\u0938\u0947 \u0906\u092E \u0938\u093E\u0915\u094D\u0937\u093E\u0924\u094D\u0915\u093E\u0930 \u092A\u094D\u0930\u0936\u094D\u0928 \u0939\u0948: href \u092C\u0928\u093E\u092E routerLink\u0964 href \u0927\u0940\u092E\u093E \u0939\u0948 \u0914\u0930 \u0938\u094D\u0925\u093F\u0924\u093F \u0916\u094B \u0926\u0947\u0924\u093E \u0939\u0948\u0964 routerLink \u0924\u0947\u091C\u093C \u0939\u0948 \u0914\u0930 \u0938\u094D\u0925\u093F\u0924\u093F \u0930\u0916\u0924\u093E \u0939\u0948\u0964",ml:"\u0D07\u0D24\u0D4A\u0D30\u0D41 \u0D2A\u0D4D\u0D30\u0D27\u0D3E\u0D28 \u0D07\u0D28\u0D4D\u0D31\u0D7C\u0D35\u0D4D\u0D2F\u0D42 \u0D1A\u0D4B\u0D26\u0D4D\u0D2F\u0D2E\u0D3E\u0D23\u0D4D. href \u0D2A\u0D47\u0D1C\u0D4D \u0D31\u0D40\u0D32\u0D4B\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41, \u0D05\u0D24\u0D3F\u0D28\u0D3E\u0D7D \u0D38\u0D4D\u0D32\u0D4B \u0D06\u0D23\u0D4D. routerLink \u0D2A\u0D47\u0D1C\u0D4D \u0D31\u0D40\u0D32\u0D4B\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D24\u0D46 \u0D15\u0D02\u0D2A\u0D4B\u0D23\u0D28\u0D4D\u0D31\u0D4D \u0D2E\u0D3E\u0D31\u0D4D\u0D31\u0D41\u0D28\u0D4D\u0D28\u0D41, \u0D05\u0D24\u0D3F\u0D28\u0D3E\u0D7D \u0D2B\u0D3E\u0D38\u0D4D\u0D31\u0D4D\u0D31\u0D4D \u0D06\u0D23\u0D4D."},advanced:{en:`
@@ -165,7 +155,7 @@ const urlTree = this.router.createUrlTree(['/home'], { queryParams: { ref: 'emai
               <p><strong>Use Case:</strong> Redirecting a user after they successfully submit a form.</p>
             `,hi:"\u0906\u092A TypeScript \u0915\u094B\u0921 \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0915\u0947 \u092D\u0940 \u0928\u0947\u0935\u093F\u0917\u0947\u091F \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 <code>Router.navigate()</code> \u0935\u093F\u0927\u093F \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0947\u0902\u0964",ml:"\u0D32\u0D4B\u0D17\u0D3F\u0D7B \u0D1A\u0D46\u0D2F\u0D4D\u0D24 \u0D36\u0D47\u0D37\u0D02 \u0D2A\u0D47\u0D1C\u0D4D \u0D2E\u0D3E\u0D31\u0D4D\u0D31\u0D3E\u0D7B TypeScript \u0D15\u0D4B\u0D21\u0D4D \u0D35\u0D34\u0D3F \u0D38\u0D3E\u0D27\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D02. \u0D07\u0D24\u0D3F\u0D28\u0D3E\u0D2F\u0D3F <code>Router.navigate()</code> \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D3E\u0D02."},professional:{en:`
               <p>When navigation occurs, a complex lifecycle triggers:</p>
-              <ol class="list-decimal ml-5 space-y-1 mb-4 text-sm">
+              <ol class="list-decimal ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>URL Parsing:</strong> Convert string to UrlTree.</li>
                 <li><strong>Recognition:</strong> Find matching config.</li>
                 <li><strong>Guards:</strong> Check CanDeactivate (current) and CanActivate (next).</li>
@@ -185,30 +175,24 @@ Show user with ID: 1`,intermediate:`// Route Config
 }`,professional:`// CRITICAL: Always use Observables/Signals for params.
 // If you navigate from /user/1 to /user/2, the Component is REUSED.
 // The constructor runs only once. Only the Observable emits the new ID.`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Write 1,000 Letters</h3>
-              <p class="mb-3">Imagine you want to send a letter to 1,000 friends. Do you hand-write 1,000 completely different letters?</p>
-              <p class="mb-3">No! You write <strong>one</strong> letter and leave a blank space for the name: <em>"Dear [Name]..."</em>.</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>In Angular, we create <strong>one</strong> page called <code>UserPage</code>.</li>
-                <li>We leave a blank space in the URL: <code>/user/:id</code>.</li>
-                <li>When you visit <code>/user/1</code>, Angular fills the blank with "1". When you visit <code>/user/99</code>, it fills it with "99".</li>
-              </ul>
-              <p><strong>Try it:</strong> Click the User 1 and User 99 buttons. It's the same page, just different data!</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">One Letter, Many Friends</h3>
+              <p class="mb-3">Do you write 1,000 different letters for 1,000 friends? No! You write <strong>one</strong> letter and leave a blank space: <em>"Dear [Name]..."</em>.</p>
+              <p class="mb-3">Angular does the same. We make <strong>one</strong> page called 'User', and leave a blank space for the ID: <code>/user/:id</code>.</p>
+              <p>When you visit <code>/user/1</code>, it fills in "1". When you visit <code>/user/99</code>, it fills it with "99". Same page, different info!</p>
             `,hi:"\u0915\u0932\u094D\u092A\u0928\u093E \u0915\u0940\u091C\u093F\u090F \u0915\u093F \u0906\u092A 1,000 \u0926\u094B\u0938\u094D\u0924\u094B\u0902 \u0915\u094B \u092A\u0924\u094D\u0930 \u092D\u0947\u091C\u0928\u093E \u091A\u093E\u0939\u0924\u0947 \u0939\u0948\u0902\u0964 \u0915\u094D\u092F\u093E \u0906\u092A 1,000 \u0905\u0932\u0917-\u0905\u0932\u0917 \u092A\u0924\u094D\u0930 \u0932\u093F\u0916\u0924\u0947 \u0939\u0948\u0902? \u0928\u0939\u0940\u0902! \u0906\u092A \u090F\u0915 \u092A\u0924\u094D\u0930 \u0932\u093F\u0916\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0928\u093E\u092E \u0915\u0947 \u0932\u093F\u090F \u0916\u093E\u0932\u0940 \u091C\u0917\u0939 \u091B\u094B\u0921\u093C \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"1000 \u0D15\u0D42\u0D1F\u0D4D\u0D1F\u0D41\u0D15\u0D3E\u0D7C\u0D15\u0D4D\u0D15\u0D4D \u0D15\u0D24\u0D4D\u0D24\u0D46\u0D34\u0D41\u0D24\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D28\u0D2E\u0D4D\u0D2E\u0D7E 1000 \u0D15\u0D24\u0D4D\u0D24\u0D46\u0D34\u0D41\u0D24\u0D3E\u0D31\u0D3F\u0D32\u0D4D\u0D32. \u0D12\u0D30\u0D46\u0D23\u0D4D\u0D23\u0D02 \u0D0E\u0D34\u0D41\u0D24\u0D3F \u0D2A\u0D47\u0D30\u0D4D \u0D2E\u0D3E\u0D24\u0D4D\u0D30\u0D02 \u0D2E\u0D3E\u0D31\u0D4D\u0D31\u0D41\u0D02. \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D32\u0D41\u0D02 \u0D07\u0D24\u0D41\u0D2A\u0D4B\u0D32\u0D46 \u0D12\u0D30\u0D41 \u0D2A\u0D47\u0D1C\u0D4D \u0D09\u0D23\u0D4D\u0D1F\u0D3E\u0D15\u0D4D\u0D15\u0D3F \u0D35\u0D3F\u0D35\u0D30\u0D19\u0D4D\u0D19\u0D7E \u0D2E\u0D3E\u0D24\u0D4D\u0D30\u0D02 \u0D2E\u0D3E\u0D31\u0D4D\u0D31\u0D41\u0D28\u0D4D\u0D28\u0D41."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Defining Parameters</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Defining Parameters</h3>
               <p class="mb-3">We use a colon <code>:</code> to define a parameter in our route config.</p>
-              <code class="block bg-slate-100 p-2 rounded mb-3">{ path: 'user/:id', component: UserComponent }</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-indigo-200">{ path: 'user/:id', component: UserComponent }</code>
               <p class="mb-3">This tells Angular: <em>"Whatever is in this position of the URL, capture it and call it 'id'."</em></p>
               <p><strong>Use Cases:</strong></p>
-              <ul class="list-disc ml-5 mb-4 text-sm">
+              <ul class="list-disc ml-5 mb-4 text-sm text-slate-300">
                 <li>Product Details (<code>/product/4502</code>)</li>
                 <li>Order History (<code>/orders/AX-99</code>)</li>
-                <li>Blog Posts (<code>/blog/how-to-code</code>)</li>
               </ul>
             `,hi:"\u0939\u092E \u0905\u092A\u0928\u0947 \u0930\u0942\u091F \u0915\u0949\u0928\u094D\u092B\u093C\u093F\u0917\u0930\u0947\u0936\u0928 \u092E\u0947\u0902 \u092A\u0948\u0930\u093E\u092E\u0940\u091F\u0930 \u0915\u094B \u092A\u0930\u093F\u092D\u093E\u0937\u093F\u0924 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0915\u094B\u0932\u0928 <code>:</code> \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D31\u0D42\u0D1F\u0D4D\u0D1F\u0D4D \u0D15\u0D4B\u0D7A\u0D2B\u0D3F\u0D17\u0D31\u0D47\u0D37\u0D28\u0D3F\u0D7D \u0D2A\u0D3E\u0D30\u0D3E\u0D2E\u0D40\u0D31\u0D4D\u0D31\u0D7C \u0D21\u0D3F\u0D2B\u0D48\u0D7B \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D7B \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D15\u0D4B\u0D33\u0D7B <code>:</code> \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Snapshot Trap</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Snapshot Trap</h3>
               <p class="mb-3">You can read the ID in two ways:</p>
-              <ol class="list-decimal ml-5 space-y-2 mb-4 text-sm">
+              <ol class="list-decimal ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li><code>route.snapshot.paramMap</code>: Reads the ID <strong>once</strong> when the component is created.</li>
                 <li><code>route.paramMap.subscribe()</code>: Listens for <strong>changes</strong> to the ID.</li>
               </ol>
@@ -232,21 +216,20 @@ Show user with ID: 1`,intermediate:`// Route Config
 // 2. Parse current URL tree.
 // 3. Check if link's URL tree is a subset of current URL tree.
 // 4. If yes, apply Renderer2.addClass().`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Glowing Map Pin</h3>
-              <p class="mb-3">When you walk around a shopping mall, you check the map. It has a big sticker that says: <strong>"YOU ARE HERE"</strong>.</p>
-              <p class="mb-3">Websites need this too. When users click "Settings", the Settings button should light up so they know where they are.</p>
-              <p>Angular does this automatically! We just tell it: <em>"When this button matches the current page, make it purple."</em></p>
-              <p><strong>Look above:</strong> Click 'Home', 'Dash', 'Set'. See how the button glows?</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">You Are Here</h3>
+              <p class="mb-3">When you are in a huge shopping mall, the map has a sticker that says <strong>"YOU ARE HERE"</strong>.</p>
+              <p class="mb-3">Websites need this too. When you are on the 'Home' page, the 'Home' button should glow so you know where you are.</p>
+              <p>Angular does this automatically! Look at the buttons below\u2014the active one is always glowing.</p>
             `,hi:'\u091C\u092C \u0906\u092A \u0915\u093F\u0938\u0940 \u0936\u0949\u092A\u093F\u0902\u0917 \u092E\u0949\u0932 \u092E\u0947\u0902 \u0918\u0942\u092E\u0924\u0947 \u0939\u0948\u0902, \u0924\u094B \u0906\u092A \u0928\u0915\u094D\u0936\u093E \u0926\u0947\u0916\u0924\u0947 \u0939\u0948\u0902\u0964 \u0909\u0938 \u092A\u0930 \u0932\u093F\u0916\u093E \u0939\u094B\u0924\u093E \u0939\u0948: "\u0906\u092A \u092F\u0939\u093E\u0901 \u0939\u0948\u0902"\u0964 \u0935\u0947\u092C\u0938\u093E\u0907\u091F\u094B\u0902 \u0915\u094B \u092D\u0940 \u0907\u0938\u0915\u0940 \u0906\u0935\u0936\u094D\u092F\u0915\u0924\u093E \u0939\u094B\u0924\u0940 \u0939\u0948\u0964',ml:'\u0D37\u0D4B\u0D2A\u0D4D\u0D2A\u0D3F\u0D02\u0D17\u0D4D \u0D2E\u0D3E\u0D33\u0D3F\u0D7D \u0D2A\u0D4B\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D2E\u0D3E\u0D2A\u0D4D\u0D2A\u0D4D \u0D28\u0D4B\u0D15\u0D4D\u0D15\u0D41\u0D02. \u0D05\u0D24\u0D3F\u0D7D "\u0D28\u0D3F\u0D19\u0D4D\u0D19\u0D7E \u0D07\u0D35\u0D3F\u0D1F\u0D46\u0D2F\u0D3E\u0D23\u0D4D" \u0D0E\u0D28\u0D4D\u0D28\u0D4D \u0D15\u0D3E\u0D23\u0D3E\u0D02. \u0D35\u0D46\u0D2C\u0D4D\u0D38\u0D48\u0D31\u0D4D\u0D31\u0D41\u0D15\u0D33\u0D3F\u0D32\u0D41\u0D02 \u0D07\u0D24\u0D4D \u0D06\u0D35\u0D36\u0D4D\u0D2F\u0D2E\u0D3E\u0D23\u0D4D. \u0D06\u0D02\u0D17\u0D41\u0D32\u0D7C \u0D07\u0D24\u0D4D \u0D24\u0D28\u0D3F\u0D2F\u0D46 \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41.'},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">routerLinkActive</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">routerLinkActive</h3>
               <p class="mb-3">We use the <code>routerLinkActive</code> directive on our link tags.</p>
               <p class="mb-3"><strong>How to use:</strong></p>
-              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">&lt;a routerLink="/about" routerLinkActive="font-bold underline"&gt;About&lt;/a&gt;</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-xs text-indigo-200">&lt;a routerLink="/about" routerLinkActive="font-bold underline"&gt;About&lt;/a&gt;</code>
               <p>This simply adds the classes <code>font-bold</code> and <code>underline</code> to the element whenever the URL starts with <code>/about</code>. You don't need to write complex <code>if/else</code> logic in your component!</p>
             `,hi:"\u0939\u092E \u0905\u092A\u0928\u0947 \u0932\u093F\u0902\u0915 \u091F\u0948\u0917 \u092A\u0930 <code>routerLinkActive</code> \u0921\u093E\u092F\u0930\u0947\u0915\u094D\u091F\u093F\u0935 \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u092F\u0939 \u092C\u0938 \u0924\u0924\u094D\u0935 \u092E\u0947\u0902 \u0915\u094D\u0932\u093E\u0938 \u091C\u094B\u0921\u093C\u0924\u093E \u0939\u0948\u0964",ml:"\u0D28\u0D2E\u0D4D\u0D2E\u0D7E <code>routerLinkActive</code> \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D07\u0D24\u0D4D URL \u0D2E\u0D3E\u0D1A\u0D4D\u0D1A\u0D4D \u0D06\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E CSS \u0D15\u0D4D\u0D32\u0D3E\u0D38\u0D41\u0D15\u0D7E \u0D06\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Exact Matching</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Exact Matching</h3>
               <p class="mb-3">By default, the matching is "inclusive".</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li>If you link to <code>/user</code>, it stays active even if you are at <code>/user/5/edit</code>. This is great for menus.</li>
                 <li>However, a "Home" link (<code>/</code>) matches <em>everything</em> because every URL starts with <code>/</code>.</li>
               </ul>
@@ -269,25 +252,23 @@ Show user with ID: 1`,intermediate:`// Route Config
 this.router.navigate([{ outlets: { left: null } }]);`,professional:`// URL Structure: /primary(outlet:secondary)
 // Segments in parentheses are treated as independent branches of the UrlTree.
 // They allow disjointed component rendering without state coupling.`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Watching TV while Gaming</h3>
-              <p class="mb-3">Have you ever seen a TV where you can watch a movie in a big box, but play a video game in a small box in the corner? This is called "Picture-in-Picture".</p>
-              <p class="mb-3">Angular allows this too! We can have a <strong>Main Frame</strong> (Blue) and a <strong>Side Frame</strong> (Green/Red).</p>
-              <p>You can change the Side Frame to show a "Menu" or "Ads" without changing the Main Frame. They are independent!</p>
-              <p><strong>Try it:</strong> Click the 'Menu' or 'Ads' buttons on the Left Card.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Picture-in-Picture</h3>
+              <p class="mb-3">Imagine watching a movie on TV, but playing a video game in a small box in the corner. That's <strong>Picture-in-Picture</strong>!</p>
+              <p class="mb-3">Angular can do this too. We have a <strong>Main Frame</strong> (Blue) and a <strong>Side Frame</strong> (Green/Red).</p>
+              <p>You can change the Side Frame (like opening a Menu) without stopping the movie in the Main Frame!</p>
             `,hi:"\u0915\u094D\u092F\u093E \u0906\u092A\u0928\u0947 \u0915\u092D\u0940 \u0910\u0938\u093E \u091F\u0940\u0935\u0940 \u0926\u0947\u0916\u093E \u0939\u0948 \u091C\u0939\u093E\u0901 \u0906\u092A \u090F\u0915 \u092C\u0921\u093C\u0947 \u092C\u0949\u0915\u094D\u0938 \u092E\u0947\u0902 \u092B\u093F\u0932\u094D\u092E \u0926\u0947\u0916 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902, \u0932\u0947\u0915\u093F\u0928 \u0915\u094B\u0928\u0947 \u092E\u0947\u0902 \u090F\u0915 \u091B\u094B\u091F\u0947 \u092C\u0949\u0915\u094D\u0938 \u092E\u0947\u0902 \u0935\u0940\u0921\u093F\u092F\u094B \u0917\u0947\u092E \u0916\u0947\u0932 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902?",ml:"\u0D12\u0D30\u0D41 \u0D1F\u0D3F\u0D35\u0D3F\u0D2F\u0D3F\u0D7D \u0D38\u0D3F\u0D28\u0D3F\u0D2E \u0D15\u0D3E\u0D23\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D24\u0D28\u0D4D\u0D28\u0D46 \u0D1A\u0D46\u0D31\u0D3F\u0D2F\u0D4A\u0D30\u0D41 \u0D2C\u0D4B\u0D15\u0D4D\u0D38\u0D3F\u0D7D \u0D17\u0D46\u0D2F\u0D3F\u0D02 \u0D15\u0D33\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D4D \u0D2A\u0D4B\u0D32\u0D46\u0D2F\u0D3E\u0D23\u0D3F\u0D24\u0D4D. \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D7D \u0D12\u0D30\u0D47 \u0D38\u0D2E\u0D2F\u0D02 \u0D2A\u0D32 \u0D15\u0D3E\u0D30\u0D4D\u0D2F\u0D19\u0D4D\u0D19\u0D7E \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D02."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Named Outlets</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Named Outlets</h3>
               <p class="mb-3">A page can have one default <code>&lt;router-outlet&gt;</code> and unlimited <em>named</em> outlets: <code>&lt;router-outlet name="sidebar"&gt;</code>.</p>
               <p class="mb-3">This is perfect for:</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>Popups/Modals:</strong> Allow users to bookmark a popup state.</li>
-                <li><strong>Chat Widgets:</strong> Keep chat open while navigating the main app.</li>
                 <li><strong>Sidebars:</strong> Dynamic tools based on context.</li>
               </ul>
             `,hi:"\u090F\u0915 \u092A\u0947\u091C \u092E\u0947\u0902 \u090F\u0915 \u0921\u093F\u092B\u093C\u0949\u0932\u094D\u091F <code>&lt;router-outlet&gt;</code> \u0914\u0930 \u0905\u0938\u0940\u092E\u093F\u0924 \u0928\u093E\u092E\u093F\u0924 \u0906\u0909\u091F\u0932\u0947\u091F \u0939\u094B \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D12\u0D30\u0D41 \u0D2A\u0D47\u0D1C\u0D3F\u0D7D \u0D12\u0D28\u0D4D\u0D28\u0D3F\u0D32\u0D27\u0D3F\u0D15\u0D02 \u0D14\u0D1F\u0D4D\u0D1F\u0D4D\u0D32\u0D46\u0D31\u0D4D\u0D31\u0D41\u0D15\u0D7E \u0D35\u0D46\u0D15\u0D4D\u0D15\u0D3E\u0D02. \u0D2A\u0D4B\u0D2A\u0D4D\u0D2A\u0D2A\u0D4D\u0D2A\u0D41\u0D15\u0D7E\u0D15\u0D4D\u0D15\u0D41\u0D02 \u0D38\u0D48\u0D21\u0D4D\u0D2C\u0D3E\u0D31\u0D41\u0D15\u0D7E\u0D15\u0D4D\u0D15\u0D41\u0D02 \u0D07\u0D24\u0D4D \u0D35\u0D33\u0D30\u0D46 \u0D09\u0D2A\u0D15\u0D3E\u0D30\u0D2A\u0D4D\u0D30\u0D26\u0D2E\u0D3E\u0D23\u0D4D."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The URL Syntax</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The URL Syntax</h3>
               <p class="mb-3">When you use secondary outlets, the URL looks weird: <code>/dashboard(left:menu//right:help)</code>.</p>
               <p class="mb-3">The parentheses <code>(...)</code> tell Angular that these parts are separate from the main path. To close an outlet, you navigate it to <code>null</code>.</p>
-              <code class="block bg-slate-100 p-2 rounded text-xs text-slate-600">this.router.navigate([{ outlets: { left: null } }])</code>
+              <code class="block bg-slate-800 p-2 rounded text-xs text-indigo-200">this.router.navigate([{ outlets: { left: null } }])</code>
             `,hi:"\u091C\u092C \u0906\u092A \u092E\u093E\u0927\u094D\u092F\u092E\u093F\u0915 \u0906\u0909\u091F\u0932\u0947\u091F \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0924\u094B URL \u0905\u091C\u0940\u092C \u0926\u093F\u0916\u0924\u093E \u0939\u0948\u0964 \u0915\u094B\u0937\u094D\u0920\u0915 <code>(...)</code> \u090F\u0902\u0917\u0941\u0932\u0930 \u0915\u094B \u092C\u0924\u093E\u0924\u0947 \u0939\u0948\u0902 \u0915\u093F \u092F\u0947 \u092D\u093E\u0917 \u092E\u0941\u0916\u094D\u092F \u092A\u0925 \u0938\u0947 \u0905\u0932\u0917 \u0939\u0948\u0902\u0964",ml:"\u0D38\u0D46\u0D15\u0D4D\u0D15\u0D7B\u0D21\u0D31\u0D3F \u0D14\u0D1F\u0D4D\u0D1F\u0D4D\u0D32\u0D46\u0D31\u0D4D\u0D31\u0D41\u0D15\u0D7E \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E URL \u0D7D <code>(...)</code> \u0D15\u0D3E\u0D23\u0D3E\u0D02. \u0D07\u0D24\u0D4D \u0D2E\u0D46\u0D2F\u0D3F\u0D7B \u0D2A\u0D3E\u0D24\u0D4D\u0D24\u0D3F\u0D7D \u0D28\u0D3F\u0D28\u0D4D\u0D28\u0D4D \u0D35\u0D4D\u0D2F\u0D24\u0D4D\u0D2F\u0D38\u0D4D\u0D24\u0D2E\u0D3E\u0D23\u0D46\u0D28\u0D4D\u0D28\u0D4D \u0D15\u0D3E\u0D23\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41."},professional:{en:`
               <p class="mb-3">Named outlets utilize the full power of the <strong>UrlTree</strong> serializer. Angular treats the URL not as a simple string, but as a tree with branches.</p>
               <p><strong>Benefit:</strong> Deep Linking. A user can copy the URL <code>/product/55(popup:details)</code> and send it to a friend. When the friend opens it, they see the Product Page AND the Details Popup open exactly as it was. This is impossible with standard JavaScript modals.</p>
@@ -301,25 +282,24 @@ this.router.navigate([{ outlets: { left: null } }]);`,professional:`// URL Struc
 // Order matters: Specific first, Generic last.`,professional:`// Guarding the 404
 // Sometimes you want to redirect unknown URLs to home instead of showing an error.
 { path: '**', redirectTo: 'home' }`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Mystery Room</h3>
-              <p class="mb-3">What happens if you try to walk into a room that doesn't exist? Like trying to find "The Chocolate Room" in your house?</p>
-              <p class="mb-3">Usually, you would hit a wall. Ouch! But in our app, we have a <strong>Lost & Found</strong> department.</p>
-              <p>If the router doesn't know where to go (like if you typed <code>/magic-room</code>), it automatically sends you to the 404 Page. It's a safety net!</p>
-              <p><strong>Try it:</strong> Click 'Err: Broken Link' in the simulator.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lost & Found</h3>
+              <p class="mb-3">What if you try to walk into a room that doesn't exist? You'd hit a wall! Ouch.</p>
+              <p class="mb-3">In our app, we have a special <strong>Lost & Found</strong> department.</p>
+              <p>If someone types a wrong link (like <code>/magic-room</code>), the router catches them and sends them to a safe "404 Error" page instead of breaking.</p>
             `,hi:"\u0915\u094D\u092F\u093E \u0939\u094B\u0917\u093E \u092F\u0926\u093F \u0906\u092A \u0915\u093F\u0938\u0940 \u0910\u0938\u0947 \u0915\u092E\u0930\u0947 \u092E\u0947\u0902 \u091C\u093E\u0928\u0947 \u0915\u093E \u092A\u094D\u0930\u092F\u093E\u0938 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u091C\u094B \u092E\u094C\u091C\u0942\u0926 \u0928\u0939\u0940\u0902 \u0939\u0948? \u0906\u092E\u0924\u094C\u0930 \u092A\u0930, \u0906\u092A \u090F\u0915 \u0926\u0940\u0935\u093E\u0930 \u0938\u0947 \u091F\u0915\u0930\u093E\u090F\u0902\u0917\u0947\u0964",ml:'\u0D07\u0D32\u0D4D\u0D32\u0D3E\u0D24\u0D4D\u0D24 \u0D12\u0D30\u0D41 \u0D2E\u0D41\u0D31\u0D3F\u0D2F\u0D3F\u0D32\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D2A\u0D4B\u0D2F\u0D3E\u0D7D \u0D0E\u0D28\u0D4D\u0D24\u0D4D \u0D38\u0D02\u0D2D\u0D35\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D02? \u0D38\u0D3E\u0D27\u0D3E\u0D30\u0D23 \u0D17\u0D24\u0D3F\u0D2F\u0D3F\u0D7D \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D24\u0D1F\u0D4D\u0D1F\u0D3F \u0D35\u0D40\u0D34\u0D41\u0D02. \u0D0E\u0D28\u0D4D\u0D28\u0D3E\u0D7D \u0D07\u0D35\u0D3F\u0D1F\u0D46 "Lost & Found" \u0D32\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D2A\u0D4B\u0D15\u0D41\u0D02.'},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Wildcard **</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Wildcard **</h3>
               <p class="mb-3">In web terms, a missing page is a <strong>404 Error</strong>. Angular handles this with a special path: <code>**</code>.</p>
               <p class="mb-3">This "Wildcard" means <em>"Match Anything"</em>.</p>
-              <p class="p-2 bg-yellow-100 rounded text-yellow-800 text-sm border border-yellow-200"><strong>Crucial Rule:</strong> The Wildcard route MUST be the <strong>last</strong> item in your routes array. Angular checks routes from top to bottom. If you put <code>**</code> at the top, it will match everything immediately, and your real pages will never load!</p>
+              <p class="p-2 bg-yellow-400/10 rounded text-yellow-200 text-sm border border-yellow-500/20"><strong>Crucial Rule:</strong> The Wildcard route MUST be the <strong>last</strong> item in your routes array. Angular checks routes from top to bottom. If you put <code>**</code> at the top, it will match everything immediately!</p>
             `,hi:"\u0935\u0947\u092C \u0936\u092C\u094D\u0926\u094B\u0902 \u092E\u0947\u0902, \u090F\u0915 \u0932\u093E\u092A\u0924\u093E \u092A\u0943\u0937\u094D\u0920 \u090F\u0915 <strong>404 \u0924\u094D\u0930\u0941\u091F\u093F</strong> \u0939\u0948\u0964 \u090F\u0902\u0917\u0941\u0932\u0930 \u0907\u0938\u0947 \u090F\u0915 \u0935\u093F\u0936\u0947\u0937 \u092A\u0925 \u0915\u0947 \u0938\u093E\u0925 \u0938\u0902\u092D\u093E\u0932\u0924\u093E \u0939\u0948: <code>**</code>\u0964",ml:"\u0D07\u0D24\u0D3F\u0D28\u0D46 <strong>404 Error</strong> \u0D0E\u0D28\u0D4D\u0D28\u0D4D \u0D35\u0D3F\u0D33\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. <code>**</code> \u0D0E\u0D28\u0D4D\u0D28 \u0D2A\u0D3E\u0D24\u0D4D\u0D24\u0D4D \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D1A\u0D4D\u0D1A\u0D3E\u0D23\u0D4D \u0D07\u0D24\u0D4D \u0D38\u0D46\u0D31\u0D4D\u0D31\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D4D. \u0D07\u0D24\u0D4D \u0D0E\u0D2A\u0D4D\u0D2A\u0D4B\u0D34\u0D41\u0D02 \u0D05\u0D35\u0D38\u0D3E\u0D28\u0D02 \u0D15\u0D4A\u0D1F\u0D41\u0D15\u0D4D\u0D15\u0D23\u0D02."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Smart Redirects</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Smart Redirects</h3>
               <p class="mb-3">You don't always have to show an error page. Sometimes, it's better to just redirect users to the dashboard if they get lost.</p>
-              <code class="block bg-slate-100 p-2 rounded mb-3 text-xs">{ path: '**', redirectTo: 'dashboard' }</code>
+              <code class="block bg-slate-800 p-2 rounded mb-3 text-xs text-indigo-200">{ path: '**', redirectTo: 'dashboard' }</code>
               <p>This is common in dashboards where unauthorized URLs should just bounce the user back to safety.</p>
             `,hi:"\u0906\u092A\u0915\u094B \u0939\u092E\u0947\u0936\u093E \u090F\u0915 \u0924\u094D\u0930\u0941\u091F\u093F \u092A\u0943\u0937\u094D\u0920 \u0926\u093F\u0916\u093E\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094D\u092F\u0915\u0924\u093E \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u0915\u092D\u0940-\u0915\u092D\u0940, \u0909\u092A\u092F\u094B\u0917\u0915\u0930\u094D\u0924\u093E\u0913\u0902 \u0915\u094B \u0921\u0948\u0936\u092C\u094B\u0930\u094D\u0921 \u092A\u0930 \u092A\u0941\u0928\u0930\u094D\u0928\u093F\u0930\u094D\u0926\u0947\u0936\u093F\u0924 \u0915\u0930\u0928\u093E \u092C\u0947\u0939\u0924\u0930 \u0939\u094B\u0924\u093E \u0939\u0948\u0964",ml:"\u0D0E\u0D2A\u0D4D\u0D2A\u0D4B\u0D34\u0D41\u0D02 \u0D0E\u0D31\u0D7C \u0D2A\u0D47\u0D1C\u0D4D \u0D15\u0D3E\u0D23\u0D3F\u0D15\u0D4D\u0D15\u0D47\u0D23\u0D4D\u0D1F \u0D06\u0D35\u0D36\u0D4D\u0D2F\u0D2E\u0D3F\u0D32\u0D4D\u0D32. \u0D1A\u0D3F\u0D32\u0D2A\u0D4D\u0D2A\u0D4B\u0D7E \u0D21\u0D3E\u0D37\u0D4D\u0D2C\u0D4B\u0D7C\u0D21\u0D3F\u0D32\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D31\u0D40\u0D21\u0D2F\u0D31\u0D15\u0D4D\u0D1F\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D3E\u0D23\u0D4D \u0D28\u0D32\u0D4D\u0D32\u0D24\u0D4D."},professional:{en:`
               <p class="mb-3">In enterprise applications, the Wildcard route is often protected by a Guard.</p>
               <p>Why? We might want to log the 404 error to an analytics service (like Google Analytics) to track broken links before we show the "Not Found" UI. The Guard can execute this side-effect logic.</p>
-            `,hi:"\u090F\u0902\u091F\u0930\u092A\u094D\u0930\u093E\u0907\u091C\u093C \u0905\u0928\u0941\u092A\u094D\u0930\u092F\u094B\u0917\u094B\u0902 \u092E\u0947\u0902, \u0935\u093E\u0907\u0932\u094D\u0921\u0915\u093E\u0930\u094D\u0921 \u0930\u0942\u091F \u0905\u0915\u094D\u0938\u0930 \u0917\u093E\u0930\u094D\u0921 \u0926\u094D\u0935\u093E\u0930\u093E \u0938\u0941\u0930\u0915\u094D\u0937\u093F\u0924 \u0939\u094B\u0924\u093E \u0939\u0948\u0964 \u0939\u092E 404 \u0924\u094D\u0930\u0941\u091F\u093F \u0915\u094B \u0932\u0949\u0917 \u0915\u0930\u0928\u093E \u091A\u093E\u0939 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D0E\u0D28\u0D4D\u0D31\u0D7C\u0D2A\u0D4D\u0D30\u0D48\u0D38\u0D4D \u0D06\u0D2A\u0D4D\u0D2A\u0D41\u0D15\u0D33\u0D3F\u0D7D 404 \u0D0E\u0D31\u0D31\u0D41\u0D15\u0D7E \u0D32\u0D4B\u0D17\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D7B \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D3E\u0D31\u0D41\u0D23\u0D4D\u0D1F\u0D4D."}})},{id:8,module:"Security",title:this.t({beginner:{en:"The Bouncer",hi:"\u092C\u093E\u0909\u0902\u0938\u0930",ml:"\u0D2C\u0D57\u0D7A\u0D38\u0D7C"},intermediate:{en:"Route Guards",hi:"\u0930\u0942\u091F \u0917\u093E\u0930\u094D\u0921",ml:"\u0D31\u0D42\u0D1F\u0D4D\u0D1F\u0D4D \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E"},advanced:{en:"Functional Guards",hi:"\u092B\u0902\u0915\u094D\u0936\u0928\u0932 \u0917\u093E\u0930\u094D\u0921",ml:"\u0D2B\u0D19\u0D4D\u0D37\u0D23\u0D7D \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E"},professional:{en:"Navigation Cancellation",hi:"\u0928\u0947\u0935\u093F\u0917\u0947\u0936\u0928 \u0930\u0926\u094D\u0926\u0940\u0915\u0930\u0923",ml:"\u0D28\u0D3E\u0D35\u0D3F\u0D17\u0D47\u0D37\u0D7B \u0D31\u0D26\u0D4D\u0D26\u0D3E\u0D15\u0D4D\u0D15\u0D7D"}}),focusArea:"intro",playgroundConfig:{showPrimary:!0,showParams:!1,showAux:!1,showWildcard:!1},codeSnippet:this.c({beginner:`// Code tells the guard:
+            `,hi:"\u090F\u0902\u091F\u0930\u092A\u094D\u0930\u093E\u0907\u091C\u093C \u0905\u0928\u0941\u092A\u094D\u0930\u092F\u094B\u0917\u094B\u0902 \u092E\u0947\u0902, \u0935\u093E\u0907\u0932\u094D\u0921\u0915\u093E\u0930\u094D\u0921 \u0930\u0942\u091F \u0905\u0915\u094D\u0938\u0930 \u0917\u093E\u0930\u094D\u0921 \u0926\u094D\u0935\u093E\u0930\u093E \u0938\u0941\u0930\u0915\u094D\u0937\u093F\u0924 \u0939\u094B\u0924\u093E \u0939\u0948\u0964 \u0939\u092E 404 \u0924\u094D\u0930\u0941\u091F\u093F \u0915\u094B \u0932\u0949\u0917 \u0915\u0930\u0928\u093E \u091A\u093E\u0939 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D0E\u0D28\u0D4D\u0D31\u0D7C\u0D2A\u0D4D\u0D30\u0D48\u0D38\u0D4D \u0D06\u0D2A\u0D4D\u0D2A\u0D41\u0D15\u0D33\u0D3F\u0D7D 404 \u0D0E\u0D31\u0D31\u0D41\u0D15\u0D7E \u0D32\u0D4B\u0D17\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D7B \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D3E\u0D31\u0D41\u0D23\u0D4D\u0D1F\u0D4D."}})},{id:8,module:"Security",title:this.t({beginner:{en:"The Bouncer",hi:"\u092C\u093E\u0909\u0902\u0938\u0930",ml:"\u0D2C\u0D57\u0D7A\u0D38\u0D7C"},intermediate:{en:"Route Guards",hi:"\u0930\u0942\u091F \u0917\u093E\u0930\u094D\u0921",ml:"\u0D31\u0D42\u0D1F\u0D4D\u0D1F\u0D4D \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E"},advanced:{en:"Functional Guards",hi:"\u092B\u0902\u0915\u094D\u0936\u0928\u0932 \u0917\u093E\u0930\u094D\u0921",ml:"\u0D2B\u0D19\u0D4D\u0D37\u0D23\u0D7D \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E"},professional:{en:"Navigation Cancellation",hi:"\u0928\u0947\u0935\u093F\u0917\u0947\u0936\u0928 \u0930\u0926\u094D\u0926\u0940\u0915\u0930\u0923",ml:"\u0D28\u0D3E\u0D35\u0D3F\u0D17\u0D47\u0D37\u0D7B \u0930\u0926\u094D\u0926\u0940\u0915\u0930\u0923"}}),focusArea:"intro",playgroundConfig:{showPrimary:!0,showParams:!1,showAux:!1,showWildcard:!1},codeSnippet:this.c({beginner:`// Code tells the guard:
 if (userHasTicket) { return true; }
 else { return false; }`,intermediate:`// route config
 { 
@@ -334,31 +314,31 @@ else { return false; }`,intermediate:`// route config
 // CanActivate: Stops entry
 // CanDeactivate: Stops exit (unsaved changes)
 // CanLoad: Prevents lazy loading (deprecated for CanMatch)`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Security Guard</h3>
-              <p class="mb-3">Some rooms in a building are private, like the Manager's Office. You can't just walk in.</p>
-              <p class="mb-3">There is a big <strong>Security Guard</strong> at the door. He asks: <em>"Do you have an ID badge?"</em></p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Security Guard</h3>
+              <p class="mb-3">Some rooms are private, like the Principal's Office. You can't just walk in.</p>
+              <p class="mb-3">There is a <strong>Security Guard</strong> at the door. He asks: <em>"Do you have a pass?"</em></p>
               <ul class="list-disc ml-5 space-y-2 mb-4">
-                <li>If <strong>YES</strong>: He steps aside and lets you in.</li>
-                <li>If <strong>NO</strong>: He blocks you and sends you to the Login desk.</li>
+                <li><strong>YES:</strong> Come in.</li>
+                <li><strong>NO:</strong> Go away!</li>
               </ul>
-              <p>In Angular, we call this code a <strong>Guard</strong>.</p>
+              <p>In Angular, we call this a <strong>Guard</strong>. It protects secret pages.</p>
             `,hi:'\u0907\u092E\u093E\u0930\u0924 \u0915\u0947 \u0915\u0941\u091B \u0915\u092E\u0930\u0947 \u0928\u093F\u091C\u0940 \u0939\u094B\u0924\u0947 \u0939\u0948\u0902, \u091C\u0948\u0938\u0947 \u092A\u094D\u0930\u092C\u0902\u0927\u0915 \u0915\u093E \u0915\u093E\u0930\u094D\u092F\u093E\u0932\u092F\u0964 \u0926\u0930\u0935\u093E\u091C\u0947 \u092A\u0930 \u090F\u0915 \u092C\u0921\u093C\u093E \u0938\u0941\u0930\u0915\u094D\u0937\u093E \u0917\u093E\u0930\u094D\u0921 \u0939\u0948\u0964 \u0935\u0939 \u092A\u0942\u091B\u0924\u093E \u0939\u0948: "\u0915\u094D\u092F\u093E \u0906\u092A\u0915\u0947 \u092A\u093E\u0938 \u0906\u0908\u0921\u0940 \u092C\u0948\u091C \u0939\u0948?"',ml:"\u0D1A\u0D3F\u0D32 \u0D2E\u0D41\u0D31\u0D3F\u0D15\u0D7E \u0D2A\u0D4D\u0D30\u0D48\u0D35\u0D31\u0D4D\u0D31\u0D4D \u0D06\u0D23\u0D4D. \u0D05\u0D35\u0D3F\u0D1F\u0D46 \u0D38\u0D46\u0D15\u0D4D\u0D2F\u0D42\u0D30\u0D3F\u0D31\u0D4D\u0D31\u0D3F \u0D17\u0D3E\u0D7C\u0D21\u0D4D \u0D09\u0D23\u0D4D\u0D1F\u0D3E\u0D15\u0D41\u0D02. \u0D10\u0D21\u0D3F \u0D15\u0D3E\u0D7C\u0D21\u0D4D \u0D09\u0D23\u0D4D\u0D1F\u0D46\u0D19\u0D4D\u0D15\u0D3F\u0D7D \u0D2E\u0D3E\u0D24\u0D4D\u0D30\u0D2E\u0D47 \u0D05\u0D15\u0D24\u0D4D\u0D24\u0D47\u0D15\u0D4D\u0D15\u0D4D \u0D35\u0D3F\u0D1F\u0D42."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanActivate</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">CanActivate</h3>
               <p class="mb-3">A Guard is a function that runs <em>before</em> the navigation completes. The most common type is <code>canActivate</code>.</p>
               <p class="mb-3">It returns a boolean:</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><code>true</code>: Navigation proceeds.</li>
                 <li><code>false</code>: Navigation stops (user stays on current page).</li>
                 <li><code>UrlTree</code>: Navigation is redirected to a new path (e.g., Login).</li>
               </ul>
             `,hi:"\u0917\u093E\u0930\u094D\u0921 \u090F\u0915 \u092B\u093C\u0902\u0915\u094D\u0936\u0928 \u0939\u0948 \u091C\u094B \u0928\u0947\u0935\u093F\u0917\u0947\u0936\u0928 \u092A\u0942\u0930\u093E \u0939\u094B\u0928\u0947 \u0938\u0947 \u092A\u0939\u0932\u0947 \u091A\u0932\u0924\u093E \u0939\u0948\u0964 \u0938\u092C\u0938\u0947 \u0906\u092E \u092A\u094D\u0930\u0915\u093E\u0930 <code>canActivate</code> \u0939\u0948\u0964",ml:"\u0D28\u0D3E\u0D35\u0D3F\u0D17\u0D47\u0D37\u0D7B \u0D2A\u0D42\u0D7C\u0D24\u0D4D\u0D24\u0D3F\u0D2F\u0D3E\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D3F\u0D28\u0D4D \u0D2E\u0D41\u0D7B\u0D2A\u0D4D \u0D2A\u0D4D\u0D30\u0D35\u0D7C\u0D24\u0D4D\u0D24\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28 \u0D2B\u0D02\u0D17\u0D4D\u0D37\u0D28\u0D3E\u0D23\u0D4D \u0D17\u0D3E\u0D7C\u0D21\u0D4D. <code>canActivate</code> \u0D06\u0D23\u0D4D \u0D2A\u0D4D\u0D30\u0D27\u0D3E\u0D28\u0D02."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">CanDeactivate</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">CanDeactivate</h3>
               <p class="mb-3">Guards can also check if you are allowed to <em>leave</em>. This is called <code>CanDeactivate</code>.</p>
               <p class="mb-3"><strong>Real World Example:</strong> Have you ever tried to close a tab while filling out a form, and the browser screams: <em>"You have unsaved changes! Are you sure?"</em></p>
               <p>That is a CanDeactivate guard in action. It protects users from losing data.</p>
             `,hi:"\u0917\u093E\u0930\u094D\u0921 \u092F\u0939 \u092D\u0940 \u091C\u093E\u0902\u091A \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0915\u093F \u0915\u094D\u092F\u093E \u0906\u092A\u0915\u094B \u091B\u094B\u0921\u093C\u0928\u0947 \u0915\u0940 \u0905\u0928\u0941\u092E\u0924\u093F \u0939\u0948\u0964 \u0907\u0938\u0947 <code>CanDeactivate</code> \u0915\u0939\u093E \u091C\u093E\u0924\u093E \u0939\u0948\u0964",ml:"\u0D2A\u0D47\u0D1C\u0D3F\u0D7D \u0D28\u0D3F\u0D28\u0D4D\u0D28\u0D4D \u0D2A\u0D41\u0D31\u0D24\u0D4D\u0D24\u0D41\u0D2A\u0D4B\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D2A\u0D4D\u0D30\u0D35\u0D7C\u0D24\u0D4D\u0D24\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28 \u0D17\u0D3E\u0D7C\u0D21\u0D3E\u0D23\u0D4D <code>CanDeactivate</code>. \u0D38\u0D47\u0D35\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D24\u0D4D\u0D24 \u0D21\u0D3E\u0D31\u0D4D\u0D31 \u0D28\u0D37\u0D4D\u0D1F\u0D2A\u0D4D\u0D2A\u0D46\u0D1F\u0D3E\u0D24\u0D3F\u0D30\u0D3F\u0D15\u0D4D\u0D15\u0D3E\u0D7B \u0D07\u0D24\u0D4D \u0D38\u0D39\u0D3E\u0D2F\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41."},professional:{en:`
               <p class="mb-3">In modern Angular (v16+), we use <strong>Functional Guards</strong>. They are simple functions that can use <code>inject()</code>.</p>
-              <p>We also have <code>CanMatch</code>. This is powerful for <strong>Feature Flags</strong>. If <code>CanMatch</code> returns false, the router pretends that route <em>doesn't even exist</em> and keeps searching down the config list. This allows you to have two routes with the same path (e.g., 'dashboard'), one for 'Admin' and one for 'User', and the guard decides which component actually loads.</p>
+              <p>We also have <code>CanMatch</code>. This is powerful for <strong>Feature Flags</strong>. If <code>CanMatch</code> returns false, the router pretends that route <em>doesn't even exist</em> and keeps searching down the config list.</p>
             `,hi:"\u0906\u0927\u0941\u0928\u093F\u0915 \u090F\u0902\u0917\u0941\u0932\u0930 \u092E\u0947\u0902, \u0939\u092E \u092B\u0902\u0915\u094D\u0936\u0928\u0932 \u0917\u093E\u0930\u094D\u0921 \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u0939\u092E\u093E\u0930\u0947 \u092A\u093E\u0938 CanMatch \u092D\u0940 \u0939\u0948\u0964 \u092F\u0939 \u092B\u0940\u091A\u0930 \u092B\u094D\u0932\u0948\u0917 \u0915\u0947 \u0932\u093F\u090F \u0936\u0915\u094D\u0924\u093F\u0936\u093E\u0932\u0940 \u0939\u0948\u0964",ml:"\u0D2A\u0D41\u0D24\u0D3F\u0D2F \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D7D \u0D2B\u0D19\u0D4D\u0D37\u0D23\u0D7D \u0D17\u0D3E\u0D7C\u0D21\u0D41\u0D15\u0D7E \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. <code>CanMatch</code> \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D1A\u0D4D\u0D1A\u0D4D \u0D12\u0D30\u0D47 \u0D2A\u0D3E\u0D24\u0D4D\u0D24\u0D3F\u0D7D \u0D30\u0D23\u0D4D\u0D1F\u0D4D \u0D35\u0D4D\u0D2F\u0D24\u0D4D\u0D2F\u0D38\u0D4D\u0D24 \u0D15\u0D02\u0D2A\u0D4B\u0D23\u0D28\u0D4D\u0D31\u0D41\u0D15\u0D7E \u0D32\u0D4B\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D02."}})},{id:9,module:"Performance",title:this.t({beginner:{en:"Packing Light",hi:"\u0939\u0932\u094D\u0915\u093E \u092A\u0948\u0915\u093F\u0902\u0917",ml:"\u0D2A\u0D3E\u0D15\u0D4D\u0D15\u0D3F\u0D02\u0D17\u0D4D \u0D32\u0D48\u0D31\u0D4D\u0D31\u0D4D"},intermediate:{en:"Lazy Loading",hi:"\u0932\u0947\u091C\u093C\u0940 \u0932\u094B\u0921\u093F\u0902\u0917",ml:"\u0D32\u0D47\u0D38\u0D3F \u0D32\u0D4B\u0D21\u0D3F\u0D02\u0D17\u0D4D"},advanced:{en:"Code Splitting",hi:"\u0915\u094B\u0921 \u0938\u094D\u092A\u094D\u0932\u093F\u091F\u093F\u0902\u0917",ml:"\u0D15\u0D4B\u0D21\u0D4D \u0D38\u0D4D\u0D2A\u0D4D\u0D32\u0D3F\u0D31\u0D4D\u0D31\u0D3F\u0D02\u0D17\u0D4D"},professional:{en:"Bundle Optimization",hi:"\u092C\u0902\u0921\u0932 \u0905\u0928\u0941\u0915\u0942\u0932\u0928",ml:"\u0D2C\u0D23\u0D4D\u0D1F\u0D3F\u0D7D \u0D12\u0D2A\u0D4D\u0D31\u0D4D\u0D31\u0D3F\u0D2E\u0D48\u0D38\u0D47\u0D37\u0D7B"}}),focusArea:"intro",playgroundConfig:{showPrimary:!0,showParams:!1,showAux:!1,showWildcard:!1},codeSnippet:this.c({beginner:`// Don't buy all the furniture for the house at once.
 // Buy the baby room furniture ONLY when the baby is born.`,intermediate:`// Old way (Eager): component: AdminComponent
 
@@ -370,21 +350,21 @@ loadComponent: () => import('./admin.component').then(m => m.AdminComponent)`,ad
 }`,professional:`// Webpack splits this into 'src_app_settings_ts.js'.
 // The browser only downloads this 20KB file when the user clicks 'Settings'.
 // Reduces Initial Bundle Size (LCP/FCP).`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Don't Pack the Winter Coat</h3>
-              <p class="mb-3">Imagine you are going on a summer vacation. Do you pack your heavy winter coat, snow boots, and scarf? No! That would make your bag too heavy to carry.</p>
-              <p class="mb-3">Computers are the same. If a user only visits the "Home Page", why force them to download the code for the "Settings Page"?</p>
-              <p>Angular waits. It only downloads the "Settings" code <em>when the user actually clicks the button</em>. This makes the app start super fast!</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Packing Light</h3>
+              <p class="mb-3">Going on a summer trip? You don't pack your heavy winter coat! That would make your bag too heavy.</p>
+              <p class="mb-3">Computers are the same. If you are only looking at the Home Page, why download the code for the Settings Page?</p>
+              <p><strong>Lazy Loading</strong> means we only pack what we need right now. It makes the app super fast!</p>
             `,hi:"\u0915\u0932\u094D\u092A\u0928\u093E \u0915\u0940\u091C\u093F\u090F \u0915\u093F \u0906\u092A \u0917\u0930\u094D\u092E\u093F\u092F\u094B\u0902 \u0915\u0940 \u091B\u0941\u091F\u094D\u091F\u0940 \u092A\u0930 \u091C\u093E \u0930\u0939\u0947 \u0939\u0948\u0902\u0964 \u0915\u094D\u092F\u093E \u0906\u092A \u0905\u092A\u0928\u093E \u092D\u093E\u0930\u0940 \u0935\u093F\u0902\u091F\u0930 \u0915\u094B\u091F \u092A\u0948\u0915 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902? \u0928\u0939\u0940\u0902! \u0915\u0902\u092A\u094D\u092F\u0942\u091F\u0930 \u092D\u0940 \u0910\u0938\u0947 \u0939\u0940 \u0939\u094B\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D35\u0D47\u0D28\u0D7D\u0D15\u0D4D\u0D15\u0D3E\u0D32 \u0D2F\u0D3E\u0D24\u0D4D\u0D30\u0D2F\u0D4D\u0D15\u0D4D\u0D15\u0D4D \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D24\u0D23\u0D41\u0D2A\u0D4D\u0D2A\u0D41\u0D15\u0D3E\u0D32 \u0D35\u0D38\u0D4D\u0D24\u0D4D\u0D30\u0D19\u0D4D\u0D19\u0D7E \u0D0E\u0D1F\u0D41\u0D15\u0D4D\u0D15\u0D3E\u0D31\u0D3F\u0D32\u0D4D\u0D32. \u0D05\u0D24\u0D4D \u0D2C\u0D3E\u0D17\u0D3F\u0D28\u0D4D\u0D31\u0D46 \u0D2D\u0D3E\u0D30\u0D02 \u0D15\u0D42\u0D1F\u0D4D\u0D1F\u0D41\u0D02. \u0D05\u0D24\u0D41\u0D2A\u0D4B\u0D32\u0D46 \u0D15\u0D2E\u0D4D\u0D2A\u0D4D\u0D2F\u0D42\u0D1F\u0D4D\u0D1F\u0D31\u0D41\u0D02 \u0D06\u0D35\u0D36\u0D4D\u0D2F\u0D2E\u0D41\u0D33\u0D4D\u0D33\u0D2A\u0D4D\u0D2A\u0D4B\u0D7E \u0D2E\u0D3E\u0D24\u0D4D\u0D30\u0D2E\u0D47 \u0D15\u0D4B\u0D21\u0D4D \u0D21\u0D57\u0D7A\u0D32\u0D4B\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D42."},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lazy Loading</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lazy Loading</h3>
               <p class="mb-3">By default, Angular creates one giant JavaScript file (<code>main.js</code>). If your app is huge, this file takes 10 seconds to load.</p>
               <p class="mb-3">Lazy loading splits your code into "chunks".</p>
-              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-1 mb-4 text-sm text-slate-300">
                 <li><strong>Eager:</strong> <code>component: Dashboard</code> (Loads instantly at startup)</li>
                 <li><strong>Lazy:</strong> <code>loadChildren: () => import(...)</code> (Loads on demand)</li>
               </ul>
               <p><strong>Result:</strong> Your main bundle is tiny, and the app loads instantly.</p>
             `,hi:'\u0921\u093F\u092B\u093C\u0949\u0932\u094D\u091F \u0930\u0942\u092A \u0938\u0947, \u090F\u0902\u0917\u0941\u0932\u0930 \u090F\u0915 \u0935\u093F\u0936\u093E\u0932 \u091C\u093E\u0935\u093E\u0938\u094D\u0915\u094D\u0930\u093F\u092A\u094D\u091F \u092B\u093C\u093E\u0907\u0932 \u092C\u0928\u093E\u0924\u093E \u0939\u0948\u0964 \u0932\u0947\u091C\u093C\u0940 \u0932\u094B\u0921\u093F\u0902\u0917 \u0906\u092A\u0915\u0947 \u0915\u094B\u0921 \u0915\u094B "\u0939\u093F\u0938\u094D\u0938\u094B\u0902" \u092E\u0947\u0902 \u0935\u093F\u092D\u093E\u091C\u093F\u0924 \u0915\u0930\u0924\u093E \u0939\u0948\u0964',ml:"\u0D32\u0D47\u0D38\u0D3F \u0D32\u0D4B\u0D21\u0D3F\u0D02\u0D17\u0D4D \u0D15\u0D4B\u0D21\u0D3F\u0D28\u0D46 \u0D1A\u0D46\u0D31\u0D3F\u0D2F \u0D2D\u0D3E\u0D17\u0D19\u0D4D\u0D19\u0D33\u0D3E\u0D2F\u0D3F \u0D24\u0D3F\u0D30\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D06\u0D35\u0D36\u0D4D\u0D2F\u0D2E\u0D41\u0D33\u0D4D\u0D33\u0D2A\u0D4D\u0D2A\u0D4B\u0D7E \u0D2E\u0D3E\u0D24\u0D4D\u0D30\u0D02 \u0D21\u0D57\u0D7A\u0D32\u0D4B\u0D21\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Dynamic Imports</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Dynamic Imports</h3>
               <p class="mb-3">We use the JavaScript dynamic import syntax: <code>import('./path')</code>. This returns a Promise.</p>
               <p class="mb-3">When the router matches a lazy route, it pauses, fires a network request to fetch the JS file, executes it, and then renders the component. You might see a slight delay, which is why we often use loading spinners during this pause.</p>
             `,hi:"\u0939\u092E \u091C\u093E\u0935\u093E\u0938\u094D\u0915\u094D\u0930\u093F\u092A\u094D\u091F \u0921\u093E\u092F\u0928\u093E\u092E\u093F\u0915 \u0906\u092F\u093E\u0924 \u0938\u093F\u0902\u091F\u0948\u0915\u094D\u0938 \u0915\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u092F\u0939 \u090F\u0915 \u092A\u094D\u0930\u0949\u092E\u093F\u0938 \u0932\u094C\u091F\u093E\u0924\u093E \u0939\u0948\u0964",ml:"\u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D21\u0D48\u0D28\u0D3E\u0D2E\u0D3F\u0D15\u0D4D \u0D07\u0D2E\u0D4D\u0D2A\u0D4B\u0D7C\u0D1F\u0D4D\u0D1F\u0D4D \u0D38\u0D3F\u0D28\u0D4D\u0D31\u0D3E\u0D15\u0D4D\u0D38\u0D4D \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D07\u0D24\u0D4D \u0D12\u0D30\u0D41 \u0D2A\u0D4D\u0D30\u0D4B\u0D2E\u0D3F\u0D38\u0D4D \u0D31\u0D3F\u0D1F\u0D4D\u0D1F\u0D47\u0D7A \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41."},professional:{en:`
@@ -408,21 +388,21 @@ ngOnDestroy() {
 // Use route.params.subscribe() instead.`,professional:`// Memory Leaks:
 // If you subscribe to a global service in ngOnInit but don't unsubscribe in OnDestroy,
 // the subscription lives forever, eating up RAM even after the page is gone.`}),content:this.t({beginner:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Clean Up Your Room!</h3>
-              <p class="mb-3">When a page appears, it says "Hello!" (Born). When it disappears, it says "Goodbye!" (Destroyed).</p>
-              <p class="mb-3">Imagine you turn on the water tap (start a timer) when you enter the kitchen. If you leave the kitchen without turning it off, the house floods!</p>
-              <p>In Angular, we use the "Goodbye" moment (<code>ngOnDestroy</code>) to turn off taps, stop timers, and clean up the memory so the computer doesn't get slow.</p>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Clean Up Time!</h3>
+              <p class="mb-3">When a page opens, it says "Hello!". When it closes, it says "Goodbye!".</p>
+              <p class="mb-3">Imagine you turn on a water tap in the kitchen. If you leave without turning it off, the house floods!</p>
+              <p>In Angular, we use the "Goodbye" moment to turn off taps and clean up memory so the computer stays fast.</p>
             `,hi:'\u091C\u092C \u0915\u094B\u0908 \u092A\u0947\u091C \u0926\u093F\u0916\u093E\u0908 \u0926\u0947\u0924\u093E \u0939\u0948, \u0924\u094B \u0935\u0939 "\u0928\u092E\u0938\u094D\u0924\u0947!" \u0915\u0939\u0924\u093E \u0939\u0948\u0964 \u091C\u092C \u092F\u0939 \u0917\u093E\u092F\u092C \u0939\u094B \u091C\u093E\u0924\u093E \u0939\u0948, \u0924\u094B \u0935\u0939 "\u0905\u0932\u0935\u093F\u0926\u093E!" \u0915\u0939\u0924\u093E \u0939\u0948\u0964',ml:'\u0D12\u0D30\u0D41 \u0D2A\u0D47\u0D1C\u0D4D \u0D35\u0D30\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D05\u0D24\u0D4D "\u0D39\u0D32\u0D4B" \u0D2A\u0D31\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D2A\u0D4B\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E "\u0D17\u0D41\u0D21\u0D4D\u0D2C\u0D48" \u0D2A\u0D31\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D41. \u0D05\u0D1F\u0D41\u0D15\u0D4D\u0D15\u0D33\u0D2F\u0D3F\u0D7D \u0D28\u0D3F\u0D28\u0D4D\u0D28\u0D4D \u0D2A\u0D4B\u0D15\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E \u0D2A\u0D48\u0D2A\u0D4D\u0D2A\u0D4D \u0D05\u0D1F\u0D2F\u0D4D\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D4D \u0D2A\u0D4B\u0D32\u0D46 \u0D06\u0D02\u0D17\u0D41\u0D32\u0D31\u0D3F\u0D32\u0D41\u0D02 \u0D28\u0D2E\u0D4D\u0D2E\u0D7E \u0D15\u0D4D\u0D32\u0D40\u0D7B \u0D05\u0D2A\u0D4D\u0D2A\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D23\u0D02.'},intermediate:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">Lifecycle Hooks</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">Lifecycle Hooks</h3>
               <p class="mb-3">Angular gives us hooks to run code at specific times:</p>
-              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm">
+              <ul class="list-disc ml-5 space-y-2 mb-4 text-sm text-slate-300">
                 <li><code>ngOnInit()</code>: Runs ONCE when the component is created. Great for fetching data from an API.</li>
                 <li><code>ngOnDestroy()</code>: Runs ONCE when the component is removed. Use this to unsubscribe from Observables.</li>
               </ul>
             `,hi:"\u090F\u0902\u0917\u0941\u0932\u0930 \u0939\u092E\u0947\u0902 \u0935\u093F\u0936\u093F\u0937\u094D\u091F \u0938\u092E\u092F \u092A\u0930 \u0915\u094B\u0921 \u091A\u0932\u093E\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0939\u0941\u0915 \u0926\u0947\u0924\u093E \u0939\u0948: ngOnInit \u0914\u0930 ngOnDestroy\u0964",ml:"\u0D06\u0D02\u0D17\u0D41\u0D32\u0D7C \u0D28\u0D2E\u0D41\u0D15\u0D4D\u0D15\u0D4D \u0D39\u0D41\u0D15\u0D4D\u0D15\u0D41\u0D15\u0D7E \u0D28\u0D7D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41: ngOnInit \u0D09\u0D02 ngOnDestroy \u0D09\u0D02. \u0D21\u0D3E\u0D31\u0D4D\u0D31 \u0D0E\u0D1F\u0D41\u0D15\u0D4D\u0D15\u0D3E\u0D28\u0D41\u0D02 \u0D15\u0D4D\u0D32\u0D40\u0D7B \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D3E\u0D28\u0D41\u0D02 \u0D07\u0D35 \u0D09\u0D2A\u0D2F\u0D4B\u0D17\u0D3F\u0D15\u0D4D\u0D15\u0D41\u0D28\u0D4D\u0D28\u0D41."},advanced:{en:`
-              <h3 class="text-lg font-bold text-indigo-600 mb-2">The Reuse Trap</h3>
+              <h3 class="text-lg font-bold text-indigo-400 mb-2">The Reuse Trap</h3>
               <p class="mb-3">Here is a trap that catches everyone: If you go from <code>/user/1</code> to <code>/user/2</code>...</p>
-              <p class="font-bold text-red-600 mb-2">ngOnDestroy and ngOnInit DO NOT RUN.</p>
+              <p class="font-bold text-red-500 mb-2">ngOnDestroy and ngOnInit DO NOT RUN.</p>
               <p class="mb-3">Why? Because it's the <em>same</em> component class. Angular is smart and reuses it. It only updates the parameter. This is why you must listen to parameter changes instead of relying on <code>ngOnInit</code>.</p>
             `,hi:"\u092F\u0939\u093E\u0901 \u090F\u0915 \u091C\u093E\u0932 \u0939\u0948: \u092F\u0926\u093F \u0906\u092A /user/1 \u0938\u0947 /user/2 \u092A\u0930 \u091C\u093E\u0924\u0947 \u0939\u0948\u0902, \u0924\u094B ngOnDestroy \u0914\u0930 ngOnInit \u0928\u0939\u0940\u0902 \u091A\u0932\u0924\u0947 \u0939\u0948\u0902\u0964",ml:"\u0D12\u0D30\u0D47 \u0D2A\u0D47\u0D1C\u0D3F\u0D7D \u0D21\u0D3E\u0D31\u0D4D\u0D31 \u0D2E\u0D3E\u0D31\u0D41\u0D2E\u0D4D\u0D2A\u0D4B\u0D7E ngOnDestroy \u0D09\u0D02 ngOnInit \u0D09\u0D02 \u0D2A\u0D4D\u0D30\u0D35\u0D7C\u0D24\u0D4D\u0D24\u0D3F\u0D15\u0D4D\u0D15\u0D3F\u0D32\u0D4D\u0D32. \u0D06\u0D02\u0D17\u0D41\u0D32\u0D7C \u0D15\u0D02\u0D2A\u0D4B\u0D23\u0D28\u0D4D\u0D31\u0D4D \u0D31\u0D40\u0D2F\u0D42\u0D38\u0D4D \u0D1A\u0D46\u0D2F\u0D4D\u0D2F\u0D41\u0D28\u0D4D\u0D28\u0D24\u0D3E\u0D23\u0D4D \u0D15\u0D3E\u0D30\u0D23\u0D02."},professional:{en:`
               <p class="mb-3"><strong>Memory Leaks</strong> are the #1 performance killer in SPAs. If you subscribe to a global service (like a ChatService) in a component but forget to unsubscribe in <code>ngOnDestroy</code>, that subscription stays alive forever.</p>
