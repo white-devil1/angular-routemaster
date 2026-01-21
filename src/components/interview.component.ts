@@ -12,31 +12,32 @@ import { Router } from '@angular/router';
   imports: [CommonModule, TitleCasePipe],
   template: `
     <!-- Transparent BG for Theme Flow -->
-    <div class="h-full bg-transparent p-6 overflow-y-auto flex flex-col items-center">
+    <div class="h-full bg-transparent p-3 md:p-6 overflow-y-auto flex flex-col items-center custom-scrollbar">
       
       <!-- HEADER & LIST QUESTIONS -->
       <div class="max-w-3xl w-full animate-slide-up">
         
-        <div class="flex items-center gap-4 mb-8">
-          <button (click)="goHome()" class="p-2 hover:bg-white/10 rounded-full transition-colors text-white" title="Exit">
+        <!-- Added pr-16 for mobile to prevent content overlap with the absolute sidebar button -->
+        <div class="flex items-center gap-4 mb-6 md:mb-8 sticky top-0 z-10 bg-slate-900/0 backdrop-blur-sm p-2 rounded-xl pr-16 md:pr-2">
+          <button (click)="goHome()" class="p-2 bg-white/5 hover:bg-white/10 rounded-full transition-colors text-white border border-white/10 shadow" title="Exit">
             ⬅️
           </button>
           <div>
-            <h1 class="text-2xl font-black text-white">
-              <span class="text-indigo-400">{{ currentLevel() | titlecase }}</span> Interview Q&A
+            <h1 class="text-xl md:text-2xl font-black text-white">
+              <span class="text-indigo-400">{{ currentLevel() | titlecase }}</span> <span class="hidden md:inline">Interview Q&A</span><span class="md:hidden">Q&A</span>
             </h1>
-            <p class="text-sm text-slate-400">{{ filteredQuestions().length }} Questions available for this level</p>
+            <p class="text-xs md:text-sm text-slate-400">{{ filteredQuestions().length }} Questions available</p>
           </div>
         </div>
 
         <div class="space-y-4 pb-20">
           @for(q of filteredQuestions(); track q.id) {
             <!-- WHITE CARD for Contrast -->
-            <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden transition-all hover:shadow-2xl hover:scale-[1.01]">
+            <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden transition-all hover:shadow-2xl">
               <button (click)="service.toggle(q.id)" 
-                      class="w-full text-left px-6 py-5 flex justify-between items-start focus:outline-none">
-                <span class="font-bold text-slate-800 pr-4 leading-relaxed">{{q.question}}</span>
-                <div class="shrink-0 w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 transition-colors"
+                      class="w-full text-left px-4 py-4 md:px-6 md:py-5 flex justify-between items-start focus:outline-none">
+                <span class="font-bold text-slate-800 pr-4 leading-relaxed text-sm md:text-base">{{q.question}}</span>
+                <div class="shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 transition-colors"
                       [class.bg-indigo-50]="q.isOpen" [class.border-indigo-100]="q.isOpen">
                   <span class="text-slate-400 font-light transition-transform duration-300" 
                         [class.rotate-45]="q.isOpen"
@@ -45,10 +46,10 @@ import { Router } from '@angular/router';
               </button>
               
               @if(q.isOpen) {
-                <div class="px-6 pb-6 pt-0 animate-slide-down">
-                  <div class="p-4 bg-slate-50 border-l-4 border-indigo-400 rounded-r-lg text-slate-700 leading-relaxed text-sm">
+                <div class="px-4 pb-4 md:px-6 md:pb-6 pt-0 animate-slide-down">
+                  <div class="p-3 md:p-4 bg-slate-50 border-l-4 border-indigo-400 rounded-r-lg text-slate-700 leading-relaxed text-xs md:text-sm overflow-hidden">
                     <!-- CHANGED: [innerHTML] to support code blocks and bolding -->
-                    <div [innerHTML]="q.answer"></div>
+                    <div [innerHTML]="q.answer" class="prose-sm max-w-none"></div>
                   </div>
                 </div>
               }

@@ -1,7 +1,15 @@
+
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { LanguageService } from './language.service';
 
 export type Level = 'beginner' | 'intermediate' | 'advanced' | 'professional';
+
+export interface PlaygroundConfig {
+  showPrimary: boolean;
+  showParams: boolean;
+  showAux: boolean;
+  showWildcard: boolean;
+}
 
 export interface TutorialStep {
   id: number;
@@ -10,6 +18,7 @@ export interface TutorialStep {
   content: string; 
   codeSnippet: string; 
   focusArea: 'intro' | 'primary' | 'active' | 'params' | 'wildcard' | 'left' | 'right' | 'url' | 'guards' | 'lazy';
+  playgroundConfig: PlaygroundConfig;
 }
 
 @Injectable({
@@ -53,6 +62,7 @@ export class TutorialService {
           professional: { en: 'ViewContainerRef Architecture', hi: 'ViewContainerRef आर्किटेक्चर', ml: 'ViewContainerRef ആർക്കിടെക്ചർ' }
         }),
         focusArea: 'intro',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `<!-- STEP 1: Place the frame on the wall -->\n<router-outlet></router-outlet>`,
           intermediate: `<!-- app.component.html -->\n<header>My App</header>\n<router-outlet></router-outlet>\n<footer>Copyright</footer>`,
@@ -135,6 +145,7 @@ export class TutorialService {
           professional: { en: 'Tree Matching Algorithm', hi: 'ट्री मिलान एल्गोरिदम', ml: 'ട്രീ മാച്ചിംഗ് അൽഗോരിതം' }
         }),
         focusArea: 'url',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `// Tell the frame what to show\nIf URL is "home" -> Show HomePicture\nIf URL is "dashboard" -> Show GraphPicture`,
           intermediate: `const routes: Routes = [\n  { path: 'home', component: HomeComponent },\n  { path: 'dashboard', component: DashboardComponent },\n  { path: '', redirectTo: 'home', pathMatch: 'full' }\n];`,
@@ -205,6 +216,7 @@ export class TutorialService {
           professional: { en: 'Navigation Lifecycle', hi: 'नेविगेशन जीवनचक्र', ml: 'നാവിഗേഷൻ ലൈഫ്സൈക്കിൾ' }
         }),
         focusArea: 'primary',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `<!-- A button that changes the channel -->\n<button routerLink="/home">Go Home</button>`,
           intermediate: `<!-- Standard HTML vs Angular -->\n<!-- DON'T DO THIS (Reloads page): <a href="/home"> -->\n<a routerLink="/home">Home</a>`,
@@ -285,6 +297,7 @@ export class TutorialService {
           professional: { en: 'State Reactivity', hi: 'स्थिति प्रतिक्रियाशीलता', ml: 'സ്റ്റേറ്റ് റിയാക്റ്റിവിറ്റി' }
         }),
         focusArea: 'params',
+        playgroundConfig: { showPrimary: true, showParams: true, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `<!-- In the browser bar: /user/1 -->\n<!-- In the code: -->\nShow user with ID: 1`,
           intermediate: `// Route Config\n{ path: 'user/:id', component: UserProfile }\n\n// If URL is /user/42, then :id = 42`,
@@ -360,6 +373,7 @@ export class TutorialService {
           professional: { en: 'Tree Containment Logic', hi: 'ट्री कंटेनमेंट लॉजिक', ml: 'ട്രീ കണ്ടെയ്ൻമെന്റ് ലോജിക്' }
         }),
         focusArea: 'active',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `<!-- If we are on Home, make this button blue! -->\n<a routerLink="/home" class="blue-glow">Home</a>`,
           intermediate: `<a routerLink="/settings"\n   routerLinkActive="active-class">\n  Settings\n</a>\n\n/* CSS */\n.active-class { background: purple; color: white; }`,
@@ -426,6 +440,7 @@ export class TutorialService {
           professional: { en: 'UrlTree Serialization', hi: 'UrlTree सीरियलाइजेशन', ml: 'UrlTree സീരിയലൈസേഷൻ' }
         }),
         focusArea: 'left',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: true, showWildcard: false },
         codeSnippet: this.c({
           beginner: `<!-- Main Frame -->\n<router-outlet></router-outlet>\n\n<!-- Side Frame (Green) -->\n<router-outlet name="left"></router-outlet>`,
           intermediate: `// Link to open menu in the left frame\n<a [routerLink]="[{ outlets: { left: 'menu' } }]">Open Menu</a>\n\n// Resulting URL:\n// http://site.com/home(left:menu)`,
@@ -492,6 +507,7 @@ export class TutorialService {
           professional: { en: 'Pattern Matching Strategy', hi: 'पैटर्न मिलान रणनीति', ml: 'പാറ്റേൺ മാച്ചിംഗ് സ്ട്രാറ്റജി' }
         }),
         focusArea: 'wildcard',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: true },
         codeSnippet: this.c({
           beginner: `<!-- If the user is lost, show this -->\n{ path: '**', component: LostFoundPage }`,
           intermediate: `const routes = [\n  { path: 'home', ... },\n  // MUST BE LAST\n  { path: '**', component: NotFoundComponent }\n];`,
@@ -554,6 +570,7 @@ export class TutorialService {
           professional: { en: 'Navigation Cancellation', hi: 'नेविगेशन रद्दीकरण', ml: 'നാവിഗേഷൻ റദ്ദാക്കൽ' }
         }),
         focusArea: 'intro',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `// Code tells the guard:\nif (userHasTicket) { return true; }\nelse { return false; }`,
           intermediate: `// route config\n{ \n  path: 'admin', \n  component: AdminPage,\n  canActivate: [authGuard] \n}`,
@@ -623,6 +640,7 @@ export class TutorialService {
           professional: { en: 'Bundle Optimization', hi: 'बंडल अनुकूलन', ml: 'ബണ്ടിൽ ഒപ്റ്റിമൈസേഷൻ' }
         }),
         focusArea: 'intro',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `// Don't buy all the furniture for the house at once.\n// Buy the baby room furniture ONLY when the baby is born.`,
           intermediate: `// Old way (Eager): component: AdminComponent\n\n// New way (Lazy):\nloadComponent: () => import('./admin.component').then(m => m.AdminComponent)`,
@@ -687,6 +705,7 @@ export class TutorialService {
           professional: { en: 'Memory Leak Prevention', hi: 'मेमोरी लीक रोकथाम', ml: 'മെമ്മറി ലീക്ക് തടയൽ' }
         }),
         focusArea: 'intro',
+        playgroundConfig: { showPrimary: true, showParams: false, showAux: false, showWildcard: false },
         codeSnippet: this.c({
           beginner: `// When picture is put in frame:\nhello();\n\n// When picture is taken out:\ngoodbye();`,
           intermediate: `ngOnInit() {\n  console.log('Component Created');\n  // Fetch data here\n}\n\nngOnDestroy() {\n  console.log('Component Deleted');\n  // Stop timers here\n}`,
